@@ -1,17 +1,11 @@
 # l2s4-projet-2026
 
-Vous devez *forker* ce projet dans votre espace de travail Gitlab (bouton `Fork`) et vidéo sur le [portail](https://www.fil.univ-lille.fr/portail/index.php?dipl=L&sem=S4&ue=Projet&label=Documents)
-Un unique fork doit être réalisé par équipe.
-
-Une fois cela réalisé, supprimer ces premières lignes et remplir les noms des membres de votre équipe.
-N'oubliez pas d'ajouter les autres membres de votre équipe aux membres du projet, ainsi que votre enseignant·e (statut Maintainer).
-
 # Equipe
 
-- prénom1 NOM1
-- prénom2 NOM2
-- prénom3 NOM3
-- prénom4 NOM4
+- Yanis GANNAR
+- Jean-Mayes ZITOUNI
+- Noe CARPENTIER
+- Merwan SERGENT
 
 # Sujet
 
@@ -61,9 +55,10 @@ Un lien vers une image de l'UML doit être fourni (une photo d'un diagramme UML 
 
 # Journal de bord
 
-Le journal de bord doit être rempli à la fin de chaque séance encadrée, et **avant** de quitter la salle. 
+Le journal de bord doit être rempli à la fin de chaque séance encadrée, et **avant** de quitter la salle.
 
 Pour chaque semaine on y trouvera :
+
 - ce qui a été réalisé, les difficultés rencontrées et comment elles ont été surmontées (on attend du contenu, pas uniquement une phrase du type "tous les objectifs ont été atteints")
 - la liste des objectifs à réaliser d'ici à la prochaine séance encadrée
 
