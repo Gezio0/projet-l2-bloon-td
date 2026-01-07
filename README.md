@@ -65,10 +65,13 @@ Pour chaque semaine on y trouvera :
 ## Semaine 1
 
 ### Ce qui a été réalisé
-
+Pour commencer, on a essayé de mieux comprendre le jeu en y jouant, puis on a commencé le diagramme UML, on s'est concentré sur le plateau et la gestion des cellules et chemins.
 ### Difficultés rencontrées
-
+savoir comment modéliser un chemin, et savoir quel méthode mettre dans le plateau notamment pour savoir comment accéder à la cell suivante. C'est pourquoi nous avons décidé d'y remédier avec classe "CellPath".
 ### Objectifs pour la semaine et répartition du travail par membre
+Finir le diagramme pour les plateaux différents. Pour cette semaine, aucune répartion car nous allons le faire en groupe pour aligner nos idées, nous allons notamment écrire les sous-classes de board.
+
+![alt text](images/UML1.png)
 
 ## Semaine 2
 
