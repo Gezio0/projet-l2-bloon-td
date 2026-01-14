@@ -76,10 +76,19 @@ Finir le diagramme pour les plateaux différents. Pour cette semaine, aucune ré
 ## Semaine 2
 
 ### Ce qui a été réalisé
-![alt text](UML2-1.png)
+Pour commencer nous avons modifier l'UML afin d'obtenir notre version potentiellement finale de la partie Board(les chemins,les cellules et le board en lui même ainsi que ces exceptions). Nous avons notamment terminer les sous classes de Board, 2 sous classes différente en fonction du type de plateau. Ensuite nous avons commencer a coder en se repartissant les classes.
+![alt text](UML2seance2final.png)
+
 ### Difficultés rencontrées
+La création des chemins notamment la méthode initPath de la classe classicalBoard (nous n'avons pas encore commencé MultipleBoard), pour l'instant on a une idée de comment faire que l'on essayera de finir dans la semaine.
 
 ### Objectifs pour la semaine et répartition du travail par membre
+Chacun finis ses classes, documentation et tests compris :
+Merwan : TooMuchPathsException, NoNextCellException, CellPath
+Yanis : Board <<abstract>>
+Jean-Mayes : Cell, Path
+Noé : ClassicalBoard 
+Pour ce qui est de MultipleBoard on essayera de refléchir ensemble en essayant de reprendre un petit peu le code de ClassicalBoard 
 
 ## Semaine 3
 
