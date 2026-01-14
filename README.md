@@ -76,7 +76,7 @@ Finir le diagramme pour les plateaux différents. Pour cette semaine, aucune ré
 ## Semaine 2
 
 ### Ce qui a été réalisé
-
+![alt text](UML2-1.png)
 ### Difficultés rencontrées
 
 ### Objectifs pour la semaine et répartition du travail par membre
