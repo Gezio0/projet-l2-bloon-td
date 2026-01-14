@@ -51,8 +51,20 @@ public abstract class Board {
         return this.height ;
     }
 
-    public abstract Path getPaths();
+    /**Get the list of the paths 
+     * @return the list
+    */
+    public List<Path> getPaths(){
+        return this.pathList ;
+    }
 
+    /**Add a path to the paths list
+     * @param path the path to add
+     */
+    public void addPath(Path path){
+        this.pathList.add(path);
+    }
 
+    public abstract Path initPath() ;
 
 }
