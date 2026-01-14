@@ -1,5 +1,6 @@
 package game.board;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import game.path.*;
@@ -15,5 +16,12 @@ public abstract class Board {
     protected Cell[][] tab ;
     /**The board paths list */
     protected List<Path> pathList ;
+
+    public Board(int width, int height){
+        this.width = width ;
+        this.height =  height ;
+        this.tab = new Cell[width][height];
+        this.pathList = new ArrayList<>();
+    }
 
 }
