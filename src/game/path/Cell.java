@@ -19,4 +19,36 @@ public class Cell {
         this.y = y;
         this.isEmpty = true;
     }
+
+    /**
+     * Get the x coordinate of this cell
+     * @return the x coordinate
+     */
+    public int getX(){
+        return this.x;
+    }
+
+    /**
+     * Get the y coordinate of this cell
+     * @return the y coordinate
+     */
+    public int getY(){
+        return this.y;
+    }
+
+    /**
+     * true if this cell is empty
+     * @return boolean according to the cell emptiness
+     */
+    public boolean isEmpty(){
+        return this.isEmpty ;
+    }
+
+    /**
+     * Set the isEmpty value
+     * @param value true to turn the cell empty (isEmpty value to true), false to set this value to false (isEmpty value to false)
+     */
+    public void setEmpty(boolean value){
+        this.isEmpty = value;
+    }
 }
