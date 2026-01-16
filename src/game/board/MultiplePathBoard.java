@@ -80,6 +80,42 @@ public class MultiplePathBoard extends Board {
         return res;
     }
 
-    
+    /**
+     * true if this coordinate is in the board
+     * @param x x coordinate
+     * @param y y coordinate
+     * @return true if in, false if not
+     */
+    protected boolean isIn(int x, int y){
+        return x>=0 && x < this.width && y >=0 && y< this.height;
+    }
+
+    protected Path createPath(int x, int y, int dirX, int dirY){
+        List<CellPath> pathList= new ArrayList<>();
+        CellPath previousCellPath = null;
+
+        int currentX = x;
+        int currentY = y;
+
+        while (isIn(currentX,currentY)){
+            Cell cell = this.tab[currentX][currentY];
+            CellPath currentCellPath = new CellPath(cell);
+
+            if (previousCell != null){
+                previousCellPath.setNext(currentCellPath);
+            }
+
+            pathList.add(currentCellPath);
+            previousCellPath = currentCellPath;
+
+            currentX += dirX;
+            currentY += dirY;
+        }
+        Path path = new Path(pathList);
+        return path;
+
+    }
+
+
 }
 
