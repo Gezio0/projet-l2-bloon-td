@@ -65,6 +65,6 @@ public abstract class Board {
         this.pathList.add(path);
     }
 
-    public abstract Path initPath() ;
+    protected abstract void initPath() ;
 
 }
