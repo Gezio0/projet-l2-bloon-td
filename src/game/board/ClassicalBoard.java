@@ -3,6 +3,7 @@ package game.board;
 import game.board.Board;
 import game.path.*;
 import game.exceptions.*;
+import java.util.Random ;
 
 // class for classical board
 public class ClassicalBoard extends Board {
@@ -13,29 +14,46 @@ public class ClassicalBoard extends Board {
         super(width,height);
     }
 
-    /** create a path in the board
+    /** create a random path in the board
      * @return the path created
 	 */
     public Path initPath() {
         Random rng = new Random();
         int y = rng.nextInt(0,this.height);
-        int lastY = null;
-        int x = 0
-        Cell firstCell = this.getCell(x,y);
-        while(x < this.width){
-            if(y == height || y == 0){
-                x++:
-            } else {
-                switch rng.nextInt(0,3){
-                    case 1:
-                        
-                    case 2:
+        int lastRandomNum = null;
 
-                    case 3:
+        int x = this.width - 1;
+        Cell firstCell = this.getCell(x,y);
+        x--;
+        Cell secondCell = this.getCell(x,y);
+
+        CellPath cellPath = new CellPath(firstCell,secondCell);
+
+        while(x > 0){
+            if(y == height || y == 0){
+                x--:
+            } else {
+                int randomNum = rng.nextInt(0,2);
+                switch randomNum{
+                    case 1:
+                        if(lastCell != 2){
+                            y++;
+                        } else {
+                            x--;
+                        }
+                    case 2:
+                        if(lastCell != 1){
+                            y++;
+                        } else {
+                            x--;
+                        }
                 }
+                Cell newCell = new Cell(x,y);
+                cellPath = new CellPath(newCell,cellPath.getCell());
             }
-            lastY = y;
+            lastRandomNum = randomNum;
         }
+        return new Path(cellPath);
     }
 
     /** add the path to the list of paths
