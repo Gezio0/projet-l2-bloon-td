@@ -45,4 +45,16 @@ public class CellPath{
     public boolean isFinished(){
         return this.nextCell == null;
     }
+
+    /**return if the actual cell is equals to another cell gived in parameter
+     * @param o the other cell to compare
+     * @return boolean that say if the cells are equals
+     */
+    public boolean equals(Object o){
+        if (!(o instanceof CellPath)){
+            return false;
+        }
+        CellPath other = (CellPath) o;
+        return (this.cell == other.cell && this.nextCell == other.nextCell);
+    }
 }
