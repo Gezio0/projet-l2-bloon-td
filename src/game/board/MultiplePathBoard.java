@@ -37,7 +37,7 @@ public class MultiplePathBoard extends Board {
     /**
      * Init the board with empty cells and create the paths
      */
-    public void initPath() throws NoNextCellException{
+    public void initPath() throws NoNextCellException,TooMuchPathsException{
         fillpath();
 
         List<Integer> occupiedColumns = new ArrayList<>();
@@ -84,7 +84,7 @@ public class MultiplePathBoard extends Board {
 
             Path path = createPath(startX, startY, dirX, dirY);
 
-            this.pathList.add(path);
+            this.addPath(path);
         }
         
     }
@@ -139,8 +139,7 @@ public class MultiplePathBoard extends Board {
      * @param dirY give the direction to follow
      * @return the path created
      */
-    protected Path createPath(int x, int y, int dirX, int dirY) throws NoNextCellException{
-        List<CellPath> pathList= new ArrayList<>();
+    protected Path createPath(int x, int y, int dirX, int dirY) throws NoNextCellException,TooMuchPathsException{
         CellPath previousCellPath = null;
         Path path = null;
 
@@ -162,7 +161,6 @@ public class MultiplePathBoard extends Board {
                 previousCellPath.setNext(currentCellPath);
             }
 
-            pathList.add(currentCellPath);
             previousCellPath = currentCellPath;
 
             currentX += dirX;
