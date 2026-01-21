@@ -67,4 +67,32 @@ public abstract class Board {
 
     public abstract Path initPath() ;
 
+    /**
+     * Show the board in the console
+     */
+    public void Show(){
+        boolean[this.width][this.height] estChemin = new boolean[this.width][this.height];
+        for(Path path : this.pathList){
+            CellPath cellPath = path.getFirstCell();
+            while (!cellPath.isFinished()){
+                Cell = cell.getCell();
+                int x = cell.getX();
+                int y = cell.getY();
+                plateau[x][y] = true;
+                cellPath = cellPath.getNextCell();
+            }
+        }
+        String ligne = "";
+        for(int i = 0 ; i < this.height ; i++){
+            for (int j = 0 ; j < this.width ; j++){
+                if(estChemin[x][y]){
+                    ligne = ligne + " #"
+                } else {
+                    ligne = ligne + " ."
+                }
+            }
+            System.out.println(ligne + "\n");
+        }
+    }
+
 }
