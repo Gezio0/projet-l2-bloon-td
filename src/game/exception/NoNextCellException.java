@@ -1,4 +1,5 @@
 // class for the NoNextCellException
+package game.exception;
 public class NoNextCellException extends Exception{
     /*constructor without message*/
     public NoNextCellException(){
