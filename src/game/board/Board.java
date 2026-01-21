@@ -62,10 +62,10 @@ public abstract class Board {
     /**Add a path to the paths list
      * @param path the path to add
      */
-    public void addPath(Path path){
+    public void addPath(Path path) throws TooMuchPathsException{
         this.pathList.add(path);
     }
 
-    protected abstract void initPath() throws NoNextCellException ;
+    protected abstract void initPath() throws NoNextCellException,TooMuchPathsException;
 
 }
