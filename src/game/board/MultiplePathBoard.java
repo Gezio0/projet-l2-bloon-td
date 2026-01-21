@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import game.path.*;
+import game.exception.*;
 
 /**A bloon td game board with multiple straight paths */
 public class MultiplePathBoard extends Board {
