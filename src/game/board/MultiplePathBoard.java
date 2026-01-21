@@ -18,7 +18,11 @@ public class MultiplePathBoard extends Board {
      * @param height the height of the board
      * @param NbOfPaths the number of path
      */
+<<<<<<< HEAD
+    public MultiplePathBoard(int width, int height, int NbOfPaths) throws TooMuchPathsException{
+=======
     public MultiplePathBoard(int width, int height, int NbOfPaths) throws TooMuchPathsException,NoNextCellException{
+>>>>>>> origin/main
         super(width,height);
 
         if (NbOfPaths > height/2){
@@ -147,10 +151,13 @@ public class MultiplePathBoard extends Board {
             Cell cell = this.tab[currentX][currentY];
             CellPath currentCellPath = new CellPath(cell);
 
+<<<<<<< HEAD
+=======
             if (previousCellPath == null){
                 path = new Path(currentCellPath);
             }
 
+>>>>>>> origin/main
             if (previousCellPath != null){
                 previousCellPath.setNext(currentCellPath);
             }
