@@ -1,13 +1,15 @@
 package game.path;
 import java.util.*;
+import game.exceptions.*;
 public class Path {
     protected CellPath firstCell;
     protected CellPath lastCell;
     protected List<CellPath> cellsPaths;
     /**Builds a Path with a first cell in parameter
      * has a firstCell, a list with all the cells path and the last cell
+     * @throws NoNextCellException
     */
-    public Path(CellPath firstCell){
+    public Path(CellPath firstCell)throws NoNextCellException{
         this.firstCell = firstCell;
         this.cellsPaths = new ArrayList<CellPath>();
         if (firstCell!=null){
