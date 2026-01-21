@@ -18,11 +18,11 @@ public class MultiplePathBoard extends Board {
      * @param height the height of the board
      * @param NbOfPaths the number of path
      */
-    public MultiplePathBoard(int width, int height, int NbOfPaths) throws TooMuchPathException{
+    public MultiplePathBoard(int width, int height, int NbOfPaths) throws TooMuchPathsException{
         super(width,height);
 
         if (NbOfPaths > height/2){
-            throw new TooMuchPathException("too much path, you need to have less than height/2");
+            throw new TooMuchPathsException("too much path, you need to have less than height/2");
         }
 
         initPath();
