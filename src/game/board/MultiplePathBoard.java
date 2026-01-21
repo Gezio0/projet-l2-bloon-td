@@ -57,7 +57,7 @@ public class MultiplePathBoard extends Board {
             }
             /**top to bottom */
             if (n%4 == 1){
-                startX = StartingIndex(this.width, occupiedRows);
+                startX = StartingIndex(this.width, occupiedColumns);
                 startY = 0;
                 dirX = 0;
                 dirY = 1;
@@ -71,7 +71,7 @@ public class MultiplePathBoard extends Board {
             }
             /**bottom to top */
             if (n%4 == 3){
-                startX = StartingIndex(this.width, occupiedRows);
+                startX = StartingIndex(this.width, occupiedColumns);
                 startY = this.height-1;
                 dirX = 0;
                 dirY = -1;
@@ -145,7 +145,7 @@ public class MultiplePathBoard extends Board {
             Cell cell = this.tab[currentX][currentY];
             CellPath currentCellPath = new CellPath(cell);
 
-            if (previousCell != null){
+            if (previousCellPath != null){
                 previousCellPath.setNext(currentCellPath);
             }
 
