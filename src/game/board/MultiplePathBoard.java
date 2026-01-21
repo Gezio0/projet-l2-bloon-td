@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import game.path.*;
+import game.exception.*;
 
 /**A bloon td game board with multiple straight paths */
 public class MultiplePathBoard extends Board {
@@ -17,11 +18,11 @@ public class MultiplePathBoard extends Board {
      * @param height the height of the board
      * @param NbOfPaths the number of path
      */
-    public MultiplePathBoard(int width, int height, int NbOfPaths) throws TooMuchPathException{
+    public MultiplePathBoard(int width, int height, int NbOfPaths) throws TooMuchPathsException{
         super(width,height);
 
         if (NbOfPaths > height/2){
-            throw new TooMuchPathException("too much path, you need to have less than height/2");
+            throw new TooMuchPathsException("too much path, you need to have less than height/2");
         }
 
         initPath();
@@ -57,7 +58,7 @@ public class MultiplePathBoard extends Board {
             }
             /**top to bottom */
             if (n%4 == 1){
-                startX = StartingIndex(this.width, occupiedRows);
+                startX = StartingIndex(this.width, occupiedColumns);
                 startY = 0;
                 dirX = 0;
                 dirY = 1;
@@ -71,7 +72,7 @@ public class MultiplePathBoard extends Board {
             }
             /**bottom to top */
             if (n%4 == 3){
-                startX = StartingIndex(this.width, occupiedRows);
+                startX = StartingIndex(this.width, occupiedColumns);
                 startY = this.height-1;
                 dirX = 0;
                 dirY = -1;
@@ -145,7 +146,7 @@ public class MultiplePathBoard extends Board {
             Cell cell = this.tab[currentX][currentY];
             CellPath currentCellPath = new CellPath(cell);
 
-            if (previousCell != null){
+            if (previousCellPath != null){
                 previousCellPath.setNext(currentCellPath);
             }
 

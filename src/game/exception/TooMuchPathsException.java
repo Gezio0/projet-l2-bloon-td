@@ -1,4 +1,4 @@
-package exception;
+package game.exception;
 // class for the TooMuchPathsException
 public class TooMuchPathsException extends Exception{
 

@@ -2,7 +2,7 @@ package game.board;
 
 import game.board.Board;
 import game.path.*;
-import game.exceptions.*;
+import game.exception.*;
 import java.util.Random ;
 
 // class for classical board

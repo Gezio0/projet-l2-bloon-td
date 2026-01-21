@@ -1,24 +1,19 @@
 package game.path;
-import exception.*;
+import game.exception.*;
 // class to connect each cell to his next cell
 public class CellPath{
     protected Cell cell;
-    protected Cell nextCell;
+    protected CellPath nextCell;
 
-    /** constructor for the last cell (without a next cell)
-     * @param cell the actual cell
-     */
-    public CellPath(Cell cell){
-        this.cell = cell;
-    }
+    
 
     /** constructor for a cell 
      * @param cell the actual cell
-     * @param nextCell the next cell
+     * @param nextCell the next cellPath that contains the next cell
      */
-    public CellPath(Cell cell,Cell nextCell){
+    public CellPath(Cell cell){
         this.cell = cell;
-        this.nextCell = nextCell;
+        this.nextCell = null;
     }
 
     /** return the actual cell
@@ -27,12 +22,18 @@ public class CellPath{
     public Cell getCell(){
         return this.cell;
     }
+    /** set a new CellPath in nextCell*/
+    public void setNext(Cell cell){
+        this.nextCell = new CellPath(cell);
+    }
 
-    /**return the next cell if it exist
+
+
+    /**return the next cellPath if it exist
      * @throws NoNextCellException
      * @return the next cell
      */
-    public Cell getNextCell()throws NoNextCellException{
+    public CellPath getNextCell()throws NoNextCellException{
         if(this.nextCell == null){
             throw new NoNextCellException();
         }
