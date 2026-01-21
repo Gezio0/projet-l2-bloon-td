@@ -92,12 +92,18 @@ Pour ce qui est de MultipleBoard on essayera de refléchir ensemble en essayant 
 
 ## Semaine 3
 
-### Ce qui a été réalisé
+![alt text](umlSeance3.png)
+
+ne pas prendre en compte la classe balloon !!
+
+### Ce qui a été réalisé : 
+On a essayé de mettre en commun le projet chacun a merge sa partie, on a modifié les erreurs et les incohérences ce qui a entrainé des modifications de l'UML et des tests. Un affichage a été rajouté dans la classe classicalBoard. La classe MultipleBoard est finis mais pas encore testé.
 
 ### Difficultés rencontrées
+La majorité des difficultés rencontrés aujourd'hui etait dans la manipulation de gitlab et notamment des merges qui nous ont pris beaucoup de temps a regler (... commit behind). 
 
 ### Objectifs pour la semaine et répartition du travail par membre
-
+Tout tester et tout compiler pour le livrable de cette semaine 
 ## Semaine 4
 
 ### Ce qui a été réalisé
