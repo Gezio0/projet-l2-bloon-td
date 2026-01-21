@@ -1,5 +1,5 @@
 package game.path;
-import exception.*;
+import game.exception.*;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,14 +16,19 @@ public class CellPathTest{
         this.c1 = new Cell(0,0);
         this.c2 = new Cell(0,1);
         this.c3 = new Cell(0,2);
-        this.cp1 = new CellPath(this.c1,this.c2);
-        this.cp2 = new CellPath(this.c2,this.c3);
+
+        this.cp1 = new CellPath(this.c1);
+        this.cp1.setNext(this.c2);
+
+        this.cp2 = new CellPath(this.c2);
+        this.cp2.setNext(this.c3);
+
         this.cp3 = new CellPath(this.c3);
     }
 
     @Test
     public void getNextCellOk()throws NoNextCellException{
-        assertEquals(c2,this.cp1.getNextCell());
+        assertEquals(c2,this.cp1.getNextCell().getCell());
     }
 
     @Test
@@ -41,5 +46,11 @@ public class CellPathTest{
     @Test
     public void isFinishedFalse(){
         assertFalse(this.cp1.isFinished());
+    }
+
+    @Test
+    public void setNextCellTest(){
+        this.cp3.setNext(this.c1);
+        assertEquals(this.c1,this.cp3.getNextCell().getCell());
     }
 }
