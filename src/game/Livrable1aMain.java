@@ -10,14 +10,14 @@ public class Livrable1aMain {
                 
                 int height = Integer.parseInt(args[0]);
                 int width = Integer.parseInt(args[1]);
-                ClassicalBoard board = new ClassicalBoard(args[0],args[1]);
+                ClassicalBoard board = new ClassicalBoard(height,width);
                 Path p = board.initPath();
                 board.addPath(p);
                 System.out.println(p);
                 System.out.println(board);
 
         }
-        catch (NumberFormatException e) {
+        catch ( Exception e) {
                 System.out.println("args need to be int type");
             }
         }
