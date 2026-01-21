@@ -1,5 +1,5 @@
 package game.path;
-import game.exceptions.*;
+import game.exception.*;
 // class to connect each cell to his next cell
 public class CellPath{
     protected Cell cell;

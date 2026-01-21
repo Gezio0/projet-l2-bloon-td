@@ -1,6 +1,6 @@
 package game.path;
 import java.util.*;
-import game.exceptions.*;
+import game.exception.*;
 public class Path {
     protected CellPath firstCell;
     protected CellPath lastCell;
