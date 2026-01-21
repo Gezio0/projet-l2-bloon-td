@@ -18,7 +18,11 @@ public class MultiplePathBoard extends Board {
      * @param height the height of the board
      * @param NbOfPaths the number of path
      */
+<<<<<<< HEAD
     public MultiplePathBoard(int width, int height, int NbOfPaths) throws TooMuchPathsException{
+=======
+    public MultiplePathBoard(int width, int height, int NbOfPaths) throws TooMuchPathsException,NoNextCellException{
+>>>>>>> origin/main
         super(width,height);
 
         if (NbOfPaths > height/2){
@@ -33,7 +37,7 @@ public class MultiplePathBoard extends Board {
     /**
      * Init the board with empty cells and create the paths
      */
-    protected void initPath(){
+    public void initPath() throws NoNextCellException{
         fillpath();
 
         List<Integer> occupiedColumns = new ArrayList<>();
@@ -135,9 +139,10 @@ public class MultiplePathBoard extends Board {
      * @param dirY give the direction to follow
      * @return the path created
      */
-    protected Path createPath(int x, int y, int dirX, int dirY){
+    protected Path createPath(int x, int y, int dirX, int dirY) throws NoNextCellException{
         List<CellPath> pathList= new ArrayList<>();
         CellPath previousCellPath = null;
+        Path path = null;
 
         int currentX = x;
         int currentY = y;
@@ -146,6 +151,13 @@ public class MultiplePathBoard extends Board {
             Cell cell = this.tab[currentX][currentY];
             CellPath currentCellPath = new CellPath(cell);
 
+<<<<<<< HEAD
+=======
+            if (previousCellPath == null){
+                path = new Path(currentCellPath);
+            }
+
+>>>>>>> origin/main
             if (previousCellPath != null){
                 previousCellPath.setNext(currentCellPath);
             }
@@ -156,7 +168,6 @@ public class MultiplePathBoard extends Board {
             currentX += dirX;
             currentY += dirY;
         }
-        Path path = new Path(pathList);
         return path;
 
     }

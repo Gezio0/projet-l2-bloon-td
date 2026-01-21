@@ -66,6 +66,6 @@ public abstract class Board {
         this.pathList.add(path);
     }
 
-    protected abstract void initPath() ;
+    protected abstract void initPath() throws NoNextCellException ;
 
 }

@@ -23,8 +23,13 @@ public class CellPath{
         return this.cell;
     }
     /** set a new CellPath in nextCell*/
+<<<<<<< HEAD
     public void setNext(Cell cell){
         this.nextCell = new CellPath(cell);
+=======
+    public void setNext(CellPath cell){
+        this.nextCell = cell;
+>>>>>>> origin/main
     }
 
 
