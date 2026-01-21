@@ -24,10 +24,7 @@ public class ClassicalBoard extends Board {
 
         int x = this.width - 1;
         Cell firstCell = this.getCell(x,y);
-        x--;
-        Cell secondCell = this.getCell(x,y);
-
-        CellPath cellPath = new CellPath(firstCell,secondCell);
+        CellPath cellPath = new CellPath(firstCell);
 
         while(x > 0){
             if(y == height || y == 0){
@@ -48,7 +45,7 @@ public class ClassicalBoard extends Board {
                     }
                 }
                 Cell newCell = new Cell(x,y);
-                cellPath = new CellPath(newCell,cellPath.getCell());
+                cellPath = new CellPath(newCell,cellPath);
                 lastRandomNum = randomNum;
             }
         }
