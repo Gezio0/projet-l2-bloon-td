@@ -17,7 +17,7 @@ public class ClassicalBoard extends Board {
     /** create a random path in the board
      * @return the path created
 	 */
-    public Path initPath() {
+    public void initPath() throws TooMuchPathsException{
         Random rng = new Random();
         int y = rng.nextInt(this.height);
         int lastRandomNum = 0;
@@ -52,7 +52,7 @@ public class ClassicalBoard extends Board {
                 lastRandomNum = randomNum;
             }
         }
-        return new Path(cellPath);
+        this.addPath(new Path(cellPath));
     }
 
     /** add the path to the list of paths
