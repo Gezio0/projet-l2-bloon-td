@@ -7,13 +7,21 @@ public class CellPath{
 
     
 
-    /** constructor for a cell 
+    /** constructor for a cellPath
      * @param cell the actual cell
-     * @param nextCell the next cellPath that contains the next cell
+     * nextCell is null by default, 
      */
     public CellPath(Cell cell){
         this.cell = cell;
         this.nextCell = null;
+    }
+    /** constructor for a cellPath 
+     * @param cell the actual cell
+     * @param nextCell the next cellPath that contains the next cell
+     */
+    public CellPath(Cell cell,CellPath nextCell){
+        this.cell = cell;
+        this.nextCell = nextCell;
     }
 
     /** return the actual cell
@@ -23,13 +31,8 @@ public class CellPath{
         return this.cell;
     }
     /** set a new CellPath in nextCell*/
-<<<<<<< HEAD
-    public void setNext(Cell cell){
-        this.nextCell = new CellPath(cell);
-=======
     public void setNext(CellPath cell){
         this.nextCell = cell;
->>>>>>> origin/main
     }
 
 
