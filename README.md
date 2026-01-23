@@ -40,15 +40,15 @@ java -jar junit-console.jar -classpath tests:classes -scan-classpath
 ```
 #### Création d'un jar : 
 ```bash
-jar cvfe Livrable1aMain -C classes
+jar cvfe Livrable1aMain.jar game.Livrable1aMain -C classes game
 
-jar cvfe Livrable1bMain -C classes
+jar cvfe Livrable1bMain.jar game.Livrable1bMain -C classes game
 ```
 #### Execution des jar : 
 ```bash
-java -jar Livrable1aMain.jar
+java -jar Livrable1aMain.jar 50 10
 
-java -jar Livrable1bMain.jar
+java -jar Livrable1aMain.jar 50 10
 ```
 
 ### Atteinte des objectifs
