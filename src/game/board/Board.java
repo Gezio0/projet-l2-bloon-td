@@ -61,15 +61,22 @@ public abstract class Board {
 
     /**Add a path to the paths list
      * @param path the path to add
+     * @throws TooMuchPathsException when paths are exceeding the limit
      */
     public void addPath(Path path) throws TooMuchPathsException{
         this.pathList.add(path);
     }
 
+    /**
+     * Initialize the paths
+     * @throws NoNextCellException when trying to reach a null cell
+     * @throws TooMuchPathsException when paths exceed the limits determined by the constructor
+     */
     protected abstract void initPath() throws NoNextCellException,TooMuchPathsException;
 
     /**
      * Show the board in the console
+     * @throws NoNextCellException when trying to reach a null cell
      */
     public void show() throws NoNextCellException{
         boolean[][] estChemin = new boolean[this.width][this.height];

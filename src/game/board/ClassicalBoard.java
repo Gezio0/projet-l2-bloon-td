@@ -4,17 +4,23 @@ import game.path.*;
 import game.exception.*;
 import java.util.Random ;
 
-// class for classical board
+/**
+ * A class representing a classical board with a single path starting from left.
+ * This path can go up,down,right but not left until end column is reached.
+ */
 public class ClassicalBoard extends Board {
 
     /** create a classcial board with the length
+     * @param width width of this board
+     * @param height height of this board
     */
     public ClassicalBoard(int width,int height){
         super(width,height);
     }
 
     /** create a random path in the board
-     * @return the path created
+     * @throws TooMuchPathsException when paths are exceeding the limit (here it's 1)
+     * @throws NoNextCellException when trying to get a null cell
 	 */
     public void initPath() throws TooMuchPathsException,NoNextCellException{
         Random rng = new Random();
