@@ -18,8 +18,10 @@ public class CellPathTest{
         this.c3 = new Cell(0,2);
 
 
-        this.cp1 = new CellPath(this.c1,this.c2);
-        this.cp2 = new CellPath(this.c2,this.c3);
+        this.cp1 = new CellPath(this.c1);
+        this.cp2 = new CellPath(this.c2);
+        this.cp1.setNext(this.cp2);
+        this.cp2.setNext(this.cp3);
         this.cp3 = new CellPath(this.c3);
     }
 
@@ -46,7 +48,7 @@ public class CellPathTest{
     }
 
     @Test
-    public void setNextCellTest(){
+    public void setNextCellTest ()throws NoNextCellException{
         this.cp3.setNext(this.cp2);
         assertEquals(this.cp2,this.cp3.getNextCell());
     }
