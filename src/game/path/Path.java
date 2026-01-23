@@ -1,13 +1,21 @@
 package game.path;
 import java.util.*;
 import game.exception.*;
+
+/**
+ * A class representing a bloon td game path where bloons can move on.
+ */
 public class Path {
+    /**the first cell of this path */
     protected CellPath firstCell;
+    /**the last cell of this path */
     protected CellPath lastCell;
+    /**the list of the cells inside the path */
     protected List<CellPath> cellsPaths;
     /**Builds a Path with a first cell in parameter
      * has a firstCell, a list with all the cells path and the last cell
-     * @throws NoNextCellException
+     * @param firstCell the first cell of this path.
+     * @throws NoNextCellException when trying to add a null cell to this path.
     */
     public Path(CellPath firstCell)throws NoNextCellException{
         this.firstCell = firstCell;
@@ -39,7 +47,7 @@ public class Path {
     }
     /**get the CellPath list of this path
      * 
-     * @return List<CellPath>
+     * @return the list of the cellPath in the path.
      */
     public List<CellPath> getPath(){
         return this.cellsPaths;

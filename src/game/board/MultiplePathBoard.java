@@ -16,6 +16,8 @@ public class MultiplePathBoard extends Board {
      * @param width the width of the board
      * @param height the height of the board
      * @param nbOfPaths the number of path
+     * @throws TooMuchPathsException when paths are exceeding the limit (> height/2 or width/2)
+     * @throws NoNextCellException when trying to get a null cell
      */
     public MultiplePathBoard(int width, int height, int nbOfPaths) throws TooMuchPathsException,NoNextCellException{
         super(width,height);
@@ -30,7 +32,9 @@ public class MultiplePathBoard extends Board {
 
 
     /**
-     * Init the board with empty cells and create the paths
+     * Init the board with empty cells and create the paths*
+     * @throws TooMuchPathsException when paths are exceeding the limit from the constructor
+     * @throws NoNextCellException when trying to get a null cell
      */
     public void initPath() throws NoNextCellException,TooMuchPathsException{
         fillPath();
@@ -133,6 +137,8 @@ public class MultiplePathBoard extends Board {
      * @param dirX give the direction to follow
      * @param dirY give the direction to follow
      * @return the path created
+     * @throws TooMuchPathsException when paths are exceeding the limit from the constructor
+     * @throws NoNextCellException when trying to get a null cell
      */
     protected Path createPath(int x, int y, int dirX, int dirY) throws NoNextCellException,TooMuchPathsException{
         CellPath previousCellPath = null;
