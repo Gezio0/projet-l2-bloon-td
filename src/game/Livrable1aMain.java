@@ -1,7 +1,6 @@
 package game;
 import game.board.*;
 import game.path.*;
-import game.exception.*;
 
 public class Livrable1aMain {
     public static void main(String[] args) throws TooMuchPathsException,NoNextCellException{
