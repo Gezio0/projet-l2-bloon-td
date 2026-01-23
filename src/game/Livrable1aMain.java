@@ -1,7 +1,8 @@
 package game;
 import game.board.*;
-import game.path.*;
 import game.exception.*;
+import game.path.*;
+import java.util.*;
 
 public class Livrable1aMain {
     public static void main(String[] args) throws TooMuchPathsException,NoNextCellException{
@@ -11,6 +12,8 @@ public class Livrable1aMain {
                 int width = Integer.parseInt(args[1]);
                 ClassicalBoard board = new ClassicalBoard(height,width);
                 board.initPath();
+                List<Path> p = board.getPaths();
+                System.out.println(p);
                 board.show();
                 System.out.println(board);
 
