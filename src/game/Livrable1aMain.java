@@ -1,7 +1,6 @@
 package game;
 import game.board.*;
 import game.path.*;
-import game.exception.*;
 
 public class Livrable1aMain {
     public static void main(String[] args) {
@@ -11,10 +10,10 @@ public class Livrable1aMain {
                 int height = Integer.parseInt(args[0]);
                 int width = Integer.parseInt(args[1]);
                 ClassicalBoard board = new ClassicalBoard(height,width);
-                Path p = board.initPath();
-                board.addPath(p);
+                board.initPath();
+                Path p = board.getPaths().get(0);
                 System.out.println(p);
-                System.out.println(board);
+                board.Show();
 
         }
         catch ( Exception e) {
