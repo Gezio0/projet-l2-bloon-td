@@ -20,38 +20,36 @@ Un lien vers une image de l'UML doit être fourni (une photo d'un diagramme UML 
 ## Livrable 1
 #### Voici les commandes de compilations :
 
-javac -sourcepath src src/game/path/*.java -d classes
-
-javac -sourcepath src src/game/exception/*.java -d classes
-
-javac -sourcepath src src/board/*.java -d classes
-
+```bash
 javac -sourcepath src src/game/*.java -d classes
+```
 
 #### Les commandes de JavaDoc : 
 
+```bash
 javadoc -sourcepath src -subpackages game.path game.board -d docs
+```
 
 #### Compilation des tests :
-
+```bash
 javac -classpath junit-console.jar:classes tests/game/path/*.java
-
+```
 #### Execution des tests : 
-
+```bash
 java -jar junit-console.jar -classpath tests:classes -scan-classpath
-
+```
 #### Création d'un jar : 
-
+```bash
 jar cvfe Livrable1aMain -C classes
 
 jar cvfe Livrable1bMain -C classes
-
+```
 #### Execution des jar : 
-
+```bash
 java -jar Livrable1aMain.jar
 
 java -jar Livrable1bMain.jar
-
+```
 
 ### Atteinte des objectifs
 Au cours de ces trois semaines, nous avons d’abord pris le temps de comprendre le fonctionnement du jeu en y jouant, ce qui nous a permis de déterminer comment représenter le plateau et ses éléments dans le code. Nous avons choisi de structurer le projet autour d’une classe abstraite Board, qui définit le comportement général d’un plateau, et de deux sous-classes, ClassicalBoard et MultipleBoard, représentant les différents types de plateau. Les cellules sont modélisées par la classe Cell et les chemins par CellPath, ce qui permet de gérer la navigation d’une cellule à l’autre et de traiter les exceptions spécifiques comme l’absence de cellule suivante ou la présence de trop de chemins. Ces choix ont été guidés par le besoin d’avoir une architecture claire et extensible tout en facilitant l’écriture des tests et de la documentation.
