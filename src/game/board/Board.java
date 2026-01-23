@@ -71,25 +71,25 @@ public abstract class Board {
     /**
      * Show the board in the console
      */
-    public void Show(){
-        boolean[this.width][this.height] estChemin = new boolean[this.width][this.height];
+    public void Show() throws NoNextCellException{
+        boolean[][] estChemin = new boolean[this.width][this.height];
         for(Path path : this.pathList){
             CellPath cellPath = path.getFirstCell();
             while (!cellPath.isFinished()){
-                Cell = cell.getCell();
+                Cell cell = cellPath.getCell();
                 int x = cell.getX();
                 int y = cell.getY();
-                plateau[x][y] = true;
+                estChemin[x][y] = true;
                 cellPath = cellPath.getNextCell();
             }
         }
         String ligne = "";
         for(int i = 0 ; i < this.height ; i++){
             for (int j = 0 ; j < this.width ; j++){
-                if(estChemin[x][y]){
-                    ligne = ligne + " #"
+                if(estChemin[i][j]){
+                    ligne = ligne + " #";
                 } else {
-                    ligne = ligne + " ."
+                    ligne = ligne + " .";
                 }
             }
             System.out.println(ligne + "\n");
