@@ -10,23 +10,19 @@ import game.exception.*;
 /**A bloon td game board with multiple straight paths */
 public class MultiplePathBoard extends Board {
     /**The number of path on the board */
-    protected int NbOfPaths ;
+    protected int nbOfPaths ;
     
     /**
      * Build a multiple path board with a given width, height and number of paths
      * @param width the width of the board
      * @param height the height of the board
-     * @param NbOfPaths the number of path
+     * @param nbOfPaths the number of path
      */
-<<<<<<< HEAD
-    public MultiplePathBoard(int width, int height, int NbOfPaths) throws TooMuchPathsException{
-=======
-    public MultiplePathBoard(int width, int height, int NbOfPaths) throws TooMuchPathsException,NoNextCellException{
->>>>>>> origin/main
+    public MultiplePathBoard(int width, int height, int nbOfPaths) throws TooMuchPathsException,NoNextCellException{
         super(width,height);
 
-        if (NbOfPaths > height/2){
-            throw new TooMuchPathsException("too much path, you need to have less than height/2");
+        if (nbOfPaths > height/2 || nbOfPaths > width/2){
+            throw new TooMuchPathsException("too much path, you need to have less than height/2 and width/2");
         }
 
         initPath();
@@ -38,13 +34,13 @@ public class MultiplePathBoard extends Board {
      * Init the board with empty cells and create the paths
      */
     public void initPath() throws NoNextCellException,TooMuchPathsException{
-        fillpath();
+        fillPath();
 
         List<Integer> occupiedColumns = new ArrayList<>();
         List<Integer> occupiedRows = new ArrayList<>();
 
 
-        for (int n = 0; n<this.NbOfPaths; n++){
+        for (int n = 0; n<this.nbOfPaths; n++){
             int startX = 0 ;
             int startY = 0 ;
             int dirX = 0 ;
@@ -56,13 +52,13 @@ public class MultiplePathBoard extends Board {
             /*left to right */
             if (n%4 == 0){
                 startX = 0;
-                startY = StartingIndex(this.height, occupiedRows);
+                startY = startingIndex(this.height, occupiedRows);
                 dirX = 1;
                 dirY = 0;
             }
             /**top to bottom */
             if (n%4 == 1){
-                startX = StartingIndex(this.width, occupiedColumns);
+                startX = startingIndex(this.width, occupiedColumns);
                 startY = 0;
                 dirX = 0;
                 dirY = 1;
@@ -70,13 +66,13 @@ public class MultiplePathBoard extends Board {
             /**right to left */
             if (n%4 == 2){
                 startX = this.width-1;
-                startY = StartingIndex(this.height, occupiedRows);
+                startY = startingIndex(this.height, occupiedRows);
                 dirX = -1;
                 dirY = 0;
             }
             /**bottom to top */
             if (n%4 == 3){
-                startX = StartingIndex(this.width, occupiedColumns);
+                startX = startingIndex(this.width, occupiedColumns);
                 startY = this.height-1;
                 dirX = 0;
                 dirY = -1;
@@ -92,7 +88,7 @@ public class MultiplePathBoard extends Board {
     /**
      * fill the board with empty cells
      */
-    protected void fillpath(){
+    protected void fillPath(){
         for (int x = 0; x<this.width; x++){
             for (int y = 0; y < this.height; y++){
                 this.tab[x][y] = new Cell(x,y);
@@ -107,7 +103,7 @@ public class MultiplePathBoard extends Board {
      * @param occupied list of index where a path already starts
      * @return the index where the path will start
      */
-    protected int StartingIndex(int max, List<Integer> occupied){
+    protected int startingIndex(int max, List<Integer> occupied){
         Random rand = new Random();
         int res = -1;
 
@@ -150,13 +146,10 @@ public class MultiplePathBoard extends Board {
             Cell cell = this.tab[currentX][currentY];
             CellPath currentCellPath = new CellPath(cell);
 
-<<<<<<< HEAD
-=======
             if (previousCellPath == null){
                 path = new Path(currentCellPath);
             }
 
->>>>>>> origin/main
             if (previousCellPath != null){
                 previousCellPath.setNext(currentCellPath);
             }
