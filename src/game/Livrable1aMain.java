@@ -4,28 +4,24 @@ import game.path.*;
 import game.exception.*;
 
 public class Livrable1aMain {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws TooMuchPathsException,NoNextCellException{
         if (args.length>=2){
             try {
-                
                 int height = Integer.parseInt(args[0]);
                 int width = Integer.parseInt(args[1]);
                 ClassicalBoard board = new ClassicalBoard(height,width);
-                Path p = board.initPath();
-                board.addPath(p);
-                System.out.println(p);
+                board.initPath();
+                board.show();
                 System.out.println(board);
 
-        }
-        catch ( Exception e) {
-                System.out.println("args need to be int type");
+            }
+            catch ( Exception e) {
+                    System.out.println("args need to be int type");
+                    System.out.println(e.getMessage());
             }
         }
         else {
             System.out.println("2 args needed");
         }
-        
-        
-        
     }
 }
