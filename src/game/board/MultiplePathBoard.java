@@ -1,11 +1,10 @@
 package game.board;
 
+import game.exception.*;
+import game.path.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import game.path.*;
-import game.exception.*;
 
 /**A bloon td game board with multiple straight paths */
 public class MultiplePathBoard extends Board {
@@ -20,7 +19,7 @@ public class MultiplePathBoard extends Board {
      */
     public MultiplePathBoard(int width, int height, int nbOfPaths) throws TooMuchPathsException,NoNextCellException{
         super(width,height);
-
+        this.nbOfPaths = nbOfPaths;
         if (nbOfPaths > height/2 || nbOfPaths > width/2){
             throw new TooMuchPathsException("too much path, you need to have less than height/2 and width/2");
         }
