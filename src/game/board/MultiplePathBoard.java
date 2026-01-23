@@ -105,7 +105,7 @@ public class MultiplePathBoard extends Board {
      */
     protected int startingIndex(int max, List<Integer> occupied){
         Random rand = new Random();
-        int res = -1;
+        int res = rand.nextInt(max);
 
         while(occupied.contains(res)){
             res = rand.nextInt(max);

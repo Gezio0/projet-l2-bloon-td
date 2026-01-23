@@ -19,34 +19,36 @@ public class ClassicalBoard extends Board {
     public void initPath() throws TooMuchPathsException,NoNextCellException{
         Random rng = new Random();
         int y = rng.nextInt(this.height);
-        int lastRandomNum = 0;
+        String lastDirection = "";
 
         int x = this.width - 1;
-        Cell firstCell = this.getCell(x,y);
+        Cell firstCell = new Cell(x,y);
+
+
         CellPath cellPath = new CellPath(firstCell);
 
         while(x > 0){
-            if(y == height || y == 0){
-                x--;
-            } else {
-                int randomNum = rng.nextInt(2);
-                if(randomNum == 1){
-                if(lastRandomNum != 2){
-                        y++;
-                    } else {
-                        x--;
-                    }
+            int randomNum = rng.nextInt(2);
+            if(randomNum == 1){
+                if(!lastDirection.equals("Down") && y < this.height-1){
+                    y++;
+                    lastDirection = "Up";
                 } else {
-                if(lastRandomNum != 1){
-                        y++;
-                    } else {
-                        x--;
-                    }
+                    x--;
+                    lastDirection = "Left";
                 }
-                Cell newCell = new Cell(x,y);
-                cellPath = new CellPath(newCell,cellPath);
-                lastRandomNum = randomNum;
+            } else {
+                if(!lastDirection.equals("Up") && y > 0){
+                    y--;
+                    lastDirection = "Down";
+                } else {
+                    x--;
+                    lastDirection = "Left";
+                }
             }
+            Cell newCell = new Cell(x,y);
+            cellPath = new CellPath(newCell,cellPath);
+            
         }
         this.addPath(new Path(cellPath));
     }
