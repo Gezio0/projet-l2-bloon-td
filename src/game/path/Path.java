@@ -49,6 +49,7 @@ public class Path {
      * check if each elements in this list and the other list are the same
      * @return boolean
      */
+    @Override
     public boolean equals(Object o){
         if (!(o instanceof Path)){
             return false;
@@ -57,7 +58,7 @@ public class Path {
         boolean boolSizeList =this.cellsPaths.size()==other.cellsPaths.size();
         if (boolSizeList){
             for (int i=0;i<this.cellsPaths.size();i++){
-                if (this.cellsPaths.get(i).equals(other.cellsPaths.get(i))){
+                if (!this.cellsPaths.get(i).equals(other.cellsPaths.get(i))){
                     return false;
                 }
             }
