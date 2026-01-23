@@ -18,11 +18,55 @@ Les paragraphes concernant les livrables doivent être remplis avant la date de 
 Un lien vers une image de l'UML doit être fourni (une photo d'un diagramme UML fait à la main est suffisant).
 
 ## Livrable 1
+#### Voici les commandes de compilations :
+
+javac -sourcepath src src/game/path/*.java -d classes
+
+javac -sourcepath src src/game/exception/*.java -d classes
+
+javac -sourcepath src src/board/*.java -d classes
+
+javac -sourcepath src src/game/*.java -d classes
+
+#### Les commandes de JavaDoc : 
+
+javadoc -sourcepath src -subpackages game.path game.board -d docs
+
+#### Compilation des tests :
+
+javac -classpath junit-console.jar:classes tests/game/path/*.java
+
+#### Execution des tests : 
+
+java -jar junit-console.jar -classpath tests:classes -scan-classpath
+
+#### Création d'un jar : 
+
+jar cvfe Livrable1aMain -C classes
+
+jar cvfe Livrable1bMain -C classes
+
+#### Execution des jar : 
+
+java -jar Livrable1aMain.jar
+
+java -jar Livrable1bMain.jar
+
 
 ### Atteinte des objectifs
+Au cours de ces trois semaines, nous avons d’abord pris le temps de comprendre le fonctionnement du jeu en y jouant, ce qui nous a permis de déterminer comment représenter le plateau et ses éléments dans le code. Nous avons choisi de structurer le projet autour d’une classe abstraite Board, qui définit le comportement général d’un plateau, et de deux sous-classes, ClassicalBoard et MultipleBoard, représentant les différents types de plateau. Les cellules sont modélisées par la classe Cell et les chemins par CellPath, ce qui permet de gérer la navigation d’une cellule à l’autre et de traiter les exceptions spécifiques comme l’absence de cellule suivante ou la présence de trop de chemins. Ces choix ont été guidés par le besoin d’avoir une architecture claire et extensible tout en facilitant l’écriture des tests et de la documentation.
+
+L’implémentation a avancé progressivement. Après avoir défini l’UML, nous avons commencé à coder chaque classe en répartissant le travail, puis nous avons mis en commun les différentes parties du projet. Des modifications ont été apportées pour corriger les incohérences et adapter le diagramme aux besoins réels du code. Aujourd’hui, les classes principales du plateau et des chemins sont fonctionnelles, les deux types de plateau sont implémentés, et les deux mains principales permettant de tester le programme sont opérationnelles. Le projet compile et s’exécute correctement, bien que certains tests et ajustements mineurs aient été nécessaires pour garantir la cohérence de l’ensemble.
+
+Nous avons aussi reussi a nous adapter a la programmation en groupe et notre repartition du travail etait tres efficace et cohérente. 
+
+![alt text](umlSeance3.png)
+
+ne pas prendre en compte la classe balloon !!
 
 ### Difficultés restant à résoudre
-
+Nous esperons garder cette gestion pour le prochain livrable et même l'ameliorer car pour l'instant nous decouvrons encore nos outils tel que gitlab qui nous ont fait perdre beaucoup de temps.
+Pour ce qui est de ce livrable il parait plutot complet des modifications futures ne sont pas a exclures mais nous ne faisons pas fasse a un probleme majeur qu'il nous reste a resoudre.
 ## Livrable 2
 
 ### Atteinte des objectifs
@@ -103,7 +147,12 @@ On a essayé de mettre en commun le projet chacun a merge sa partie, on a modifi
 La majorité des difficultés rencontrés aujourd'hui etait dans la manipulation de gitlab et notamment des merges qui nous ont pris beaucoup de temps a regler (... commit behind). 
 
 ### Objectifs pour la semaine et répartition du travail par membre
-Tout tester et tout compiler pour le livrable de cette semaine 
+Tout tester et tout compiler pour le livrable de cette semaine.
+
+UPDATE de fin de semaine :
+
+Nous avons rencontré d'autres problemes sur la compilation commune car chacun avait encore des petites erreurs mais nous avons enfin pu finir et faire les deux main (pas tres complexe mais necessitant un code qui compile parfaitement dans tout le projet).
+
 ## Semaine 4
 
 ### Ce qui a été réalisé
