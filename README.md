@@ -32,7 +32,7 @@ javadoc -sourcepath src -subpackages game.path game.board -d docs
 
 #### Compilation des tests :
 ```bash
-javac -classpath junit-console.jar:classes tests/game/path/*.java
+javac -classpath junit-console.jar:classes tests/game/path/*.java && javac -classpath junit-console.jar:classes tests/game/*.java
 ```
 #### Execution des tests : 
 ```bash
