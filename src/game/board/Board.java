@@ -82,6 +82,9 @@ public abstract class Board {
                 estChemin[x][y] = true;
                 cellPath = cellPath.getNextCell();
             }
+
+            Cell lastCell = cellPath.getCell();
+            estChemin[lastCell.getX()][lastCell.getY()] = true ;
         }
         for(int i = 0 ; i < this.height ; i++){
             String ligne = "";
