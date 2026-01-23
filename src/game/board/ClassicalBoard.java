@@ -1,6 +1,5 @@
 package game.board;
 
-import game.board.Board;
 import game.path.*;
 import game.exception.*;
 import java.util.Random ;
@@ -17,7 +16,7 @@ public class ClassicalBoard extends Board {
     /** create a random path in the board
      * @return the path created
 	 */
-    public void initPath() throws TooMuchPathsException{
+    public void initPath() throws TooMuchPathsException,NoNextCellException{
         Random rng = new Random();
         int y = rng.nextInt(this.height);
         int lastRandomNum = 0;
