@@ -50,10 +50,18 @@ public class BalloonTest{
     }
 
     @Test
-    public void isDeadTest(){
+    public void isDeadTestTrue(){
         this.b1.decreaseResistance(3);
-        assertEquals(0,this.b1.getRes)
+        assertTrue(this.b1.getResistance()<=0);
     }
+
+    @Test
+    public void isDeadTestFalse(){
+        this.b1.decreaseResistance(2);
+        assertFalse(this.b1.getResistance()<=0);
+    }
+
+
 
     
 
