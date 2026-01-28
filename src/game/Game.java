@@ -3,7 +3,7 @@ import game.board.*;
 import game.exception.*;
 import game.path.*;
 import java.util.*;
-import java.balloons.*;
+import game.balloon.*;
 
 /**A game of a bloons td game */
 public class Game {
@@ -12,7 +12,7 @@ public class Game {
     /**Game's clock */
     protected int clock;
     /**Game's balloons */
-    protected Set<Balloons> balloons;
+    protected Set<Balloon> balloons;
 
     /**
      * Builds a Game with a given board and balloons number
@@ -21,7 +21,7 @@ public class Game {
      */
     public Game(Board board,int NbBalloons){
         this.clock = 0;
-        this.Balloons = new HashSet<Balloons>();
+        this.balloons = new HashSet<Balloon>();
 
         List<Path> paths = board.getPaths();
         int pathIndex = 0;
@@ -33,9 +33,9 @@ public class Game {
 
             int clockSpeed = rng.nextInt(40) + 10; // 10 ~ 50
             int resistance = rng.nextInt(4) + 1; // 1 ~ 4
-            CellPath cellStart = paths[i].getFirstCell();
+            CellPath cellStart = paths.get(i).getFirstCell();
             
-            this.Balloons.add(new Balloons(clockSpeed,resistance,cellStart));
+            this.balloons.add(new Balloon(clockSpeed,resistance,cellStart));
 
             if(pathIndex >= pathsNumber){
                 pathIndex = 0;
@@ -56,12 +56,13 @@ public class Game {
 
     /**
      * Do a turn of the game
+     * @throws NoNextCellException 
     */
-    public void loop(){
-        List<Balloon> balloonsToDestroy = new LinkedList<Balloon>():
+    public void loop() throws NoNextCellException{
+        List<Balloon> balloonsToDestroy = new LinkedList<Balloon>();
         for (Balloon balloon : balloons){
             balloon.onClock(clock);
-            if(balloon.finished()){
+            if(balloon.isFinished()){
                 balloonsToDestroy.add(balloon);
             }
         }
