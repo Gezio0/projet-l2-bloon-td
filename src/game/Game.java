@@ -5,12 +5,20 @@ import game.path.*;
 import java.util.*;
 import java.balloons.*;
 
+/**A game of a bloons td game */
 public class Game {
+    /**Game's Board */
     protected Board board;
+    /**Game's clock */
     protected int clock;
+    /**Game's balloons */
     protected Set<Balloons> balloons;
 
-    /**A game of a bloons td game */
+    /**
+     * Builds a Game with a given board and balloons number
+     * @param board Game's board
+     * @param NbBalloons Game's balloons number
+     */
     public Game(Board board,int NbBalloons){
         this.clock = 0;
         this.Balloons = new HashSet<Balloons>();
@@ -38,11 +46,17 @@ public class Game {
         this.board = board;
     }
 
+    /**
+     * Return true if the game is finished
+     * @return true if the game is finished
+    */
     public boolean isFinished(){
         return balloons.size() == 0;
     }
 
-
+    /**
+     * Do a turn of the game
+    */
     public void loop(){
         List<Balloon> balloonsToDestroy = new LinkedList<Balloon>():
         for (Balloon balloon : balloons){
