@@ -13,4 +13,10 @@ public class Balloon {
     protected int clockSpeed;
     /**the current cell where the balloon is */
     protected CellPath cell ;
+
+    public Balloon(int clockSpeed,int resistance, CellPath cell){
+        this.clockSpeed = clockSpeed;
+        this.resistance = resistance;
+        this.cell = cell;
+    }
 }
