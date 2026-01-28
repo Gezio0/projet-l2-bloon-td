@@ -33,7 +33,15 @@ public class BalloonTest{
 
 
     @Test
-    public void isFinishedTest(){}
+    public void isFinishedTestTrue(){
+        this.b1.moveForward();
+        assertTrue(this.b1.isFinished());
+    }
+
+    @Test 
+    public void isFinishedTestFalse(){
+        assertFalse(this.b1.isFinished());
+    }
 
 
 }
