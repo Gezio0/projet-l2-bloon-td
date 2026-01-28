@@ -103,6 +103,15 @@ public class Balloon {
         return this.resistance <= 0;
     }
 
+    /**
+     * Shows the resistance, speed and x and y coordinates of the current cell
+     * @return a display of the main balloon informations
+     */
+    @Override
+    public String toString(){
+        return "resistance : " + this.resistance + " speed : " + this.clockSpeed + " cell , x: " + this.cell.getCell().getX() + " y: " + this.cell.getCell().getY();
+    }
+
 
 
 
