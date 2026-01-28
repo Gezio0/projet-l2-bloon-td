@@ -4,7 +4,7 @@ import game.exception.*;
 import game.path.*;
 import java.util.*;
 
-public class Livrable1aMain {
+public class Livrable2aMain {
     public static void main(String[] args) throws TooMuchPathsException,NoNextCellException{
         if (args.length>=2){
             try {
