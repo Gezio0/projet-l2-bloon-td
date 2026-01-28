@@ -1,5 +1,6 @@
 package game.balloon;
 
+import game.exception.NoNextCellException;
 import game.path.*;
 
 
@@ -49,6 +50,14 @@ public class Balloon {
      */
     public CellPath getCell(){
         return this.cell;
+    }
+
+    /**
+     * Move the balloon to the next cell of its path
+     * @throws NoNextCellException if there's no next cell
+     */
+    public void moveForward() throws NoNextCellException{
+        this.cell = this.cell.getNextCell();
     }
 
 
