@@ -64,7 +64,7 @@ public abstract class Board {
      */
     public void addPath(Path path) throws TooMuchPathsException{
         this.pathList.add(path);
-    }
+    } 
 
     /**
      * Initialize the paths
