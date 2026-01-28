@@ -37,10 +37,18 @@ public class Balloon {
 
     /**
      * Get the balloon hp
-     * @return
+     * @return the remaining resistance
      */
     public int getResistance(){
         return this.resistance;
+    }
+
+    /**
+     * Get the balloon current cell
+     * @return the current cell
+     */
+    public CellPath getCell(){
+        return this.cell;
     }
 
 
