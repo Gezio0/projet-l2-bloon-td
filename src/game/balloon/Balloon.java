@@ -14,9 +14,20 @@ public class Balloon {
     /**the current cell where the balloon is */
     protected CellPath cell ;
 
+
+    /**
+     * Initialize the balloon with its speed, resistance and cell
+     * @param clockSpeed balloon speed
+     * @param resistance balloon hp
+     * @param cell balloon current cell
+     */
     public Balloon(int clockSpeed,int resistance, CellPath cell){
         this.clockSpeed = clockSpeed;
         this.resistance = resistance;
         this.cell = cell;
     }
+
+    
+
+
 }
