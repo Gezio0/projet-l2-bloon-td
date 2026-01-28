@@ -45,7 +45,7 @@ public class BalloonTest{
     @Test
     public void decreaseResistanceTest(){
         int res = this.b1.getResistance();
-        this.b1.decreaseResistance(2)
+        this.b1.decreaseResistance(2);
         assertEquals(res-2,this.b1.getResistance());
     }
 
