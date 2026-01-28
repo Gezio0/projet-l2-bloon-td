@@ -95,6 +95,15 @@ public class Balloon {
     }
 
 
+    /**
+     * return true if the balloon is dead (resistance <= 0)
+     * @return balloon state (true = dead, false = alive)
+     */
+    public boolean isDead(){
+        return this.resistance <= 0;
+    }
+
+
 
 
 }
