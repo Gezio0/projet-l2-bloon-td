@@ -27,7 +27,15 @@ public class Balloon {
         this.cell = cell;
     }
 
-    
+    /**
+     * Get the balloon speed 
+     * @return the balloon speed (lower value returned = higher speed in the game)
+    */
+    public int getSpeed(){
+        return this.clockSpeed;
+    }
+
+
 
 
 }
