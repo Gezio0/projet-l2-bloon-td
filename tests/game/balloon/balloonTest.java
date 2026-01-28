@@ -31,6 +31,10 @@ public class BalloonTest{
         assertEquals(next,this.b1.getCell());
     }
 
+    @Test 
+    public void isFinishedTestFalse(){
+        assertFalse(this.b1.isFinished());
+    }
 
     @Test
     public void isFinishedTestTrue(){
@@ -38,12 +42,22 @@ public class BalloonTest{
         assertTrue(this.b1.isFinished());
     }
 
-    @Test 
-    public void isFinishedTestFalse(){
-        assertFalse(this.b1.isFinished());
+    @Test
+    public void decreaseResistanceTest(){
+        int res = this.b1.getResistance();
+        this.b1.decreaseResistance(2)
+        assertEquals(res-2,this.b1.getResistance());
     }
+
+    @Test
+    public void isDeadTest(){
+        this.b1.decreaseResistance(3);
+        assertEquals(0,this.b1.getRes)
+    }
+
+    
 
 
 }
 
-
+#verifiez si j'ai avance d'une celle et si return true si j'avance sinon false
