@@ -159,9 +159,21 @@ Nous avons rencontré d'autres problemes sur la compilation commune car chacun a
 ### Ce qui a été réalisé
 ![alt text](images/UMLs4.png)
 
+Nous avons d'abord pris une heure de notre temps pour réaliser l'UML sur tout ce qui concernait le livrable 2.
+Nous avons par la suite codé toutes les classes et interfaces ci-dessus avec cette répartition.
+
+Merwan : tests de balloon et livrable 2a (ClassicalBoard)
+jean-Mayes : tests de Game et livrable 2b (MultiplePathBoard)
+Noé : classe Game et interface Clockable
+Yanis : classe Balloon
+
 ### Difficultés rencontrées
+La difficulté majeure réside toujours dans la coordination, il faut être sûr que tout le monde se comprenne bien. Mais après 4 semaines de collaboration, nous apprenons petit à petit à travailler ensemble.
+
+En terme de difficultés techniques. Cette semaine ne nous a pas réellement posé de soucis. La seule difficulté étant l'implémentation de la clock pour les ballons qui devraient par la suite être la même que les tourelles. Celle-ci à pu être géré grâce à une interface.
 
 ### Objectifs pour la semaine et répartition du travail par membre
+Pour la semaine, nous devons encore veiller à la bonne compilation et exécution des différents classes, interfaces, tests et documentation.
 
 ## Semaine 5
 
