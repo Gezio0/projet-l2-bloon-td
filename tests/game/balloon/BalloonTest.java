@@ -15,12 +15,13 @@ public class BalloonTest{
 
     @BeforeEach
     public void before() {
-        this.b1 = new Balloon(25,3);
+        
         this.c1 = new Cell(0,0);
         this.c2 = new Cell(0,1);
         this.cp1 = new CellPath(this.c1);
         this.cp2 = new CellPath(this.c2);
         this.cp1.setNext(this.cp2);
+        this.b1 = new Balloon(25,3,this.cp1);
     }
 
     @Test
@@ -37,7 +38,7 @@ public class BalloonTest{
     }
 
     @Test
-    public void isFinishedTestTrue(){
+    public void isFinishedTestTrue ()throws NoNextCellException{
         this.b1.moveForward();
         assertTrue(this.b1.isFinished());
     }
