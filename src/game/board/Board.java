@@ -1,10 +1,9 @@
 package game.board;
 
+import game.exception.*;
+import game.path.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import game.path.*;
-import game.exception.*;
 
 
 /**An abstract board representing a bloons td game board */
@@ -72,7 +71,7 @@ public abstract class Board {
      * @throws NoNextCellException when trying to reach a null cell
      * @throws TooMuchPathsException when paths exceed the limits determined by the constructor
      */
-    protected abstract void initPath() throws NoNextCellException,TooMuchPathsException;
+    public abstract void initPath() throws NoNextCellException,TooMuchPathsException;
 
     /**
      * Show the board in the console

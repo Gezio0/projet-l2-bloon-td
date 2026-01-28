@@ -1,7 +1,7 @@
 package game.board;
 
-import game.path.*;
 import game.exception.*;
+import game.path.*;
 import java.util.Random ;
 
 /**
@@ -16,6 +16,7 @@ public class ClassicalBoard extends Board {
     */
     public ClassicalBoard(int width,int height){
         super(width,height);
+        
     }
 
     /** create a random path in the board
