@@ -154,6 +154,7 @@ Nous avons rencontré d'autres problemes sur la compilation commune car chacun a
 ## Semaine 4
 
 ### Ce qui a été réalisé
+![alt text](images/UMLs4.png)
 
 ### Difficultés rencontrées
 
