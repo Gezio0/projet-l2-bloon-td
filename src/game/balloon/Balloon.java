@@ -1,0 +1,16 @@
+package game.balloon;
+
+import game.path.*;
+
+
+/**Represents a bloon td game balloon, moving on the board from the start
+ * up to the end of a path
+ */
+public class Balloon {
+    /**represents the balloon hp */
+    protected int resistance ;
+    /**Balloon speed : the hight clockSpeed is, the lower balloon speed is */
+    protected int clockSpeed;
+    /**the current cell where the balloon is */
+    protected CellPath cell ;
+}
