@@ -20,32 +20,59 @@ public class gameTest {
 
 
 @Test
-public void getBalloonsTest() throws TooMuchPathsException,NoNextCellException{
-    Board board = new ClassicalBoard(10, 10);
+public void getBalloonsClassicTest() throws TooMuchPathsException,NoNextCellException{
+    Board classicalBoard = new ClassicalBoard(10, 10);
     
-    board.initPath();
-    Game game = new Game(board,10);
+    classicalBoard.initPath();
+    Game classicalGame = new Game(classicalBoard,10);
     
-    Set<Balloon> balloons =game.getBalloons();
-    assertEquals(balloons.size(),10);
+
+    Set<Balloon> classicalBalloons =classicalGame.getBalloons();
     
-    Game game2 = new Game(board,50);
-    Set<Balloon> balloons2 =game2.getBalloons();
-    assertEquals(balloons2.size(),50);
+    assertEquals(classicalBalloons.size(),10);
     
     
+    Game classicalGame2 = new Game(classicalBoard,50);
+    Set<Balloon> classicalBalloons2 =classicalGame2.getBalloons();
+    assertEquals(classicalBalloons2.size(),50);
     
+    
+    
+}
+
+@Test
+
+public void getBalloonsMultipleBoardTest() throws TooMuchPathsException,NoNextCellException{
+    Board multiplePathBoard = new MultiplePathBoard(10, 10, 3);
+    Game multipleGame = new Game(multiplePathBoard, 10);
+    Set<Balloon> multiBalloons =multipleGame.getBalloons();
+    assertEquals(multiBalloons.size(),10);
+    Game multipleGame2 = new Game(multiplePathBoard,50);
+    Set<Balloon> multipleBalloons2 =multipleGame2.getBalloons();
+    assertEquals(multipleBalloons2.size(),50);
+
 }
 
 @Test 
-public void isFinishedTest()throws TooMuchPathsException,NoNextCellException{
-    Board board = new ClassicalBoard(10, 10);
-    board.initPath();
-    Game emptyGame = new Game(board,0);
+public void isFinishedClassicTest()throws TooMuchPathsException,NoNextCellException{
+    Board classicalBoard = new ClassicalBoard(10, 10);
+    classicalBoard.initPath();
+    Game emptyGame = new Game(classicalBoard,0);
     assertTrue(emptyGame.isFinished());
-    Game game = new Game(board,10);
+    Game game = new Game(classicalBoard,10);
     assertFalse(game.isFinished());
 
 }
+@Test 
+public void isFinishedMultipleBoardTest()throws TooMuchPathsException,NoNextCellException{
+    Board multipleBoard = new MultiplePathBoard(10, 10,3);
+
+    Game emptyGame = new Game(multipleBoard,0);
+    assertTrue(emptyGame.isFinished());
+    Game game = new Game(multipleBoard,10);
+    assertFalse(game.isFinished());
+
+}
+
 
 }
