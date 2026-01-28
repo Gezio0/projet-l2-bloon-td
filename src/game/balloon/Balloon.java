@@ -68,6 +68,24 @@ public class Balloon {
         return this.cell.isFinished();
     }
 
+    /**
+     * Move forward depending to the clock.
+     * Example : 
+     * if clockSpeed = 3 and clock = 1 then don't move forward and return false
+     * if clockSpeed = 3 and clock = 3 then move forward and return true
+     * if clockSpeed = 6 and clock = 3 then move forward and return true
+     * @param clock
+     * @return
+     * @throws NoNextCellException
+     */
+    public boolean onClock(int clock) throws NoNextCellException{
+        if (clock%this.clockSpeed == 0){
+            moveForward();
+            return true;
+        }
+        return false;
+    }
+
 
 
 
