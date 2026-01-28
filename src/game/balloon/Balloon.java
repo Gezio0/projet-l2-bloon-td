@@ -60,6 +60,14 @@ public class Balloon {
         this.cell = this.cell.getNextCell();
     }
 
+    /**
+     * return true if the balloon is on the last cell of its path
+     * @return
+     */
+    public boolean isFinished(){
+        return this.cell.isFinished();
+    }
+
 
 
 
