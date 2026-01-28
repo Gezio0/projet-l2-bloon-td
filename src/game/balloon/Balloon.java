@@ -74,7 +74,7 @@ public class Balloon {
      * if clockSpeed = 3 and clock = 1 then don't move forward and return false
      * if clockSpeed = 3 and clock = 3 then move forward and return true
      * if clockSpeed = 6 and clock = 3 then move forward and return true
-     * @param clock
+     * @param clock the current clock of the game (right now)
      * @return
      * @throws NoNextCellException
      */
@@ -84,6 +84,14 @@ public class Balloon {
             return true;
         }
         return false;
+    }
+
+    /**
+     * decrease balloon resistance depending on a turret shot damage
+     * @param damage damage dealt to the balloon
+     */
+    public void decreaseResistance(int damage){
+        this.resistance = this.resistance - damage;
     }
 
 
