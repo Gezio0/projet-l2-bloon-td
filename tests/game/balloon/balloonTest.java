@@ -61,11 +61,5 @@ public class BalloonTest{
         assertFalse(this.b1.getResistance()<=0);
     }
 
-
-
-    
-
-
 }
 
-#verifiez si j'ai avance d'une celle et si return true si j'avance sinon false
