@@ -68,6 +68,9 @@ Pour ce qui est de ce livrable il parait plutot complet des modifications future
 ## Livrable 2
 
 ### Atteinte des objectifs
+Cette semaine, nous avons commencé faire l'UML de la classe Balloon,Game et l'interface Clockable.Nous nous sommes vite mis d'accord sur les classes et l'implémentation de l'interface Clockable qui permet de gérer tout les elements du jeu qui utilisent la clock du game.
+
+![alt text](images/UMLs4.png)
 
 ### Difficultés restant à résoudre
 
