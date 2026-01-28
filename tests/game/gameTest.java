@@ -1,7 +1,7 @@
 package game;
 
-import org.junit.Test;
-
+import org.junit.*;
+import game.balloon.*;
 import game.board.*;
 import game.path.*;
 import game.exception.*;

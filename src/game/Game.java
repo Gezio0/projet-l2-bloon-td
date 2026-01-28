@@ -72,4 +72,7 @@ public class Game {
         }
         clock++;
     }
+    public Set<Balloon> getBalloons(){
+        return this.balloons;
+    }
 }
