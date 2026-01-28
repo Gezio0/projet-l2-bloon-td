@@ -50,7 +50,8 @@ public class Game {
 
                 int clockSpeed = rng.nextInt(40) + 10; // 10 ~ 50
                 int resistance = rng.nextInt(4) + 1; // 1 ~ 4
-                CellPath cellStart = paths.get(i).getFirstCell();
+                int balloonPathIndex = rng.nextInt(paths.size());
+                CellPath cellStart = paths.get(balloonPathIndex).getFirstCell();
                 
                 this.balloons.add(new Balloon(clockSpeed,resistance,cellStart));
 
