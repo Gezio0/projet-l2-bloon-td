@@ -35,6 +35,14 @@ public class Balloon {
         return this.clockSpeed;
     }
 
+    /**
+     * Get the balloon hp
+     * @return
+     */
+    public int getResistance(){
+        return this.resistance;
+    }
+
 
 
 
