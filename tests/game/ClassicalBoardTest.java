@@ -14,7 +14,6 @@ public class ClassicalBoardTest{
     @Test
     public void testInitPath() throws TooMuchPathsException,NoNextCellException {
         ClassicalBoard board = new ClassicalBoard(5,5);
-        board.initPath();
         List<Path> paths = board.getPaths();
         Path path = paths.get(0);
         assertEquals(path.getFirstCell().getCell().getX(),0);
@@ -28,7 +27,6 @@ public class ClassicalBoardTest{
         CellPath cellpath2 = new CellPath(new Cell(1,1));
         Path newPath = new Path(cellpath1);
         Path newPath2 = new Path(cellpath2);
-        board.addPath(newPath);
         assertThrows(TooMuchPathsException.class, ()->board.addPath(newPath2));
     }
 }

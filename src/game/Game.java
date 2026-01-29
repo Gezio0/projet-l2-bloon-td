@@ -28,41 +28,21 @@ public class Game {
         int pathsNumber = paths.size();
 
         Random rng = new Random();
-        if (paths.size()==1){
-            CellPath cellStart = paths.get(0).getFirstCell();
-            for(int i = 0 ; i < NbBalloons ; i++){
+        for(int i = 0 ; i < NbBalloons ; i++){
+            
+            CellPath cellStart = paths.get(pathIndex).getFirstCell();
+            int clockSpeed = rng.nextInt(40) + 10; // 10 ~ 50
+            int resistance = rng.nextInt(4) + 1; // 1 ~ 4
+            
+            
+            this.balloons.add(new Balloon(clockSpeed,resistance,cellStart));
 
-                int clockSpeed = rng.nextInt(40) + 10; // 10 ~ 50
-                int resistance = rng.nextInt(4) + 1; // 1 ~ 4
-                
-                
-                this.balloons.add(new Balloon(clockSpeed,resistance,cellStart));
-
-                if(pathIndex >= pathsNumber){
-                    pathIndex = 0;
-                } else {
-                    pathIndex++;
-                }
+            if(pathIndex + 1 >= pathsNumber){
+                pathIndex = 0;
+            } else {
+                pathIndex++;
             }
         }
-        else{
-            for(int i = 0 ; i < NbBalloons ; i++){
-
-                int clockSpeed = rng.nextInt(40) + 10; // 10 ~ 50
-                int resistance = rng.nextInt(4) + 1; // 1 ~ 4
-                int balloonPathIndex = rng.nextInt(paths.size());
-                CellPath cellStart = paths.get(balloonPathIndex).getFirstCell();
-                
-                this.balloons.add(new Balloon(clockSpeed,resistance,cellStart));
-
-                if(pathIndex >= pathsNumber){
-                    pathIndex = 0;
-                } else {
-                    pathIndex++;
-                }
-            }
-        }
-        
         this.board = board;
     }
 
@@ -87,7 +67,7 @@ public class Game {
             }
         }
         for (Balloon balloon : balloonsToDestroy){
-            System.out.println("Balloon destroyed at clock : " + clock);
+            System.out.println("Balloon destroyed : " + balloon.toString());
             balloons.remove(balloon);
         }
         clock++;

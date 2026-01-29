@@ -12,7 +12,6 @@ public class Livrable2aMain {
                 int width = Integer.parseInt(args[1]);
                 int nbOfBallons = Integer.parseInt(args[2]);
                 ClassicalBoard board = new ClassicalBoard(height,width);
-                board.initPath();
                 List<Path> p = board.getPaths();
                 System.out.println(p);
                 board.show();

@@ -14,16 +14,16 @@ public class ClassicalBoard extends Board {
      * @param width width of this board
      * @param height height of this board
     */
-    public ClassicalBoard(int width,int height){
+    public ClassicalBoard(int width,int height) throws TooMuchPathsException,NoNextCellException{
         super(width,height);
-        
+        this.initPath();
     }
 
     /** create a random path in the board
      * @throws TooMuchPathsException when paths are exceeding the limit (here it's 1)
      * @throws NoNextCellException when trying to get a null cell
 	 */
-    public void initPath() throws TooMuchPathsException,NoNextCellException{
+    protected void initPath() throws TooMuchPathsException,NoNextCellException{
         Random rng = new Random();
         int y = rng.nextInt(this.height);
         String lastDirection = "";

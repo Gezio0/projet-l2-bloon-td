@@ -26,7 +26,7 @@ public class MultiplePathBoard extends Board {
             throw new TooMuchPathsException("too much path, you need to have less than height/2 and width/2");
         }
 
-        initPath();
+        this.initPath();
     }
 
 
@@ -36,7 +36,7 @@ public class MultiplePathBoard extends Board {
      * @throws TooMuchPathsException when paths are exceeding the limit from the constructor
      * @throws NoNextCellException when trying to get a null cell
      */
-    public void initPath() throws NoNextCellException,TooMuchPathsException{
+    protected void initPath() throws NoNextCellException,TooMuchPathsException{
         fillPath();
 
         List<Integer> occupiedColumns = new ArrayList<>();
