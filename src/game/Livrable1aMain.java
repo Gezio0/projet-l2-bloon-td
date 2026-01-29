@@ -11,7 +11,6 @@ public class Livrable1aMain {
                 int height = Integer.parseInt(args[0]);
                 int width = Integer.parseInt(args[1]);
                 ClassicalBoard board = new ClassicalBoard(height,width);
-                board.initPath();
                 List<Path> p = board.getPaths();
                 System.out.println(p);
                 board.show();

@@ -22,8 +22,6 @@ public class gameTest {
 @Test
 public void getBalloonsClassicTest() throws TooMuchPathsException,NoNextCellException{
     Board classicalBoard = new ClassicalBoard(10, 10);
-    
-    classicalBoard.initPath();
     Game classicalGame = new Game(classicalBoard,10);
     
 
@@ -56,7 +54,6 @@ public void getBalloonsMultipleBoardTest() throws TooMuchPathsException,NoNextCe
 @Test 
 public void isFinishedClassicTest()throws TooMuchPathsException,NoNextCellException{
     Board classicalBoard = new ClassicalBoard(10, 10);
-    classicalBoard.initPath();
     Game emptyGame = new Game(classicalBoard,0);
     assertTrue(emptyGame.isFinished());
     Game game = new Game(classicalBoard,10);

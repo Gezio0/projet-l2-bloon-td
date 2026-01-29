@@ -71,7 +71,7 @@ public abstract class Board {
      * @throws NoNextCellException when trying to reach a null cell
      * @throws TooMuchPathsException when paths exceed the limits determined by the constructor
      */
-    public abstract void initPath() throws NoNextCellException,TooMuchPathsException;
+    protected abstract void initPath() throws NoNextCellException,TooMuchPathsException;
 
     /**
      * Show the board in the console
