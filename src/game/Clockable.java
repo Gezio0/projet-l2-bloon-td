@@ -12,5 +12,5 @@ public interface Clockable{
     /**
      * The method that verify if its the turn for an object to play
      */
-    public onClock(int clock);
+    public boolean onClock(int clock) throws NoNextCellException;
 }

@@ -68,11 +68,13 @@ Pour ce qui est de ce livrable il parait plutot complet des modifications future
 ## Livrable 2
 
 ### Atteinte des objectifs
-Cette semaine, nous avons commencé faire l'UML de la classe Balloon,Game et l'interface Clockable.Nous nous sommes vite mis d'accord sur les classes et l'implémentation de l'interface Clockable qui permet de gérer tout les elements du jeu qui utilisent la clock du game.
 
-![alt text](images/UMLs4.png)
+
+![alt text](images/modifUmlS4.png)
 
 ### Difficultés restant à résoudre
+Appliquer ce systeme de clock sur tout les autres objets qui ont une durée entre leurs différentes actions comme par exemples les tourelles etc. 
+
 
 ## Livrable 3
 
@@ -157,23 +159,23 @@ Nous avons rencontré d'autres problemes sur la compilation commune car chacun a
 ## Semaine 4
 
 ### Ce qui a été réalisé
-![alt text](images/UMLs4.png)
+![alt text](images/modifUmlS4.png)
 
 Nous avons d'abord pris une heure de notre temps pour réaliser l'UML sur tout ce qui concernait le livrable 2.
 Nous avons par la suite codé toutes les classes et interfaces ci-dessus avec cette répartition.
 
-Merwan : tests de balloon et livrable 2a (ClassicalBoard)
+Merwan : tests de balloon, livrable 2a (ClassicalBoard) et l'interface Clockable
 jean-Mayes : tests de Game et livrable 2b (MultiplePathBoard)
-Noé : classe Game et interface Clockable
+Noé : classe Game 
 Yanis : classe Balloon
 
 ### Difficultés rencontrées
 La difficulté majeure réside toujours dans la coordination, il faut être sûr que tout le monde se comprenne bien. Mais après 4 semaines de collaboration, nous apprenons petit à petit à travailler ensemble.
 
-En terme de difficultés techniques. Cette semaine ne nous a pas réellement posé de soucis. La seule difficulté étant l'implémentation de la clock pour les ballons qui devraient par la suite être la même que les tourelles. Celle-ci à pu être géré grâce à une interface.
+En terme de difficultés techniques. Cette semaine ne nous a pas réellement posé de soucis. La seule difficulté étant l'implémentation de la clock pour les ballons qui devraient par la suite être la même que les tourelles. Celle-ci à pu être géré grâce à une interface. On a choisi de faire une boucle qui itere de 1 en 1 et qui nous permet donc de gérer les actions en fonction de la valeur de l'itération actuelle. Pour exemple : imaginons un ballons avec une vitesse de 3, il effectuera alors son action tous les 3 tours de boucles. 
 
 ### Objectifs pour la semaine et répartition du travail par membre
-Pour la semaine, nous devons encore veiller à la bonne compilation et exécution des différents classes, interfaces, tests et documentation.
+Pour la semaine, nous devons encore veiller à la bonne compilation et exécution des différents classes, interfaces, tests et documentation. Ainsi que l'ecriture du livrable 2.
 
 ## Semaine 5
 

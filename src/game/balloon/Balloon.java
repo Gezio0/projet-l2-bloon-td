@@ -2,12 +2,13 @@ package game.balloon;
 
 import game.exception.NoNextCellException;
 import game.path.*;
+import game.*;
 
 
 /**Represents a bloon td game balloon, moving on the board from the start
  * up to the end of a path
  */
-public class Balloon {
+public class Balloon implements Clockable{
     /**represents the balloon hp */
     protected int resistance ;
     /**Balloon speed : the hight clockSpeed is, the lower balloon speed is */
