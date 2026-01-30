@@ -13,6 +13,10 @@ public class Livrable2bMain {
                 int nbOfPaths = Integer.parseInt(args[2]);
                 int nbofBalloons = Integer.parseInt(args[3]);
                 MultiplePathBoard board = new MultiplePathBoard(height,width,nbOfPaths);
+                List<Path> p = board.getPaths();
+                System.out.println(p);
+                board.show();
+                System.out.println(board);
                 Game game = new Game(board,nbofBalloons);
                 while (!game.isFinished()){
                     game.loop();
