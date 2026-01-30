@@ -61,16 +61,16 @@ public class Game {
     public void loop() throws NoNextCellException{
         List<Balloon> balloonsToDestroy = new LinkedList<Balloon>();
         for (Balloon balloon : balloons){
-            balloon.onClock(clock);
+            balloon.onClock(this.clock);
             if(balloon.isFinished()){
                 balloonsToDestroy.add(balloon);
             }
         }
         for (Balloon balloon : balloonsToDestroy){
-            System.out.println("Balloon destroyed : " + balloon.toString());
+            System.out.println("Balloon destroyed : " + balloon.toString() + " at clock : " + this.clock);
             balloons.remove(balloon);
         }
-        clock++;
+        this.clock++;
     }
     public Set<Balloon> getBalloons(){
         return this.balloons;

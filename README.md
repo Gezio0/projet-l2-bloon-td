@@ -67,6 +67,24 @@ Nous esperons garder cette gestion pour le prochain livrable et même l'ameliore
 Pour ce qui est de ce livrable il parait plutot complet des modifications futures ne sont pas a exclures mais nous ne faisons pas fasse a un probleme majeur qu'il nous reste a resoudre.
 ## Livrable 2
 
+Toute les commandes (depuis la racine):
+```bash
+javac -sourcepath src src/game/*.java -d classes && javadoc -sourcepath src -subpackages game.path game.board -d docs && javac -classpath junit-console.jar:classes tests/game/path/*.java && javac -classpath junit-console.jar:classes tests/game/*.java && java -jar junit-console.jar -classpath tests:classes -scan-classpath
+```
+#### Création d'un jar : 
+```bash
+jar cvfe Livrable2aMain.jar game.Livrable2aMain -C classes game
+
+jar cvfe Livrable2bMain.jar game.Livrable2bMain -C classes game
+```
+#### Execution des jar : 
+```bash
+java -jar Livrable2aMain.jar 50 10 10
+
+java -jar Livrable2bMain.jar 50 10 4 10
+```
+
+
 ### Atteinte des objectifs
 Au cours de cette semaine, nous avons à partir de notre UML décidé de certaines choses. Tout d'abord nous avons choisi ce moment pour implémenter la classe Game. Après analyse des objectifs à atteindre, c'est-à-dire, avoir des ballons qui avancent sur un chemin en fonction de leur vitesse de déplacement, nous avons décidé que la classe Game gérant le déroulement de la partie nous était nécessaire. De ce fait nous avons réussi à créer un système de clock qui nous permet et nous permettra par la suite d'effectuer différents actions en fonction du temps (temps de la partie, cooldown etc...).
 Il nous restait donc à créer ces ballons qui devaient se déplacer. De ce fait nous avons tout naturellement créer une seule classe Ballon pour l'instant, car le déplacement s'effectue de la même manière sur les 2 plateaux différents. Grâce à notre implémentation du chemin, qui consiste à donner à chaque cellule du chemin, l'information sur la cellule suivante, la gestion des mouvements a été plutôt simple cette fois-ci.
