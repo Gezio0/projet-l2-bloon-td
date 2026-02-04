@@ -67,40 +67,12 @@ Nous esperons garder cette gestion pour le prochain livrable et même l'ameliore
 Pour ce qui est de ce livrable il parait plutot complet des modifications futures ne sont pas a exclures mais nous ne faisons pas fasse a un probleme majeur qu'il nous reste a resoudre.
 ## Livrable 2
 
-Toute les commandes (depuis la racine):
-```bash
-javac -sourcepath src src/game/*.java -d classes && javadoc -sourcepath src -subpackages game.path game.board -d docs && javac -classpath junit-console.jar:classes tests/game/path/*.java && javac -classpath junit-console.jar:classes tests/game/*.java && java -jar junit-console.jar -classpath tests:classes -scan-classpath
-```
-#### Création d'un jar : 
-```bash
-jar cvfe Livrable2aMain.jar game.Livrable2aMain -C classes game
-
-jar cvfe Livrable2bMain.jar game.Livrable2bMain -C classes game
-```
-#### Execution des jar : 
-```bash
-java -jar Livrable2aMain.jar 50 10 10
-
-java -jar Livrable2bMain.jar 50 10 4 10
-```
-
-
 ### Atteinte des objectifs
-Au cours de cette semaine, nous avons à partir de notre UML décidé de certaines choses. Tout d'abord nous avons choisi ce moment pour implémenter la classe Game. Après analyse des objectifs à atteindre, c'est-à-dire, avoir des ballons qui avancent sur un chemin en fonction de leur vitesse de déplacement, nous avons décidé que la classe Game gérant le déroulement de la partie nous était nécessaire. De ce fait nous avons réussi à créer un système de clock qui nous permet et nous permettra par la suite d'effectuer différents actions en fonction du temps (temps de la partie, cooldown etc...).
-Il nous restait donc à créer ces ballons qui devaient se déplacer. De ce fait nous avons tout naturellement créer une seule classe Ballon pour l'instant, car le déplacement s'effectue de la même manière sur les 2 plateaux différents. Grâce à notre implémentation du chemin, qui consiste à donner à chaque cellule du chemin, l'information sur la cellule suivante, la gestion des mouvements a été plutôt simple cette fois-ci.
+Cette semaine, nous avons commencé faire l'UML de la classe Balloon,Game et l'interface Clockable.Nous nous sommes vite mis d'accord sur les classes et l'implémentation de l'interface Clockable qui permet de gérer tout les elements du jeu qui utilisent la clock du game.
 
-Après mûre réflexion, nous nous somme rendus compte que les ballons ne seront pas les seules objets soumis a un timer. Nous avons donc décidé en prévision de créer l'interface qui sera implémentée par tous les objets qui ont besoin de la clock.
-
-Comme d'habitude nous nous sommes répartis les tâches au maximum mais cette fois ci nous avons pris un peu de temps pour être sûr que tout le monde avait bien la même vision, car ceci nous avait causé défaut par le passé.
-Les objectifs sont donc atteints pour cette semaine, nous avons des ballons qui se déplacent sur chaque chemin du plateau et globalement notre coordination en équipe s'est amélioré, nous avons eu moins d'erreur liés à une mauvaise compréhension de la vision commune.
-Ce livrable n'est peut être pas complet mais il nous laisse facilement implémenter de nouvelles spécificités à nos fonctionnalités déjà implémentées.
-
-
-![alt text](images/modifUmlS4.png)
+![alt text](images/UMLs4.png)
 
 ### Difficultés restant à résoudre
-Appliquer ce systeme de clock sur tout les autres objets qui ont une durée entre leurs différentes actions comme par exemples les tourelles etc. 
-
 
 ## Livrable 3
 
@@ -185,31 +157,38 @@ Nous avons rencontré d'autres problemes sur la compilation commune car chacun a
 ## Semaine 4
 
 ### Ce qui a été réalisé
-![alt text](images/modifUmlS4.png)
+![alt text](images/UMLs4.png)
 
 Nous avons d'abord pris une heure de notre temps pour réaliser l'UML sur tout ce qui concernait le livrable 2.
 Nous avons par la suite codé toutes les classes et interfaces ci-dessus avec cette répartition.
 
-Merwan : tests de balloon, livrable 2a (ClassicalBoard) et l'interface Clockable
+Merwan : tests de balloon et livrable 2a (ClassicalBoard)
 jean-Mayes : tests de Game et livrable 2b (MultiplePathBoard)
-Noé : classe Game 
+Noé : classe Game et interface Clockable
 Yanis : classe Balloon
 
 ### Difficultés rencontrées
 La difficulté majeure réside toujours dans la coordination, il faut être sûr que tout le monde se comprenne bien. Mais après 4 semaines de collaboration, nous apprenons petit à petit à travailler ensemble.
 
-En terme de difficultés techniques. Cette semaine ne nous a pas réellement posé de soucis. La seule difficulté étant l'implémentation de la clock pour les ballons qui devraient par la suite être la même que les tourelles. Celle-ci à pu être géré grâce à une interface. On a choisi de faire une boucle qui itere de 1 en 1 et qui nous permet donc de gérer les actions en fonction de la valeur de l'itération actuelle. Pour exemple : imaginons un ballons avec une vitesse de 3, il effectuera alors son action tous les 3 tours de boucles. 
+En terme de difficultés techniques. Cette semaine ne nous a pas réellement posé de soucis. La seule difficulté étant l'implémentation de la clock pour les ballons qui devraient par la suite être la même que les tourelles. Celle-ci à pu être géré grâce à une interface.
 
 ### Objectifs pour la semaine et répartition du travail par membre
-Pour la semaine, nous devons encore veiller à la bonne compilation et exécution des différents classes, interfaces, tests et documentation. Ainsi que l'ecriture du livrable 2.
+Pour la semaine, nous devons encore veiller à la bonne compilation et exécution des différents classes, interfaces, tests et documentation.
 
 ## Semaine 5
 
 ### Ce qui a été réalisé
 
-### Difficultés rencontrées
+![alt text](images/UMLS5.png)
+Nous avons pris le temps pour bien se mettre d'accord sur l'uml, nous avons rajouté une classe bullet, tower et  abstraite effect, et on a modifié la classe game et balloon pour prendre en compte les effets. 
 
+### Difficultés rencontrées
+La Gestion des effets (surtout le Freeze) nous a posé problème. 
 ### Objectifs pour la semaine et répartition du travail par membre
+Merwan : Effects, Slow et Freeze .
+Yanis : modifications de balloon et damage et ses tests
+J-M : Tower et bullet et les tests
+Noé : modifications de game
 
 ## Semaine 6
 
