@@ -32,4 +32,6 @@ public abstract class Effects{
     public Balloon getTarget(){
         return this.balloon;
     }
+
+    public abstract void applyEffect();
 }
