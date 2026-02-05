@@ -12,7 +12,7 @@ public abstract class Effects{
 
     public Effects(String name, int duration, boolean stackable, Balloon balloon){
         this.name = name;
-        this.duration = duration;$
+        this.duration = duration;
         this.stackable = stackable;
         this.balloon = balloon;
     }
