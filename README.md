@@ -179,7 +179,7 @@ Pour la semaine, nous devons encore veiller à la bonne compilation et exécutio
 
 ### Ce qui a été réalisé
 
-![alt text](images/seanceS5final.png)
+![alt text](images/umlS5final.png)
 Nous avons pris le temps pour bien se mettre d'accord sur l'uml, nous avons rajouté une classe bullet, tower et  abstraite effect, et on a modifié la classe game et balloon pour prendre en compte les effets. 
 
 ### Difficultés rencontrées
