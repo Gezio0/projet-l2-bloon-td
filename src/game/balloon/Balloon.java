@@ -8,7 +8,7 @@ import game.*;
 /**Represents a bloon td game balloon, moving on the board from the start
  * up to the end of a path
  */
-public class Balloon implements Clockable{
+public class Balloon extends GameObject {
     /**represents the balloon hp */
     protected int resistance ;
     /**Balloon speed : the hight clockSpeed is, the lower balloon speed is */
@@ -24,6 +24,7 @@ public class Balloon implements Clockable{
      * @param cell balloon current cell
      */
     public Balloon(int clockSpeed,int resistance, CellPath cell){
+        super();
         this.clockSpeed = clockSpeed;
         this.resistance = resistance;
         this.cell = cell;
@@ -84,6 +85,10 @@ public class Balloon implements Clockable{
             moveForward();
             return true;
         }
+        if(this.isFinished()){
+            System.out.println("Ballon : " + this.toString() + " destroyed at clock : " + clock);
+            destroy();
+        }
         return false;
     }
 
@@ -110,7 +115,7 @@ public class Balloon implements Clockable{
      */
     @Override
     public String toString(){
-        return "resistance : " + this.resistance + " speed : " + this.clockSpeed + " cell , x: " + this.cell.getCell().getX() + " y: " + this.cell.getCell().getY();
+        return "resistance : " + this.resistance + " speed : " + this.clockSpeed + " cell , x: " + this.cell.getCell().getX() + " y: " + this.cell.getCell().getY() + " id : " + this.getId();
     }
 
 

@@ -12,7 +12,7 @@ public class Game {
     /**Game's clock */
     protected int clock;
     /**Game's balloons */
-    protected Set<Balloon> balloons;
+    protected Set<GameObject> gameObjects;
 
     /**
      * Builds a Game with a given board and balloons number
@@ -21,7 +21,7 @@ public class Game {
      */
     public Game(Board board,int NbBalloons){
         this.clock = 0;
-        this.balloons = new HashSet<Balloon>();
+        this.gameObjects = new HashSet<GameObject>();
 
         List<Path> paths = board.getPaths();
         int pathIndex = 0;
@@ -35,7 +35,7 @@ public class Game {
             int resistance = rng.nextInt(4) + 1; // 1 ~ 4
             
             
-            this.balloons.add(new Balloon(clockSpeed,resistance,cellStart));
+            this.gameObjects.add(new Balloon(clockSpeed,resistance,cellStart));
 
             if(pathIndex + 1 >= pathsNumber){
                 pathIndex = 0;
@@ -51,7 +51,7 @@ public class Game {
      * @return true if the game is finished
     */
     public boolean isFinished(){
-        return balloons.size() == 0;
+        return gameObjects.size() == 0;
     }
 
     /**
@@ -59,20 +59,24 @@ public class Game {
      * @throws NoNextCellException 
     */
     public void loop() throws NoNextCellException{
-        List<Balloon> balloonsToDestroy = new LinkedList<Balloon>();
-        for (Balloon balloon : balloons){
-            balloon.onClock(this.clock);
-            if(balloon.isFinished()){
-                balloonsToDestroy.add(balloon);
+        List<GameObject> gameObjectToDestroy = new LinkedList<GameObject>();
+        for (GameObject gameObject : this.gameObjects){
+            gameObject.onClock(this.clock);
+            if(gameObject.toDestroy()){
+                gameObjectToDestroy.add(gameObject);
             }
-        }
-        for (Balloon balloon : balloonsToDestroy){
-            System.out.println("Balloon destroyed : " + balloon.toString() + " at clock : " + this.clock);
-            balloons.remove(balloon);
-        }
         this.clock++;
+        }
+        for(GameObject gameObject : gameObjectToDestroy){
+            this.DeleteGameObject(gameObject);
+        }
     }
-    public Set<Balloon> getBalloons(){
-        return this.balloons;
+
+    public Set<GameObject> getBalloons(){
+        return this.gameObjects;
+    }
+
+    public void DeleteGameObject(GameObject gameObject){
+        this.gameObjects.remove(gameObject);
     }
 }
