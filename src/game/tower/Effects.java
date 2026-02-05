@@ -16,4 +16,20 @@ public abstract class Effects{
         this.stackable = stackable;
         this.balloon = balloon;
     }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public int getDuration(){
+        return this.duration;
+    }
+
+    public boolean isStackable(){
+        return this.stackable;
+    }
+
+    public Balloon getTarget(){
+        return this.balloon;
+    }
 }
