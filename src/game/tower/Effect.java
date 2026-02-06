@@ -1,20 +1,21 @@
 package game.tower;
+import game.GameObject;
 import game.balloon.*;
-import game.board.*;
-import game.path.*;
+import java.util.*;
 
 
-public abstract class Effects{
+public abstract class Effect extends GameObject {
     private int duration;
     private String name;
     private boolean stackable;
-    private Balloon balloon;
+    private List<Balloon> balloons;
 
-    public Effects(String name, int duration, boolean stackable, Balloon balloon){
+    public Effect(String name, int duration, boolean stackable){
+        super();
         this.name = name;
         this.duration = duration;
         this.stackable = stackable;
-        this.balloon = balloon;
+        this.balloons = new LinkedList<Balloon>();
     }
 
     public String getName(){
@@ -29,9 +30,15 @@ public abstract class Effects{
         return this.stackable;
     }
 
-    public Balloon getTarget(){
-        return this.balloon;
+    public List<Balloon> getTargets(){
+        return this.balloons;
+    }
+
+    public void addTarget(Balloon balloon){
+        this.balloons.add(balloon);
     }
 
     public abstract void applyEffect();
+    
+    public abstract boolean onClock(int clock);
 }

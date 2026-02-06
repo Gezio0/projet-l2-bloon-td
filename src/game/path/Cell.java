@@ -51,4 +51,12 @@ public class Cell {
     public void setEmpty(boolean value){
         this.isEmpty = value;
     }
+
+    public boolean equals(Object o){
+        if(!(o instanceof Cell)){
+            return false;
+        }
+        Cell other = (Cell)o;
+        return other.x == this.x && other.y == this.y;
+    }
 }

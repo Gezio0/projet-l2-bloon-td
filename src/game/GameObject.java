@@ -1,7 +1,7 @@
 package game;
 
 
-public abstract class GameObject implements Clockable {
+public abstract class GameObject {
     private static int gameObjectCounter;
     private int id;
     private boolean destroyed;
@@ -23,7 +23,9 @@ public abstract class GameObject implements Clockable {
     }
 
     public GameObject(){
-        this.id = this.gameObjectCounter;
-        this.gameObjectCounter++;
+        this.id = gameObjectCounter;
+        gameObjectCounter++;
     }
+
+    public abstract boolean onClock(int clock);
 }
