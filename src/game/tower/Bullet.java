@@ -1,7 +1,7 @@
 package game.tower;
 
 import java.util.*;
-/** bullet class for  */
+/** Represent a Tower bullet that can hit or apply effects to a balloon or a group of balloon */
 public class Bullet {
 
     /**
