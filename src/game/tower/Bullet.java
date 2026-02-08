@@ -15,7 +15,7 @@ public class Bullet {
     /**
      * list of effects that this bullet has
      */
-    protected List<Effect> effects;
+    protected List<Effects> effects;
 
     /**
      * builds a bullet with a damage area, a timeLeft and a list of effects
@@ -24,7 +24,7 @@ public class Bullet {
      * @param timeLeft int
      * @param effects List<Effect>
      */
-    public Bullet(int area, int timeLeft, List<Effect> effects) {
+    public Bullet(int area, int timeLeft, List<Effects> effects) {
         this.area = area;
         this.timeLeft = timeLeft;
         this.effects = effects;
@@ -47,7 +47,7 @@ public class Bullet {
     /** get the list of effects of this bullet
      * @return int
      */
-    public List<Effect> getEffects() {
+    public List<Effects> getEffects() {
         return this.effects;
     }
 
