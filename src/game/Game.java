@@ -4,6 +4,7 @@ import game.exception.*;
 import game.path.*;
 import java.util.*;
 import game.balloon.*;
+import game.tower.*;
 
 /**A game of a bloons td game */
 public class Game {
@@ -11,8 +12,10 @@ public class Game {
     protected Board board;
     /**Game's clock */
     protected int clock;
-    /**Game's balloons */
+    /**Game's gameObjects */
     protected Set<GameObject> gameObjects;
+    /**Game's balloons */
+    protected Set<Balloon> balloons;
 
     /**
      * Builds a Game with a given board and balloons number
@@ -22,6 +25,7 @@ public class Game {
     public Game(Board board,int NbBalloons){
         this.clock = 0;
         this.gameObjects = new HashSet<GameObject>();
+        this.balloons = new HashSet<Balloon>();
 
         List<Path> paths = board.getPaths();
         int pathIndex = 0;
@@ -34,8 +38,7 @@ public class Game {
             int clockSpeed = rng.nextInt(40) + 10; // 10 ~ 50
             int resistance = rng.nextInt(4) + 1; // 1 ~ 4
             
-            
-            this.gameObjects.add(new Balloon(clockSpeed,resistance,cellStart));
+            this.addGameObject(new Balloon(clockSpeed,resistance,cellStart));
 
             if(pathIndex + 1 >= pathsNumber){
                 pathIndex = 0;
@@ -51,7 +54,7 @@ public class Game {
      * @return true if the game is finished
     */
     public boolean isFinished(){
-        return gameObjects.size() == 0;
+        return balloons.size() == 0;
     }
 
     /**
@@ -60,23 +63,62 @@ public class Game {
     */
     public void loop() throws NoNextCellException{
         List<GameObject> gameObjectToDestroy = new LinkedList<GameObject>();
+
+        // Clock des gameobjects
         for (GameObject gameObject : this.gameObjects){
             gameObject.onClock(this.clock);
             if(gameObject.toDestroy()){
                 gameObjectToDestroy.add(gameObject);
             }
-        this.clock++;
         }
+
+        // Clock des ballons
+        for (Balloon balloon : this.balloons){
+            balloon.onClock(this.clock);
+            if(balloon.toDestroy()){
+                gameObjectToDestroy.add(balloon);
+            }
+        }
+
+        // Destruction des objets à détruire
         for(GameObject gameObject : gameObjectToDestroy){
             this.DeleteGameObject(gameObject);
         }
+
+        this.clock++;
     }
 
-    public Set<GameObject> getBalloons(){
-        return this.gameObjects;
+    public Set<Balloon> getBalloons(){
+        return this.balloons;
+    }
+
+    public void addGameObject(Balloon o){
+        this.balloons.add(o);
+    }
+
+    public void addGameObject(GameObject o){
+            this.gameObjects.add(o);
     }
 
     public void DeleteGameObject(GameObject gameObject){
-        this.gameObjects.remove(gameObject);
+        if(gameObject instanceof Balloon){
+            this.balloons.remove((Balloon) gameObject);
+        } else {
+            this.gameObjects.remove(gameObject);
+        }
+    }
+
+    public void applyEffectToBalloonOnCells(List<Cell> cells,Effect effect){
+        for(Balloon balloon : this.balloons){
+                CellPath cellPath = balloon.getCell();
+                Cell cellBalloon = cellPath.getCell();
+                for(Cell cellToApply : cells){
+                    if(cellBalloon.equals(cellToApply)){
+                        effect.addTarget(balloon);
+                        effect.onClock(this.clock);
+                    }
+                }
+            }
+        this.addGameObject(effect);
     }
 }

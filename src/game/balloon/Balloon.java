@@ -78,11 +78,14 @@ public class Balloon extends GameObject {
      * if clockSpeed = 6 and clock = 3 then move forward and return true
      * @param clock the current clock of the game (right now)
      * @return
-     * @throws NoNextCellException
      */
-    public boolean onClock(int clock) throws NoNextCellException{
+    public boolean onClock(int clock){
         if (clock%this.clockSpeed == 0){
-            moveForward();
+            try {
+                moveForward();
+            } catch (Exception e){
+                System.out.println(e);
+            }
             return true;
         }
         if(this.isFinished()){
