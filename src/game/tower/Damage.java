@@ -22,7 +22,9 @@ public class Damage extends Effect{
             this.destroy();
         }
     }
-    /*method that allows the effect to be applied every clock cycle  */
+    /**method that allows the effect to be applied every clock cycle  
+    * @return boolean true 
+    */
     public boolean onClock(){
         this.applyEffect();
         return true;
