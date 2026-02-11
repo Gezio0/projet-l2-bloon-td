@@ -17,11 +17,12 @@ public class Balloon extends GameObject {
     protected CellPath cell ;
     /**the original balloon speed */
     protected int originalSpeed ;
-    /**time multiplier to slow the balloon speed */
+    /**time multiplier to slow the balloon speed (initialized to 1)*/
     protected int timeSlower ;
 
     /**
      * Initialize the balloon with its speed, resistance and cell
+     * Initialize timeSlower to 1.
      * @param originalSpeed balloon speed
      * @param resistance balloon hp
      * @param cell balloon current cell
