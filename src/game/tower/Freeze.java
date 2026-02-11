@@ -10,6 +10,7 @@ public class Freeze extends Effect{
         super(name,duration,stackable);
     }
 
+    /*method that applies the effect Freeze (wich stop the balloon) to the balloon list and removes the effect when its durability reaches 0  */
     public void applyEffect(){
         if (this.duration >= 0){
             for (Balloon b: this.balloons){
@@ -24,6 +25,9 @@ public class Freeze extends Effect{
         }
     }
 
+    /**method that allows the effect to be applied every clock cycle  
+    * @return boolean true 
+    */
     public boolean onClock(){
         this.applyEffect();
         return true;

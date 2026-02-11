@@ -10,6 +10,7 @@ public class Slow extends Effect{
         super(name,duration,stackable);
     }
 
+   
     public void applyEffect(){
         if (this.duration >= 0){
             for (Balloon b: this.balloons){
