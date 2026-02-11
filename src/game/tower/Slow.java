@@ -10,6 +10,20 @@ public class Slow extends Effect{
         super(name,duration,stackable);
     }
 
+    public void applyEffect(){
+        if (this.duration >= 0){
+            for (Balloon b: this.balloons){
+                b.setTimeSlower(2);
+            }
+        }
+        else{
+            for (Balloon b: this.balloons){
+                b.setTimeSlower(1);
+            }
+            this.destroy();
+        }
+    }
+
     
 }
 
