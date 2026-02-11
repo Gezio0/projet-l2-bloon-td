@@ -15,19 +15,25 @@ public class Balloon extends GameObject {
     protected int clockSpeed;
     /**the current cell where the balloon is */
     protected CellPath cell ;
-
+    /**the original balloon speed */
+    protected int originalSpeed ;
+    /**time multiplier to slow the balloon speed (initialized to 1)*/
+    protected int timeSlower ;
 
     /**
      * Initialize the balloon with its speed, resistance and cell
-     * @param clockSpeed balloon speed
+     * Initialize timeSlower to 1.
+     * @param originalSpeed balloon speed
      * @param resistance balloon hp
      * @param cell balloon current cell
      */
-    public Balloon(int clockSpeed,int resistance, CellPath cell){
+    public Balloon(int originalSpeed,int resistance, CellPath cell){
         super();
-        this.clockSpeed = clockSpeed;
+        this.clockSpeed = originalSpeed;
         this.resistance = resistance;
         this.cell = cell;
+        this.originalSpeed = originalSpeed;
+        this.timeSlower = 1;
     }
 
     /**
@@ -52,6 +58,30 @@ public class Balloon extends GameObject {
      */
     public CellPath getCell(){
         return this.cell;
+    }
+
+    /**
+     * Get the original speed
+     * @return the original speed
+     */
+    public int getOriginalSpeed(){
+        return this.originalSpeed;
+    }
+
+    /**
+     * Get the time multiplier
+     * @return the time multiplier
+     */
+    public int getTimeSlower(){
+        return this.timeSlower;
+    }
+
+    /**
+     * Set the time slower
+     * @param newTimeSlower new time slower
+     */
+    public void setTimeSlower(int newTimeSlower){
+        this.timeSlower = newTimeSlower;
     }
 
     /**
@@ -80,7 +110,7 @@ public class Balloon extends GameObject {
      * @return
      */
     public boolean onClock(int clock){
-        if (clock%this.clockSpeed == 0){
+        if (clock%(this.clockSpeed*this.timeSlower) == 0){
             try {
                 moveForward();
             } catch (Exception e){
