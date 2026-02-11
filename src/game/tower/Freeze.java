@@ -16,26 +16,6 @@ public class Freeze extends Effect{
                 b.setTimeSlower(999);
             }
         }
-        else{
-            this.destroy();
-        }
         
-
-    }
 }
 
-
-
-
-
-
-
-
-slow 
-set time a 2
-
-pour resset set tme a 1
-
-
-freeze 
-set a 999
