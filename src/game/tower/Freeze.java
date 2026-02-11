@@ -24,6 +24,9 @@ public class Freeze extends Effect{
         }
     }
 
-    
+    public boolean onClock(){
+        this.applyEffect();
+        return true;
+    }
 }
 
