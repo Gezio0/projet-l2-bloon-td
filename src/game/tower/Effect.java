@@ -5,10 +5,10 @@ import java.util.*;
 
 
 public abstract class Effect extends GameObject {
-    private int duration;
-    private String name;
-    private boolean stackable;
-    private List<Balloon> balloons;
+    protected int duration;
+    protected String name;
+    protected boolean stackable;
+    protected List<Balloon> balloons;
 
     public Effect(String name, int duration, boolean stackable){
         super();
