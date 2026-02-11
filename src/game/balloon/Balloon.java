@@ -15,7 +15,10 @@ public class Balloon extends GameObject {
     protected int clockSpeed;
     /**the current cell where the balloon is */
     protected CellPath cell ;
-
+    /**the original balloon speed */
+    protected int originalSpeed ;
+    /**time multiplier to manage the balloon speed */
+    protected int timeMultiplier ;
 
     /**
      * Initialize the balloon with its speed, resistance and cell
