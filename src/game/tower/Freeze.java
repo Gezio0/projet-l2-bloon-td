@@ -16,6 +16,14 @@ public class Freeze extends Effect{
                 b.setTimeSlower(999);
             }
         }
-        
+        else{
+            for (Balloon b: this.balloons){
+                b.setTimeSlower(1);
+            }
+            this.destroy();
+        }
+    }
+
+    
 }
 
