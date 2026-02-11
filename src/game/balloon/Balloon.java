@@ -17,20 +17,22 @@ public class Balloon extends GameObject {
     protected CellPath cell ;
     /**the original balloon speed */
     protected int originalSpeed ;
-    /**time multiplier to manage the balloon speed */
-    protected int timeMultiplier ;
+    /**time multiplier to slow the balloon speed */
+    protected int timeSlower ;
 
     /**
      * Initialize the balloon with its speed, resistance and cell
-     * @param clockSpeed balloon speed
+     * @param originalSpeed balloon speed
      * @param resistance balloon hp
      * @param cell balloon current cell
      */
-    public Balloon(int clockSpeed,int resistance, CellPath cell){
+    public Balloon(int originalSpeed,int resistance, CellPath cell){
         super();
-        this.clockSpeed = clockSpeed;
+        this.clockSpeed = originalSpeed;
         this.resistance = resistance;
         this.cell = cell;
+        this.originalSpeed = originalSpeed;
+        this.timeSlower = 1;
     }
 
     /**
@@ -69,8 +71,8 @@ public class Balloon extends GameObject {
      * Get the time multiplier
      * @return the time multiplier
      */
-    public int getTimeMultipier(){
-        return this.timeMultiplier;
+    public int getTimeSlower(){
+        return this.timeSlower;
     }
 
     /**
@@ -99,7 +101,7 @@ public class Balloon extends GameObject {
      * @return
      */
     public boolean onClock(int clock){
-        if (clock%this.clockSpeed == 0){
+        if (clock%(this.clockSpeed*this.timeSlower) == 0){
             try {
                 moveForward();
             } catch (Exception e){
