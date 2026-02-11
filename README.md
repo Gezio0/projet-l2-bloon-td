@@ -185,8 +185,8 @@ Nous avons pris le temps pour bien se mettre d'accord sur l'uml, nous avons rajo
 ### Difficultés rencontrées
 La Gestion des effets (surtout le Slow) nous a posé problème. Nous avons passé beaucoup de temps a réflechir comment ralentir un objet sans le sortir de son rythme de jeu. Etant donné qu'on utilise des modulo pour déterminer le tour de chaque objet comment temporairement changer son modulo pour diminuer le nombre de tour que peut jouer un objet dans une durée donnée. Et comment ensuite après un certain nombre de tours comment lui redonner sa vitesse originelle.
 ### Objectifs pour la semaine et répartition du travail par membre
-Merwan : Effects, Slow et Freeze .
-Yanis : modifications de balloon et damage et ses tests
+Merwan : Effects,damage, Slow et Freeze .
+Yanis : modifications de balloon et tests
 J-M : Tower et bullet et les tests
 Noé : modifications de game et recherche d'un systeme de Hachage pour crééer un ensemble contenant tout nos objets (ballons, tower, etc)
 
