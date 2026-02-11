@@ -58,6 +58,22 @@ public class Balloon extends GameObject {
     }
 
     /**
+     * Get the original speed
+     * @return the original speed
+     */
+    public int getOriginalSpeed(){
+        return this.originalSpeed;
+    }
+
+    /**
+     * Get the time multiplier
+     * @return the time multiplier
+     */
+    public int getTimeMultipier(){
+        return this.timeMultiplier;
+    }
+
+    /**
      * Move the balloon to the next cell of its path
      * @throws NoNextCellException if there's no next cell
      */
