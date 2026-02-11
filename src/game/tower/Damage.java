@@ -10,6 +10,7 @@ public class Damage extends Effect{
         this.damage = damage;
     }
 
+    /*method that applies the effect Damage to the balloon list and removes the effect when its durability reaches 0  */
     public void applyEffect(){
         if (this.duration >= 0){
             for(Balloon b : this.balloons){
@@ -21,7 +22,7 @@ public class Damage extends Effect{
             this.destroy();
         }
     }
-
+    /*method that allows the effect to be applied every clock cycle  */
     public boolean onClock(){
         this.applyEffect();
         return true;
