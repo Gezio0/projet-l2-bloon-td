@@ -76,6 +76,14 @@ public class Balloon extends GameObject {
     }
 
     /**
+     * Set the time slower
+     * @param newTimeSlower new time slower
+     */
+    public void setTimeSlower(int newTimeSlower){
+        this.timeSlower = newTimeSlower;
+    }
+
+    /**
      * Move the balloon to the next cell of its path
      * @throws NoNextCellException if there's no next cell
      */
