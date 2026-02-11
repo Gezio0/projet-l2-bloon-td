@@ -193,10 +193,22 @@ Noé : modifications de game et recherche d'un systeme de Hachage pour crééer 
 ## Semaine 6
 
 ### Ce qui a été réalisé
+![alt text](images/UMLS6p1.png)
+![alt text](images/UMLS6p2.png)
+
+Nous avons implémentés toutes les fonctionnalités auxquelles nous avons réfléchis la semaine dernière. Nous avons aussi aussi changé la structure générale du projet en remplaçant l'interface Clockable par une classe abstraite gameObject qui gère tous les objets du jeu (Tower, Balloon, Effect ...).
+
 
 ### Difficultés rencontrées
+Etant donné le temps passé la semaine dernière sur l'UML et le travail de réflexion collectif, nous n'avons rencontrés aucune difficulté à coder la plupart de ce qui était prévu, cependant nous avons tout de même rencontrés quelques difficultés.
+
+Sur la méthode range de la classe tower, nous n'avions pas réfléchi à la manière d'accéder aux cellules voisines dans la portée, donc il a fallu trouver une solution.
+
+En ce qui concerne la partie sur la nouvelle classe abstraite, il a fallu se documenter pour savoir comment rendre efficacement un objet hashable.
 
 ### Objectifs pour la semaine et répartition du travail par membre
+
+Finaliser les tests pour toute l'équipe, tout mettre en commun, tester, puis faire les mains et le livrable.
 
 ## Semaine 7
 
