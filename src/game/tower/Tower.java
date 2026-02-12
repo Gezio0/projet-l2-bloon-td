@@ -1,5 +1,6 @@
 package game.tower;
-
+import game.Game;
+import game.balloon.Balloon;
 import game.path.*;
 import java.util.*;
 
@@ -19,6 +20,9 @@ public class Tower {
     protected List<Path> paths;
     /**List of cell in range of this tower */
     protected List<Cell> cellInRange;
+    /** */
+    protected Game game;
+
 
     /** builds a tower with a range, a cost, a bullet and a cell
      * @param range int
@@ -26,15 +30,17 @@ public class Tower {
      * @param bullet Bullet
      * @param cell Cell
      * @param paths List<Path>
+     * 
      *
      * 
      */
-    public Tower(int range, int cost, Bullet bullet,Cell cell,List<Path> paths) {
+    public Tower(int range, int cost, Bullet bullet,Cell cell,List<Path> paths,Game game) {
         this.range = range;
         this.cost = cost;
         this.bullet = bullet;
         this.cell = cell;
         this.cellInRange = new ArrayList<Cell>();
+        this.game = game;
         int maxX = this.cell.getX()+this.range;
         int maxY = this.cell.getY()+this.range;
         int minX = this.cell.getX()+this.range;
@@ -74,7 +80,18 @@ public class Tower {
      * @return Cell
      */
     protected Cell isInRange(){
+        Set<Balloon> balloons = this.game.getBalloons();
+        Balloon balloonTargeted = null;
+        for (int i = 0; i<this.cellInRange.size();i++){
+            for(Balloon balloon : balloons){
 
+                // pas logique que balloon.getCell() renvoi un CellPath ???/?/??§§§!!!
+                if (balloonTargeted!= null && balloon.getCell().getCell().equals(this.cellInRange.get(i))){
+                    if()
+                }
+            }
+
+        }
     }
     public void shoot(){
 

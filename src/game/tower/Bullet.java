@@ -51,4 +51,16 @@ public class Bullet {
         return this.effects;
     }
 
+    /** */
+    public boolean onClock(){
+        int time = this.timeLeft;
+        if (!(this.timeLeft==0)){
+            this.timeLeft--;
+            return false;
+       } 
+       this.timeLeft = time;
+       return true;
+
+    }
+
 }
