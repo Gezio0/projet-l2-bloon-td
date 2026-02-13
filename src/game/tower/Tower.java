@@ -4,7 +4,7 @@ import game.GameObject;
 import game.balloon.Balloon;
 import game.path.*;
 import java.util.*;
-import java.math.*;
+/**represents a tower in the game that can shoot */
 public class Tower extends GameObject{
     /**
      * range of this tower, if a balloon is inside this range, then the tower can
@@ -21,7 +21,7 @@ public class Tower extends GameObject{
     protected List<Path> paths;
     /**List of cell in range of this tower */
     protected List<Cell> cellInRange;
-    /** */
+    /**the current game*/
     protected Game game;
     /**time before the tower can shoot an other time*/
     protected int reloadTime;
@@ -117,6 +117,13 @@ public class Tower extends GameObject{
         }
         return balloonTargeted;
     }
+    /**attemps to fire a projectile at a target
+     * if a target is found, it creates a new bullet with the properties of 
+     * the current tower's bullet
+     * @return a new Bullet if a target is found,
+     * else null.
+     * 
+     */
     public Bullet shoot(){
         Balloon target= this.isInRange();
         Bullet projectile = null;
@@ -127,9 +134,21 @@ public class Tower extends GameObject{
         return projectile;
     }
 
+    /**updates the tower's state every game tick
+     * it is checking if the tower is ready to shoot or not
+     * @param int the current clock of the game
+     * @return true if this tower is ready else false
+    */
     @Override
     public boolean onClock(int clock) {
-        
+        if (clock%this.reloadTime==0){
+            Bullet proj = this.shoot();
+            if (proj!=null){
+                this.game.addGameObject(proj);
+                return true;
+            }
+        }
+        return false;
     }
 
     
