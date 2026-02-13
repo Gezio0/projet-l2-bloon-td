@@ -58,7 +58,6 @@ public class Bullet {
             this.timeLeft--;
             return false;
        } 
-       this.timeLeft = time;
        return true;
 
     }

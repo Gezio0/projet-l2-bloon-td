@@ -3,7 +3,7 @@ import game.Game;
 import game.balloon.Balloon;
 import game.path.*;
 import java.util.*;
-
+import java.math.*;
 public class Tower {
     /**
      * range of this tower, if a balloon is inside this range, then the tower can
@@ -74,6 +74,18 @@ public class Tower {
     public Bullet getBullet() {
         return bullet;
     }
+
+    /**return the distance of a balloon and a cell pathpath
+     *distance : sqrt((LastCellPathX-BalloonX)²+(LastCellPathY-BalloonY²). 
+     * @param b1
+     * @param lastCellPath
+     * @return double
+     */
+    private double distance(Balloon b1,CellPath lastCellPath){
+        double b1ToLastCellX = lastCellPath.getCell().getX()-b1.getCell().getCell().getX();
+        double b1ToLastCellY = lastCellPath.getCell().getY()-b1.getCell().getCell().getY();
+        return Math.sqrt(((b1ToLastCellX*b1ToLastCellX)+(b1ToLastCellY*b1ToLastCellY)));
+    }
     /**check if a balloon is in range, if it is then it will 
      * return the balloon that is the closest to end the path,
      * if it is not in range, then it will return null
@@ -82,16 +94,23 @@ public class Tower {
     protected Cell isInRange(){
         Set<Balloon> balloons = this.game.getBalloons();
         Balloon balloonTargeted = null;
-        for (int i = 0; i<this.cellInRange.size();i++){
-            for(Balloon balloon : balloons){
+        double distanceMin = Double.MAX_VALUE;
+        for(Balloon b : balloons){
 
-                // pas logique que balloon.getCell() renvoi un CellPath ???/?/??§§§!!!
-                if (balloonTargeted!= null && balloon.getCell().getCell().equals(this.cellInRange.get(i))){
-                    if()
+            Cell cell = b.getCell().getCell();
+            if(this.cellInRange.contains(cell)){
+
+                for(Path p : this.paths){
+                    CellPath lasCellPath = p.getLastCell();
+                    double currentDistance = this.distance(b, lasCellPath);
+                    if (currentDistance<distanceMin){
+                        distanceMin = currentDistance;
+                        balloonTargeted = b;
+                    }
                 }
             }
-
         }
+        return balloonTargeted.getCell().getCell();
     }
     public void shoot(){
 
