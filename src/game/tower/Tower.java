@@ -86,7 +86,7 @@ public class Tower extends GameObject{
      * @param lastCellPath
      * @return double
      */
-    private double distance(Balloon b1,CellPath lastCellPath){
+    protected double distance(Balloon b1,CellPath lastCellPath){
         double b1ToLastCellX = lastCellPath.getCell().getX()-b1.getCell().getCell().getX();
         double b1ToLastCellY = lastCellPath.getCell().getY()-b1.getCell().getCell().getY();
         return Math.sqrt(((b1ToLastCellX*b1ToLastCellX)+(b1ToLastCellY*b1ToLastCellY)));
@@ -128,7 +128,7 @@ public class Tower extends GameObject{
         Balloon target= this.isInRange();
         Bullet projectile = null;
         if(target!=null){
-            projectile = new Bullet(this.bullet.getArea(),this.bullet.getTimeLeft(),this.bullet.getEffects());
+            projectile = new Bullet(this.bullet.getArea(),this.bullet.getTimeLeft(),this.bullet.getEffects(),this.game);
             projectile.addTarget(target);
         }
         return projectile;

@@ -20,7 +20,7 @@ public class Bullet extends GameObject{
      */
     protected List<Effect> effects;
 
-    /** */
+    /**the initial target of this bullet*/
     protected Balloon target;
 
     /**the current game*/
@@ -54,7 +54,9 @@ public class Bullet extends GameObject{
     public int getTimeLeft() {
         return this.timeLeft;
     }
-
+    /**return all the balloons in the area of the bullet when it will hit the initial target
+     * @return Set<Balloon> all the balloons that are targeted.
+     */
     protected Set<Balloon> finalTargets(){
         Set<Balloon> balloonsTargeted = new HashSet<>();
         int maxX = this.target.getCell().getCell().getX()+this.area;
@@ -78,18 +80,31 @@ public class Bullet extends GameObject{
         return this.effects;
     }
 
-    /***/
+    /**Updates the bullet's state every game tick
+     * if the bullet has time left before hitting a target, the timeleft decrease,
+     * when there is no time left it applies all the effects balloons in the area of this bullet.
+     * @return 
+    */
     @Override
     public boolean onClock(int clock){
-        if (!(this.timeLeft==0)){
+        if ((this.timeLeft>0)){
             this.timeLeft--;
-            return false;
-       } 
+            if (this.timeLeft==0){
+                Set<Balloon> balloonsTargeted = this.finalTargets();
+                for(Balloon b : balloonsTargeted){
+                    for(Effect effect : this.effects){
+                        effect.addTarget(b);
+                    }
+                }
+                this.destroy();
+                return true;
+            } 
+        }
+        return false;
+        }
+        
 
-       return true;
-
-    }
-    /** */
+    /**add a target to the balloon */
     public void addTarget(Balloon b){
         this.target = b;
     }
