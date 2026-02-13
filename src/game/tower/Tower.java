@@ -1,10 +1,11 @@
 package game.tower;
 import game.Game;
+import game.GameObject;
 import game.balloon.Balloon;
 import game.path.*;
 import java.util.*;
 import java.math.*;
-public class Tower {
+public class Tower extends GameObject{
     /**
      * range of this tower, if a balloon is inside this range, then the tower can
      * hit it
@@ -22,6 +23,9 @@ public class Tower {
     protected List<Cell> cellInRange;
     /** */
     protected Game game;
+    /**time before the tower can shoot an other time*/
+    protected int reloadTime;
+
 
 
     /** builds a tower with a range, a cost, a bullet and a cell
@@ -34,10 +38,11 @@ public class Tower {
      *
      * 
      */
-    public Tower(int range, int cost, Bullet bullet,Cell cell,List<Path> paths,Game game) {
+    public Tower(int range, int cost, Bullet bullet,int reloadTime,Cell cell,List<Path> paths,Game game) {
         this.range = range;
         this.cost = cost;
         this.bullet = bullet;
+        this.reloadTime = reloadTime;
         this.cell = cell;
         this.cellInRange = new ArrayList<Cell>();
         this.game = game;
@@ -89,16 +94,16 @@ public class Tower {
     /**check if a balloon is in range, if it is then it will 
      * return the balloon that is the closest to end the path,
      * if it is not in range, then it will return null
-     * @return Cell
+     * @return balloon
      */
-    protected Cell isInRange(){
+    protected Balloon isInRange(){
         Set<Balloon> balloons = this.game.getBalloons();
         Balloon balloonTargeted = null;
         double distanceMin = Double.MAX_VALUE;
         for(Balloon b : balloons){
 
-            Cell cell = b.getCell().getCell();
-            if(this.cellInRange.contains(cell)){
+            Cell bCell = b.getCell().getCell();
+            if(this.cellInRange.contains(bCell)){
 
                 for(Path p : this.paths){
                     CellPath lasCellPath = p.getLastCell();
@@ -110,10 +115,23 @@ public class Tower {
                 }
             }
         }
-        return balloonTargeted.getCell().getCell();
+        return balloonTargeted;
     }
-    public void shoot(){
+    public Bullet shoot(){
+        Balloon target= this.isInRange();
+        Bullet projectile = null;
+        if(target!=null){
+            projectile = new Bullet(this.bullet.getArea(),this.bullet.getTimeLeft(),this.bullet.getEffects());
+            projectile.addTarget(target);
+        }
+        return projectile;
+    }
 
+    @Override
+    public boolean onClock(int clock) {
+        
     }
+
+    
 
 }
