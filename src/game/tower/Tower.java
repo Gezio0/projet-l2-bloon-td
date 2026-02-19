@@ -127,7 +127,7 @@ public class Tower extends GameObject{
         Balloon target= this.isInRange(balloons);
         Bullet projectile = null;
         if(target!=null){
-            projectile = new Bullet(this.bullet.getArea(),this.bullet.getTimeLeft(),this.bullet.getEffects(),this.game);
+            projectile = new Bullet(this.bullet.getArea(),this.bullet.getTimeLeft(),this.bullet.getEffects());
             projectile.addTarget(target);
         }
         return projectile;

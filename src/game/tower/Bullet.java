@@ -34,7 +34,7 @@ public class Bullet extends GameObject{
      * @param timeLeft int
      * @param effects List<Effect>
      */
-    public Bullet(int area, int timeLeft, List<Effect> effects,Game game) {
+    public Bullet(int area, int timeLeft, List<Effect> effects) {
         this.area = area;
         this.timeLeft = timeLeft;
         this.effects = effects;

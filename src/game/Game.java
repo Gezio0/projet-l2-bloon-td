@@ -38,9 +38,9 @@ public class Game {
             CellPath cellStart = paths.get(pathIndex).getFirstCell();
             int clockSpeed = rng.nextInt(40) + 10; // 10 ~ 50
             int resistance = rng.nextInt(4) + 1; // 1 ~ 4
-            
-            this.addGameObject(new Balloon(clockSpeed,resistance,cellStart));
-
+            Balloon balloon = new Balloon(clockSpeed,resistance,cellStart);
+            this.addGameObject(balloon);
+            this.balloons.add(balloon);
             if(pathIndex + 1 >= pathsNumber){
                 pathIndex = 0;
             } else {
@@ -80,7 +80,7 @@ public class Game {
                 gameObjectToDestroy.add(balloon);
             }
         }*/
-       for(Tower t:Set<Tower> towers){
+       for(Tower t: this.towers){
             if(t.onClock(this.clock)){
                 Bullet bullet = t.shoot(this.balloons);
                 this.addGameObject(bullet);
