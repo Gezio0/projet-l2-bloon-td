@@ -4,6 +4,8 @@ import game.path.*;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.beans.Transient;
+
 public class BalloonTest{
 
     private Balloon b1;
@@ -60,6 +62,21 @@ public class BalloonTest{
     public void isDeadTestFalse(){
         this.b1.decreaseResistance(2);
         assertFalse(this.b1.getResistance()<=0);
+    }
+
+    @Test
+    public void activateOnClock(){
+        this.b1.onClock(25);
+        assertTrue(this.b1.isFinished());
+    }
+
+    @Test
+    public void activateOnClockWhenSpeedIsSlowed(){
+        this.b1.setTimeSlower(2);
+        this.b1.onClock(25);
+        assertFalse(this.b1.isFinished());
+        this.b1.onClock(50);
+        assertTrue(this.b1.isFinished());
     }
 
 }
