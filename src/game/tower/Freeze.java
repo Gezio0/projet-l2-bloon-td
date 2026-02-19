@@ -15,11 +15,13 @@ public class Freeze extends Effect{
         if (this.duration >= 0){
             for (Balloon b: this.balloons){
                 b.setTimeSlower(999);
+                System.out.println("Le ballon "+ b+ " est gelé pour " + this.duration + " tours");
             }
         }
         else{
             for (Balloon b: this.balloons){
                 b.setTimeSlower(1);
+                System.out.println("Le ballon "+ b+ " n'est plus gelé");
             }
             this.destroy();
         }

@@ -15,7 +15,10 @@ public class Damage extends Effect{
         if (this.duration >= 0){
             for(Balloon b : this.balloons){
                 b.decreaseResistance(this.damage);
-                
+                System.out.println("Le ballon "+ b+ " a reçu "+ this.damage+ " dégats");
+                if(b.isDead()){
+                    System.out.println("Le ballon "+ b+ " est détruit");
+                }
             }
         }
         else{

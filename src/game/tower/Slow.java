@@ -15,6 +15,7 @@ public class Slow extends Effect{
         if (this.duration >= 0){
             for (Balloon b: this.balloons){
                 b.setTimeSlower(2);
+                System.out.println("Le ballon "+ b+ " est ralenti pour " + this.duration + " tours");
             }
         }
         else{
