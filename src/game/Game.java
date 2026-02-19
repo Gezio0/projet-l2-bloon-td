@@ -16,7 +16,8 @@ public class Game {
     protected Set<GameObject> gameObjects;
     /**Game's balloons */
     protected Set<Balloon> balloons;
-
+    /**Game's towers */
+    protected Set<Tower> towers;
     /**
      * Builds a Game with a given board and balloons number
      * @param board Game's board
@@ -26,7 +27,7 @@ public class Game {
         this.clock = 0;
         this.gameObjects = new HashSet<GameObject>();
         this.balloons = new HashSet<Balloon>();
-
+        this.towers = new HashSet<>();
         List<Path> paths = board.getPaths();
         int pathIndex = 0;
         int pathsNumber = paths.size();
@@ -73,12 +74,19 @@ public class Game {
         }
 
         // Clock des ballons
-        for (Balloon balloon : this.balloons){
+       /** for (Balloon balloon : this.balloons){
             balloon.onClock(this.clock);
             if(balloon.toDestroy()){
                 gameObjectToDestroy.add(balloon);
             }
-        }
+        }*/
+       for(Tower t:Set<Tower> towers){
+            if(t.onClock(this.clock)){
+                Bullet bullet = t.shoot(this.balloons);
+                this.addGameObject(bullet);
+            }
+       }
+
 
         // Destruction des objets à détruire
         for(GameObject gameObject : gameObjectToDestroy){
