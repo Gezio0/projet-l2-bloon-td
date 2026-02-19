@@ -15,11 +15,13 @@ public class Freeze extends Effect{
         if (this.duration >= 0){
             for (Balloon b: this.balloons){
                 b.setTimeSlower(999);
+                System.out.println("Le ballon "+ b+ " est gelé pour " + this.duration + " tours");
             }
         }
         else{
             for (Balloon b: this.balloons){
                 b.setTimeSlower(1);
+                System.out.println("Le ballon "+ b+ " n'est plus gelé");
             }
             this.destroy();
         }
@@ -28,8 +30,9 @@ public class Freeze extends Effect{
     /**method that allows the effect to be applied every clock cycle  
     * @return boolean true 
     */
-    public boolean onClock(){
+    public boolean onClock(int clock){
         this.applyEffect();
+        this.duration = this.duration - 1;
         return true;
     }
 }
