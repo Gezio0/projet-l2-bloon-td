@@ -15,7 +15,7 @@ public class Damage extends Effect{
         if (this.duration >= 0){
             for(Balloon b : this.balloons){
                 b.decreaseResistance(this.damage);
-                this.duration = this.duration - 1;
+                
             }
         }
         else{
@@ -25,8 +25,9 @@ public class Damage extends Effect{
     /**method that allows the effect to be applied every clock cycle  
     * @return boolean true 
     */
-    public boolean onClock(){
+    public boolean onClock(int clock){
         this.applyEffect();
+        this.duration = this.duration - 1;
         return true;
     }
 }
