@@ -23,8 +23,9 @@ public class Bullet extends GameObject{
     /**the initial target of this bullet*/
     protected Balloon target;
 
-    /**the current game*/
-    protected Game game;
+    /**the set of balloons that are currently in the game */
+    protected Set<Balloon> balloons;
+
 
     /**
      * builds a bullet with a damage area, a timeLeft and a list of effects
@@ -38,7 +39,7 @@ public class Bullet extends GameObject{
         this.timeLeft = timeLeft;
         this.effects = effects;
         this.target = null;
-        this.game = game;
+        
     }
 
     /** get the area damage of this bullet
@@ -54,6 +55,10 @@ public class Bullet extends GameObject{
     public int getTimeLeft() {
         return this.timeLeft;
     }
+    /** set a list of balloons that are currently in the game */
+    public void setBalloons(Set<Balloon> b){
+        this.balloons = b;
+    }
     /**return all the balloons in the area of the bullet when it will hit the initial target
      * @return Set<Balloon> all the balloons that are targeted.
      */
@@ -63,7 +68,7 @@ public class Bullet extends GameObject{
         int maxY = this.target.getCell().getCell().getY()+this.area;
         int minX = this.target.getCell().getCell().getX()-this.area;
         int minY = this.target.getCell().getCell().getY()-this.area;
-        for(Balloon b:this.game.getBalloons()){
+        for(Balloon b:this.balloons){
             int balloonX = b.getCell().getCell().getX();
             int balloonY = b.getCell().getCell().getY();
             if(balloonX>=minX&&balloonX<=maxX&&balloonY>=minY&&balloonY<=maxY){
