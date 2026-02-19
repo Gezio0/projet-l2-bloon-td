@@ -16,7 +16,8 @@ public class Game {
     protected Set<GameObject> gameObjects;
     /**Game's balloons */
     protected Set<Balloon> balloons;
-
+    /**Game's towers */
+    protected Set<Tower> towers;
     /**
      * Builds a Game with a given board and balloons number
      * @param board Game's board
@@ -26,7 +27,7 @@ public class Game {
         this.clock = 0;
         this.gameObjects = new HashSet<GameObject>();
         this.balloons = new HashSet<Balloon>();
-
+        this.towers = new HashSet<>();
         List<Path> paths = board.getPaths();
         int pathIndex = 0;
         int pathsNumber = paths.size();
@@ -37,9 +38,9 @@ public class Game {
             CellPath cellStart = paths.get(pathIndex).getFirstCell();
             int clockSpeed = rng.nextInt(40) + 10; // 10 ~ 50
             int resistance = rng.nextInt(4) + 1; // 1 ~ 4
-            
-            this.addGameObject(new Balloon(clockSpeed,resistance,cellStart));
-
+            Balloon balloon = new Balloon(clockSpeed,resistance,cellStart);
+            this.addGameObject(balloon);
+            this.balloons.add(balloon);
             if(pathIndex + 1 >= pathsNumber){
                 pathIndex = 0;
             } else {
@@ -73,12 +74,19 @@ public class Game {
         }
 
         // Clock des ballons
-        for (Balloon balloon : this.balloons){
+       /** for (Balloon balloon : this.balloons){
             balloon.onClock(this.clock);
             if(balloon.toDestroy()){
                 gameObjectToDestroy.add(balloon);
             }
-        }
+        }*/
+       for(Tower t: this.towers){
+            if(t.onClock(this.clock)){
+                Bullet bullet = t.shoot(this.balloons);
+                this.addGameObject(bullet);
+            }
+       }
+
 
         // Destruction des objets à détruire
         for(GameObject gameObject : gameObjectToDestroy){
@@ -92,6 +100,10 @@ public class Game {
         return this.balloons;
     }
 
+    public void setTower(Tower t){
+        this.towers.add(t);
+    }
+    
     public void addGameObject(Balloon o){
         this.balloons.add(o);
     }

@@ -21,8 +21,6 @@ public class Tower extends GameObject{
     protected List<Path> paths;
     /**List of cell in range of this tower */
     protected List<Cell> cellInRange;
-    /**the current game*/
-    protected Game game;
     /**time before the tower can shoot an other time*/
     protected int reloadTime;
 
@@ -45,7 +43,6 @@ public class Tower extends GameObject{
         this.reloadTime = reloadTime;
         this.cell = cell;
         this.cellInRange = new ArrayList<Cell>();
-        this.game = game;
         int maxX = this.cell.getX()+this.range;
         int maxY = this.cell.getY()+this.range;
         int minX = this.cell.getX()+this.range;
@@ -94,10 +91,10 @@ public class Tower extends GameObject{
     /**check if a balloon is in range, if it is then it will 
      * return the balloon that is the closest to end the path,
      * if it is not in range, then it will return null
-     * @return balloon
+     * @param Set<Balloon> balloons that are currently in the game
+     * @return balloon targeted
      */
-    protected Balloon isInRange(){
-        Set<Balloon> balloons = this.game.getBalloons();
+    protected Balloon isInRange(Set<Balloon> balloons){
         Balloon balloonTargeted = null;
         double distanceMin = Double.MAX_VALUE;
         for(Balloon b : balloons){
@@ -120,15 +117,17 @@ public class Tower extends GameObject{
     /**attemps to fire a projectile at a target
      * if a target is found, it creates a new bullet with the properties of 
      * the current tower's bullet
+     * @param Set<Balloon> balloons that are currently in the game
      * @return a new Bullet if a target is found,
      * else null.
      * 
+     * 
      */
-    public Bullet shoot(){
-        Balloon target= this.isInRange();
+    public Bullet shoot(Set<Balloon>balloons){
+        Balloon target= this.isInRange(balloons);
         Bullet projectile = null;
         if(target!=null){
-            projectile = new Bullet(this.bullet.getArea(),this.bullet.getTimeLeft(),this.bullet.getEffects(),this.game);
+            projectile = new Bullet(this.bullet.getArea(),this.bullet.getTimeLeft(),this.bullet.getEffects());
             projectile.addTarget(target);
         }
         return projectile;
@@ -142,14 +141,11 @@ public class Tower extends GameObject{
     @Override
     public boolean onClock(int clock) {
         if (clock%this.reloadTime==0){
-            Bullet proj = this.shoot();
-            if (proj!=null){
-                this.game.addGameObject(proj);
                 return true;
-            }
         }
         return false;
     }
+
 
     
 
