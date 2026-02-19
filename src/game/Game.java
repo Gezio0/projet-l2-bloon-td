@@ -100,6 +100,10 @@ public class Game {
         return this.balloons;
     }
 
+    public void setTower(Tower t){
+        this.towers.add(t);
+    }
+    
     public void addGameObject(Balloon o){
         this.balloons.add(o);
     }
