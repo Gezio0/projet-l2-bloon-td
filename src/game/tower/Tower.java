@@ -142,11 +142,7 @@ public class Tower extends GameObject{
     @Override
     public boolean onClock(int clock) {
         if (clock%this.reloadTime==0){
-            Bullet proj = this.shoot();
-            if (proj!=null){
-                this.game.addGameObject(proj);
                 return true;
-            }
         }
         return false;
     }
