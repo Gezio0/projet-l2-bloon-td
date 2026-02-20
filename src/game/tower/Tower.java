@@ -42,6 +42,7 @@ public class Tower extends GameObject{
         this.bullet = bullet;
         this.reloadTime = reloadTime;
         this.cell = cell;
+        this.paths = paths;
         this.cellInRange = new ArrayList<Cell>();
         int maxX = this.cell.getX()+this.range;
         int maxY = this.cell.getY()+this.range;
