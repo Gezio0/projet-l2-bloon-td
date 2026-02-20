@@ -61,8 +61,8 @@ public class TowerTest {
     public void shootNotInRangeTest(){
         Balloon balloonTarget = new Balloon(10,2,this.paths.getFirst().getFirstCell());
         this.balloons.add(balloonTarget);
-        List<Bullet> b = this.tower.shoot(this.balloons);
-        assertEquals(b.size(),0);
+        Bullet b = this.tower.shoot(this.balloons);
+        assertEquals(b.getTarget(),null);
     }
     @Test
     public void shootInRangeTest()throws NoNextCellException{
@@ -70,9 +70,8 @@ public class TowerTest {
         this.balloons.add(balloonTarget);
         balloonTarget.moveForward();
         balloonTarget.moveForward();
-        List<Bullet> b = this.tower.shoot(this.balloons);
-        assertEquals(b.size(),1);
-        assertEquals(b.get(0).target,balloonTarget);
+        Bullet b = this.tower.shoot(this.balloons);
+        assertEquals(b.target,balloonTarget);
     }
     
     @Test

@@ -146,13 +146,12 @@ public class Tower extends GameObject{
      * 
      * 
      */
-    public List<Bullet> shoot(Set<Balloon>balloons){// return a list to potentially extend this class for a tower who shoot multiple bullets
+    public Bullet shoot(Set<Balloon>balloons){
         Balloon target= this.isInRange(balloons);
-        List<Bullet> projectile = new ArrayList<>();
+        Bullet projectile = new Bullet(this.bullet.getArea(),this.bullet.getTimeLeft(),this.bullet.getEffects());
         if(target!=null){
-            projectile.add(new Bullet(this.bullet.getArea(),this.bullet.getTimeLeft(),this.bullet.getEffects()));
-            projectile.get(0).setBalloons(balloons);
-            projectile.get(0).addTarget(target);
+            projectile.setBalloons(balloons);
+            projectile.addTarget(target);
         }
         return projectile;
     }
