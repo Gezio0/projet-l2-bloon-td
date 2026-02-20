@@ -1,6 +1,5 @@
 package game.tower;
 
-import game.Game;
 import game.GameObject;
 import game.balloon.*;
 import java.util.*;

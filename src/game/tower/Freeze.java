@@ -1,7 +1,5 @@
 package game.tower;
-import game.GameObject;
 import game.balloon.*;
-import java.util.*;
 
 public class Freeze extends Effect{
     
@@ -11,33 +9,27 @@ public class Freeze extends Effect{
     }
 
     /*method that applies the effect Freeze (wich stop the balloon) to the balloon list and removes the effect when its durability reaches 0  */
-    public void applyEffect(){
+    public void applyEffect(int clock){
         if (this.duration >= 0){
             for (Balloon b: this.balloons){
                 b.setTimeSlower(999);
-                System.out.println("Le ballon "+ b+ " est gelé pour " + this.duration + " tours");
+                if (this.isFirstTick){
+                    System.out.println("Balloon "+ b+ " is frozen for " + this.duration + " turn : " + clock);
+                }
             }
+            this.isFirstTick = false;
         }
         else{
             for (Balloon b: this.balloons){
                 b.setTimeSlower(1);
-                System.out.println("Le ballon "+ b+ " n'est plus gelé");
+                System.out.println("Balloon "+ b+ " is no longer frozen : " + clock);
             }
             this.destroy();
         }
     }
-
-    /**method that allows the effect to be applied every clock cycle  
-    * @return boolean true 
-    */
-    public boolean onClock(int clock){
-        this.applyEffect();
-        this.duration = this.duration - 1;
-        return true;
-    }
     
 
-    /**Copy a Freeze effect in order ton have new bullets */
+    /**Copy a Freeze effect in order to have new bullets */
     @Override
     public Effect copy(){
         return new Freeze(this.name,this.duration,this.stackable);
