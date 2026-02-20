@@ -15,7 +15,7 @@ public class BulletTest {
     public void before() throws TooMuchPathsException,NoNextCellException{
         this.effects = new ArrayList<>();
         this.effects.add(new Damage("damage",0, false, 1));
-        this.bullet = new Bullet(1, 10, this.effects);
+        this.bullet = new Bullet(0, 10, this.effects);
 
         this.balloons = new HashSet<>();
         
@@ -34,7 +34,7 @@ public class BulletTest {
     }
     @Test
     public void getAreaTest(){
-        assertEquals(this.bullet.getArea(),1);
+        assertEquals(this.bullet.getArea(),0);
     }
     @Test
     public void getTimeLeftTest(){
@@ -63,12 +63,11 @@ public class BulletTest {
         assertEquals(b, this.bullet.getTarget());
     }
     @Test 
-    public void onClockTest()throws NoNextCellException{
+    public void onClockOneBallonWithOutAreaTest()throws NoNextCellException{
         Balloon balloon = new Balloon(10, 2, this.paths.getFirst().getFirstCell());
         this.balloons.add(balloon);
         this.bullet.setBalloons(this.balloons);
         balloon.moveForward();
-        
         this.bullet.addTarget(balloon);
         for (int i = 0; i < 10; i++) { 
             if(this.bullet.timeLeft>1){
@@ -85,6 +84,38 @@ public class BulletTest {
         this.effects.getFirst().onClock(1);
         assertEquals(1, balloon.getResistance());
 
+
     }
+     @Test 
+    public void onClockTwoBalloonWithOutAreaTest()throws NoNextCellException{
+        Balloon balloon = new Balloon(10, 2, this.paths.getFirst().getFirstCell());
+        Balloon balloon2 = new Balloon(10, 2, this.paths.getFirst().getFirstCell());
+        this.balloons.add(balloon);
+        this.balloons.add(balloon2);
+        this.bullet.setBalloons(this.balloons);
+        balloon2.moveForward();
+        balloon2.moveForward();
+        balloon.moveForward();
+        balloon.moveForward();
+        this.bullet.addTarget(balloon);
+        for (int i = 0; i < 10; i++) { 
+            if(this.bullet.timeLeft>1){
+                assertFalse(this.bullet.onClock(i));
+            }
+            else{
+                assertTrue(this.bullet.onClock(i));
+            }
+            
+        }
+        assertEquals(2, balloon.getResistance());
+        this.effects.getFirst().onClock(1);
+        assertEquals(1, balloon.getResistance());
+        assertEquals(2,balloon2.getResistance());
+        this.effects.getFirst().onClock(1);
+        assertEquals(1, balloon.getResistance());
+
+
+    }
+
 
 }
