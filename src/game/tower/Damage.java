@@ -16,6 +16,7 @@ public class Damage extends Effect{
                 System.out.println("Balloon "+ b+ " received "+ this.damage+ " damages");
                 if(b.isDead()){
                     System.out.println("Balloon "+ b+ " has been destroyed");
+                    b.destroy();
                 }
             }
         }

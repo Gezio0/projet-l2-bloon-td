@@ -93,7 +93,7 @@ public class Game {
             if(t.onClock(this.clock)){
                 Bullet bullet = t.shoot(this.balloons);
                 if (bullet != null){
-                    this.addGameObject(bullet);
+                    gameObjectsToAdd.add(bullet);
                 }
             }
        }
