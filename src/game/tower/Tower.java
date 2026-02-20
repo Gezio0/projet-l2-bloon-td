@@ -23,6 +23,8 @@ public class Tower extends GameObject{
     protected List<Cell> cellInRange;
     /**time before the tower can shoot an other time*/
     protected int reloadTime;
+    /**Bloon td game */
+    protected Game game;
 
 
 
@@ -42,11 +44,13 @@ public class Tower extends GameObject{
         this.bullet = bullet;
         this.reloadTime = reloadTime;
         this.cell = cell;
+        this.paths = paths;
+        this.game = game;
         this.cellInRange = new ArrayList<Cell>();
         int maxX = this.cell.getX()+this.range;
         int maxY = this.cell.getY()+this.range;
-        int minX = this.cell.getX()+this.range;
-        int minY = this.cell.getY()+this.range;
+        int minX = this.cell.getX()-this.range;
+        int minY = this.cell.getY()-this.range;
         for(Path p : paths){
             List<CellPath> cellpaths= p.getPath();
             for(CellPath cp : cellpaths){
@@ -127,8 +131,14 @@ public class Tower extends GameObject{
         Balloon target= this.isInRange(balloons);
         Bullet projectile = null;
         if(target!=null){
-            projectile = new Bullet(this.bullet.getArea(),this.bullet.getTimeLeft(),this.bullet.getEffects());
+            List<Effect> newEffects = new LinkedList<>();
+
+            for (Effect effect : this.bullet.getEffects()){
+                newEffects.add(effect.copy());
+            }
+            projectile = new Bullet(this.bullet.getArea(),this.bullet.getTimeLeft(),newEffects);
             projectile.addTarget(target);
+            projectile.setBalloons(balloons);
         }
         return projectile;
     }

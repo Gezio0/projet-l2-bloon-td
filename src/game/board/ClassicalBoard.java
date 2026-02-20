@@ -24,37 +24,46 @@ public class ClassicalBoard extends Board {
      * @throws NoNextCellException when trying to get a null cell
 	 */
     protected void initPath() throws TooMuchPathsException,NoNextCellException{
+
+        fillPath();
+
         Random rng = new Random();
         int y = rng.nextInt(this.height);
         String lastDirection = "";
 
-        int x = this.width - 1;
-        Cell firstCell = new Cell(x,y);
+        int x = 0;
+        Cell firstCell = this.tab[x][y];
+        firstCell.setEmpty(false);
 
 
         CellPath cellPath = new CellPath(firstCell);
+        CellPath current = cellPath;
 
-        while(x > 0){
+        while(x < this.width - 1){
             int randomNum = rng.nextInt(2);
             if(randomNum == 1){
                 if(!lastDirection.equals("Down") && y < this.height-1){
                     y++;
                     lastDirection = "Up";
                 } else {
-                    x--;
-                    lastDirection = "Left";
+                    x++;
+                    lastDirection = "Right";
                 }
             } else {
                 if(!lastDirection.equals("Up") && y > 0){
                     y--;
                     lastDirection = "Down";
                 } else {
-                    x--;
-                    lastDirection = "Left";
+                    x++;
+                    lastDirection = "Right";
                 }
             }
-            Cell newCell = new Cell(x,y);
-            cellPath = new CellPath(newCell,cellPath);
+            Cell newCell = this.tab[x][y];
+            newCell.setEmpty(false);
+
+            CellPath next = new CellPath(newCell);
+            current.setNext(next);
+            current = next;
             
         }
         this.addPath(new Path(cellPath));
@@ -70,5 +79,17 @@ public class ClassicalBoard extends Board {
         } else {
             throw new TooMuchPathsException();
         }
+    }
+
+    /**
+     * fill the board with empty cells
+     */
+    protected void fillPath(){
+        for (int x = 0; x<this.width; x++){
+            for (int y = 0; y < this.height; y++){
+                this.tab[x][y] = new Cell(x,y);
+            }
+        }
+
     }
 }
