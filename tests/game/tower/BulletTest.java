@@ -15,7 +15,7 @@ public class BulletTest {
     public void before() throws TooMuchPathsException,NoNextCellException{
         this.effects = new ArrayList<>();
         this.effects.add(new Damage("damage",0, false, 1));
-        this.bullet = new Bullet(1, 0, this.effects);
+        this.bullet = new Bullet(1, 10, this.effects);
 
         this.balloons = new HashSet<>();
         
@@ -38,7 +38,7 @@ public class BulletTest {
     }
     @Test
     public void getTimeLeftTest(){
-        assertEquals(this.bullet.getTimeLeft(),0);
+        assertEquals(10,this.bullet.getTimeLeft());
     }
 
     @Test
@@ -61,6 +61,30 @@ public class BulletTest {
         Balloon b = new Balloon(0, 0, null);
         this.bullet.addTarget(b);
         assertEquals(b, this.bullet.getTarget());
+    }
+    @Test 
+    public void onClockTest()throws NoNextCellException{
+        Balloon balloon = new Balloon(10, 2, this.paths.getFirst().getFirstCell());
+        this.balloons.add(balloon);
+        this.bullet.setBalloons(this.balloons);
+        balloon.moveForward();
+        
+        this.bullet.addTarget(balloon);
+        for (int i = 0; i < 10; i++) { 
+            if(this.bullet.timeLeft>1){
+                assertFalse(this.bullet.onClock(i));
+            }
+            else{
+                assertTrue(this.bullet.onClock(i));
+            }
+            
+        }
+        assertEquals(2, balloon.getResistance());
+        this.effects.getFirst().onClock(1);
+        assertEquals(1, balloon.getResistance());
+        this.effects.getFirst().onClock(1);
+        assertEquals(1, balloon.getResistance());
+
     }
 
 }

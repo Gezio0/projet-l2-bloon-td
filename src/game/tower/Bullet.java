@@ -74,6 +74,7 @@ public class Bullet extends GameObject{
      */
     protected Set<Balloon> finalTargets(){
         Set<Balloon> balloonsTargeted = new HashSet<>();
+        balloonsTargeted.add(this.target);
         int maxX = this.target.getCell().getCell().getX()+this.area;
         int maxY = this.target.getCell().getCell().getY()+this.area;
         int minX = this.target.getCell().getCell().getX()-this.area;
