@@ -39,7 +39,7 @@ public class Game {
             int clockSpeed = rng.nextInt(40) + 10; // 10 ~ 50
             int resistance = rng.nextInt(4) + 1; // 1 ~ 4
             Balloon balloon = new Balloon(clockSpeed,resistance,cellStart);
-            this.addGameObject(balloon);
+            this.gameObjects.add(balloon);
             this.balloons.add(balloon);
             if(pathIndex + 1 >= pathsNumber){
                 pathIndex = 0;
@@ -83,7 +83,9 @@ public class Game {
        for(Tower t: this.towers){
             if(t.onClock(this.clock)){
                 Bullet bullet = t.shoot(this.balloons);
-                this.addGameObject(bullet);
+                if (bullet != null){
+                    this.addGameObject(bullet);
+                }
             }
        }
 
@@ -104,7 +106,7 @@ public class Game {
         this.towers.add(t);
     }
     
-    public void addGameObject(Balloon o){
+    public void addBalloons(Balloon o){
         this.balloons.add(o);
     }
 
@@ -113,10 +115,9 @@ public class Game {
     }
 
     public void DeleteGameObject(GameObject gameObject){
+        this.gameObjects.remove(gameObject);
         if(gameObject instanceof Balloon){
             this.balloons.remove((Balloon) gameObject);
-        } else {
-            this.gameObjects.remove(gameObject);
         }
     }
 
