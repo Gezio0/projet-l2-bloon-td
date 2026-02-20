@@ -52,6 +52,12 @@ public class Bullet extends GameObject{
     public int getArea() {
         return this.area;
     }
+    /**get the target of this bullet
+     * @return null if not defined, else a balloon
+     */
+    public Balloon getTarget(){
+        return this.target;
+    }
 
     /** get the time left of this bullet
      * @return int
@@ -113,7 +119,9 @@ public class Bullet extends GameObject{
         }
         
 
-    /**add a target to the balloon */
+    /**add a target to the bullet
+     * @param b a balloon
+     */
     public void addTarget(Balloon b){
         this.target = b;
     }

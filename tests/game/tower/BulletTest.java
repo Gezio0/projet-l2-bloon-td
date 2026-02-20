@@ -51,5 +51,11 @@ public class BulletTest {
         assertEquals(5,this.bullet.getBalloons().size());
         assertTrue(this.balloons.equals(this.bullet.getBalloons()));
     }
+    @Test
+    public void addTargetBeforeTest(){
+        assertEquals(null, this.bullet.getTarget());
+    }
+
+    
 
 }
