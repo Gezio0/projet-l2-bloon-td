@@ -6,7 +6,12 @@ import game.exception.*;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 public class BulletTest {
-     @BeforeEach
+    private List<Effect> effects;
+    private Bullet bullet;
+    private Set<Balloon> balloons;
+    private List<Path> paths;
+    private Tower tower;
+    @BeforeEach
     public void before() throws TooMuchPathsException,NoNextCellException{
         this.effects = new ArrayList<>();
         this.effects.add(new Damage("damage",0, false, 1));
@@ -23,5 +28,17 @@ public class BulletTest {
         this.tower = new Tower(2, 80, this.bullet, 5,new Cell(3,1), this.paths);
 
     }
-    
+    @Test
+    public void getAreaTest(){
+        assertEquals(this.bullet.getArea(),1);
+    }
+    @Test
+    public void getTimeLeftTest(){
+        assertEquals(this.bullet.getTimeLeft(),0);
+    }
+
+    @Test
+    public void setBalloonsBeforeSetTest(){
+        assertEquals(bullet.getBalloons(),null);
+    }
 }

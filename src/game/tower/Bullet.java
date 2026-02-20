@@ -40,7 +40,12 @@ public class Bullet extends GameObject{
         this.target = null;
         
     }
-
+    /**get the balloons of this bullet
+     * @return Set<Balloons>
+     */
+    public Set<Balloon> getBalloons(){
+        return this.balloons;
+    }
     /** get the area damage of this bullet
      * @return int
      */
