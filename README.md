@@ -93,8 +93,8 @@ Nous avons aussi rencontré des problèmes de référencement d’objets. Il est
 
 Enfin, la gestion d’un grand nombre d’objets reste complexe. Il faut constamment vérifier les responsabilités de chacun, leurs interactions et les informations qu’ils doivent partager. Si l’on souhaite garder un code propre et extensible, cette complexité augmente rapidement et nécessite une architecture claire ainsi qu’une bonne organisation du projet.
 
-![alt text](images/UMLS6p1.png)
-![alt text](images/UMLS6p2.png)
+![alt text](images/UMLS7p2.png)
+![alt text](images/UMLS7p1.png)
 
 ## Livrable 4
 
