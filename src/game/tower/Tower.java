@@ -45,8 +45,8 @@ public class Tower extends GameObject{
         this.cellInRange = new ArrayList<Cell>();
         int maxX = this.cell.getX()+this.range;
         int maxY = this.cell.getY()+this.range;
-        int minX = this.cell.getX()+this.range;
-        int minY = this.cell.getY()+this.range;
+        int minX = this.cell.getX()-this.range;
+        int minY = this.cell.getY()-this.range;
         for(Path p : paths){
             List<CellPath> cellpaths= p.getPath();
             for(CellPath cp : cellpaths){
