@@ -78,7 +78,23 @@ Cette semaine, nous avons commencé faire l'UML de la classe Balloon,Game et l'i
 
 ### Atteinte des objectifs
 
-### Difficultés restant à résoudre
+Au cours de ces deux dernières semaines, nous avons principalement travaillé sur l’ajout de nouvelles fonctionnalitées et sur l’amélioration de l’architecture globale du projet. Nous avons d’abord pris le temps de retravailler l’UML afin d’y intégrer de nouvelles classes importantes comme Tower, Bullet et une classe abstraite Effect ainsi que ses sous classes propre à chaque effet. Et des modifications de la classe Game pour prendre en compte la gestion des effets. Cette étape de réflexion nous a permis de mieux organiser les interactions entre les différents objets du jeu.
+
+Nous avons ensuite implémenté les fonctionnalités prévues, notamment le système d’effets (ralentissement, gel, dégâts), ainsi que les nouvelles interactions entre tours, projectiles et ballons. La structure du projet a aussi évolué avec l’introduction d’une classe abstraite commune permettant d’unifier la gestion des objets du jeu, ce qui facilite leur manipulation et leur stockage dans des collections communes.
+Le travail réalisé la semaine précédente sur l’UML nous a permis d’implémenter efficacement la plupart des éléments sans trop d’obstacles majeurs. La répartition du travail entre les membres a bien fonctionné, ce qui nous a permis d’avancer de manière régulière et de mettre en commun nos contributions pour obtenir un programme cohérent et fonctionnel.
+
+### Difficultés restantes à résoudre
+
+Malgré ces avancées, plusieurs difficultés ont persisté pendant l’implémentation.
+
+Tout d’abord, notre UML initial ne prenait pas en compte suffisamment de détails : certaines classes manquaient d’attributs importants, ce qui nous a obligés à adapter le modèle en cours de développement. Cela montre que notre phase de conception peut encore être améliorée pour anticiper davantage les besoins du code.
+
+Nous avons aussi rencontré des problèmes de référencement d’objets. Il est essentiel de bien savoir sur quel objet on agit à chaque moment. Par exemple, lorsqu’un effet se termine, il faut en recréer un nouveau plutôt que de réutiliser l’ancien, sinon son compteur est déjà à zéro. Ce type de gestion du cycle de vie des objets demande beaucoup de rigueur.
+
+Enfin, la gestion d’un grand nombre d’objets reste complexe. Il faut constamment vérifier les responsabilités de chacun, leurs interactions et les informations qu’ils doivent partager. Si l’on souhaite garder un code propre et extensible, cette complexité augmente rapidement et nécessite une architecture claire ainsi qu’une bonne organisation du projet.
+
+![alt text](images/UMLS6p1.png)
+![alt text](images/UMLS6p2.png)
 
 ## Livrable 4
 

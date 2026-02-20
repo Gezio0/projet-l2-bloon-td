@@ -1,8 +1,19 @@
 package game.tower;
 import game.balloon.*;
 
+
+/**A class that represent the effect "damage" in the game*/
 public class Damage extends Effect{
+    /** this effect's damage */
     protected int damage;
+
+    /**
+     * Builds an damage effect with a name,duration, if it's stackable and damage
+     * @param name this effect's name
+     * @param duration this effect's duration
+     * @param stackable this effect is stackable ?
+     * @param damage this effect's damage
+     */
     public Damage(String name, int duration, boolean stackable,int damage){
         super(name,duration,stackable);
         this.damage = damage;

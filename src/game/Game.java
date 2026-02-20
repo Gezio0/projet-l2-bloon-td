@@ -111,22 +111,42 @@ public class Game {
         this.clock++;
     }
 
+    /**
+     * Return a set of the balloons in this game
+     * @return a set of the balloons in this game
+    */
     public Set<Balloon> getBalloons(){
         return this.balloons;
     }
 
+    /**
+     * Add a tower in the game
+     * @param t the tower to add
+    */
     public void setTower(Tower t){
         this.towers.add(t);
     }
-    
+
+    /**
+     * Add a balloon in the game
+     * @param o the balloon to add
+    */
     public void addBalloons(Balloon o){
         this.balloons.add(o);
     }
 
+    /**
+     * Add a GameObject in the game
+     * @param o the GameObject to add
+    */
     public void addGameObject(GameObject o){
             this.gameObjects.add(o);
     }
 
+    /**
+     * Delete a gameobject in the game
+     * @param o the GameObject to delete
+    */
     public void DeleteGameObject(GameObject gameObject){
         this.gameObjects.remove(gameObject);
         if(gameObject instanceof Balloon){
@@ -134,6 +154,11 @@ public class Game {
         }
     }
 
+    /**
+     * Apply an effect to al balloon on the cells
+     * @param cells the cells targeted
+     * @param effect the effect to apply
+    */
     public void applyEffectToBalloonOnCells(List<Cell> cells,Effect effect){
         for(Balloon balloon : this.balloons){
                 CellPath cellPath = balloon.getCell();
