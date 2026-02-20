@@ -75,7 +75,17 @@ public class TowerTest {
         assertEquals(b.get(0).target,balloonTarget);
     }
     
-
+    @Test
+    public void onClockTest(){
+        for(int i = 0;i<=10;i++){
+            if(i ==0 || i==5 || i==10){
+                assertTrue(this.tower.onClock(i));
+            }
+            else{
+                assertFalse(this.tower.onClock(i));
+            }
+        }
+    }
 
 
 }
