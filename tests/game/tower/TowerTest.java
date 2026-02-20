@@ -1,10 +1,7 @@
 package game.tower;
-
 import java.util.*;
 import game.balloon.*;
 import game.path.*;
-import game.board.Board;
-import game.board.ClassicalBoard;
 import game.exception.*;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,7 +19,7 @@ public class TowerTest {
         this.effects.add(new Damage("damage",0, false, 1));
         this.bullet = new Bullet(1, 0, this.effects);
 
-
+        this.balloons = new HashSet<>();
         CellPath cp =new CellPath(new Cell(10, 0));
         for(int i=10;i>=0;i--){
             cp =new CellPath(new Cell(i,0),cp);
@@ -30,14 +27,6 @@ public class TowerTest {
         Path p = new Path(cp);
         this.paths =new ArrayList<>();
         this.paths.add(p);
-
-        Random rng = new Random();
-        for(int i=0; i<5;i++){
-           
-            int speed = rng.nextInt(40) + 10;
-            this.balloons.add(new Balloon(speed,2,this.paths.getFirst().getFirstCell()));
-        }
-
         this.tower = new Tower(2, 80, this.bullet, 5,new Cell(3,1), this.paths);
 
     }
@@ -75,8 +64,17 @@ public class TowerTest {
         List<Bullet> b = this.tower.shoot(this.balloons);
         assertEquals(b.size(),0);
     }
+    @Test
+    public void shootInRangeTest()throws NoNextCellException{
+        Balloon balloonTarget = new Balloon(10,2,this.paths.getFirst().getFirstCell());
+        this.balloons.add(balloonTarget);
+        balloonTarget.moveForward();
+        balloonTarget.moveForward();
+        List<Bullet> b = this.tower.shoot(this.balloons);
+        assertEquals(b.size(),1);
+        assertEquals(b.get(0).target,balloonTarget);
+    }
     
-
 
 
 
