@@ -18,6 +18,7 @@ public class BulletTest {
         this.bullet = new Bullet(1, 0, this.effects);
 
         this.balloons = new HashSet<>();
+        
         CellPath cp =new CellPath(new Cell(10, 0));
         for(int i=10;i>=0;i--){
             cp =new CellPath(new Cell(i,0),cp);
@@ -27,6 +28,9 @@ public class BulletTest {
         this.paths.add(p);
         this.tower = new Tower(2, 80, this.bullet, 5,new Cell(3,1), this.paths);
 
+        for(int i = 0;i<5;i++){
+            this.balloons.add(new Balloon(10, 2, cp));
+        }
     }
     @Test
     public void getAreaTest(){
@@ -41,4 +45,11 @@ public class BulletTest {
     public void setBalloonsBeforeSetTest(){
         assertEquals(bullet.getBalloons(),null);
     }
+    @Test
+    public void setBalloonsAfterSetTest(){
+        bullet.setBalloons(this.balloons);
+        assertEquals(5,this.bullet.getBalloons().size());
+        assertTrue(this.balloons.equals(this.bullet.getBalloons()));
+    }
+
 }
