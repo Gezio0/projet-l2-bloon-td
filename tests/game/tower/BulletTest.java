@@ -99,7 +99,7 @@ public class BulletTest {
         balloon.moveForward();
         this.bullet.addTarget(balloon);
         for (int i = 0; i < 10; i++) { 
-            if(this.bullet.timeLeft>1){
+            if(this.bullet.getTimeLeft()>1){
                 assertFalse(this.bullet.onClock(i));
             }
             else{
@@ -115,6 +115,37 @@ public class BulletTest {
         assertEquals(1, balloon.getResistance());
 
 
+    }
+    @Test
+    public void onClockTwoBalloonWithAreaTest()throws NoNextCellException{
+        Balloon balloon = new Balloon(10, 2, this.paths.getFirst().getFirstCell());
+        Balloon balloon2 = new Balloon(10, 2, this.paths.getFirst().getFirstCell());
+        this.balloons.add(balloon);
+        this.balloons.add(balloon2);
+        Bullet bul = new Bullet(1, 10, this.effects);
+        bul.setBalloons(this.balloons);
+        bul.addTarget(balloon);
+        balloon2.moveForward();
+        balloon2.moveForward();
+        balloon.moveForward();
+        balloon.moveForward();
+        this.bullet.addTarget(balloon);
+        for (int i = 0; i < 10; i++) { 
+            if(bul.getTimeLeft()>1){
+                assertFalse(bul.onClock(i));
+            }
+            else{
+                assertTrue(bul.onClock(i));
+            }
+            
+        }
+        assertEquals(2, balloon.getResistance());
+        this.effects.getFirst().onClock(1);
+        assertEquals(1, balloon.getResistance());
+        assertEquals(1,balloon2.getResistance());
+        this.effects.getFirst().onClock(1);
+        assertEquals(1, balloon.getResistance());
+        assertEquals(1,balloon2.getResistance());
     }
 
 
