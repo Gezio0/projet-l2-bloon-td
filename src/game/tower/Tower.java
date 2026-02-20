@@ -1,4 +1,5 @@
 package game.tower;
+import game.Game;
 import game.GameObject;
 import game.balloon.Balloon;
 import game.path.*;
@@ -148,13 +149,20 @@ public class Tower extends GameObject{
      */
     public Bullet shoot(Set<Balloon>balloons){
         Balloon target= this.isInRange(balloons);
-        Bullet projectile = new Bullet(this.bullet.getArea(),this.bullet.getTimeLeft(),this.bullet.getEffects());
+        Bullet projectile = null;
         if(target!=null){
-            projectile.setBalloons(balloons);
+            List<Effect> newEffects = new LinkedList<>();
+
+            for (Effect effect : this.bullet.getEffects()){
+                newEffects.add(effect.copy());
+            }
+            projectile = new Bullet(this.bullet.getArea(),this.bullet.getTimeLeft(),newEffects);
             projectile.addTarget(target);
+            projectile.setBalloons(balloons);
         }
         return projectile;
     }
+
 
     /**updates the tower's state every game tick
      * it is checking if the tower is ready to shoot or not
