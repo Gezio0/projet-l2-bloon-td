@@ -19,9 +19,9 @@ jar: classes
 	jar cfe livrable3b.jar game.Livrable3bMain -C classes .
 
 tests:
-	javac -classpath junit-console.jar:classes tests/*/*/*.java
+	javac -classpath junit-console.jar:classes $$(find tests -name "*.java")
 
-runtests:
+runtests: tests
 	java -jar junit-console.jar -classpath tests:classes -scan-classpath
 
 
