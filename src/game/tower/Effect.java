@@ -39,7 +39,6 @@ public abstract class Effect extends GameObject {
     public void addTarget(Balloon balloon){
         this.balloons.add(balloon);
     }
-
     public abstract void applyEffect(int clock);
     
     public boolean onClock(int clock){

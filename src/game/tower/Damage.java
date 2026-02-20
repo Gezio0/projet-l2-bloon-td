@@ -11,19 +11,28 @@ public class Damage extends Effect{
     /*method that applies the effect Damage to the balloon list and removes the effect when its durability reaches 0  */
     public void applyEffect(int clock){
         if (this.duration >= 0){
-            for(Balloon b : this.balloons){
+            
+            for(Balloon b: this.balloons){
+
+                if(b.isDead()){
+                    continue; 
+                }
                 b.decreaseResistance(this.damage);
                 System.out.println("Balloon "+ b+ " received "+ this.damage+ " damages");
                 if(b.isDead()){
-                    System.out.println("Balloon "+ b+ " has been destroyed");
                     b.destroy();
+                    System.out.println("Balloon "+ b+ " has been destroyed");
+                    
                 }
+
             }
         }
         else{
             this.destroy();
         }
     }
+    
+    
 
     /**Copy a Damage effect in order to have new bullets */
     @Override
