@@ -19,10 +19,10 @@ jar: classes
 	jar cfe livrable3b.jar game.Livrable3bMain -C classes .
 
 tests:
-	@echo "a faire"
+	javac -classpath junit-console.jar:classes $$(find tests -name "*.java")
 
-runtests:
-	@echo "a faire"
+runtests: tests
+	java -jar junit-console.jar -classpath tests:classes -scan-classpath
 
 
 clean:
