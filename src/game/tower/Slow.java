@@ -34,5 +34,11 @@ public class Slow extends Effect{
         this.duration = this.duration - 1;
         return true;
     }
+
+    /**Copy a Slow effect in order ton have new bullets */
+    @Override
+    public Effect copy(){
+        return new Slow(this.name,this.duration,this.stackable);
+    }
 }
 

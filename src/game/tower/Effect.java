@@ -41,4 +41,6 @@ public abstract class Effect extends GameObject {
     public abstract void applyEffect();
     
     public abstract boolean onClock(int clock);
+
+    public abstract Effect copy();
 }

@@ -35,5 +35,12 @@ public class Freeze extends Effect{
         this.duration = this.duration - 1;
         return true;
     }
+    
+
+    /**Copy a Freeze effect in order ton have new bullets */
+    @Override
+    public Effect copy(){
+        return new Freeze(this.name,this.duration,this.stackable);
+    }
 }
 

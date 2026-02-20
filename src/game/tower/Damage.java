@@ -33,4 +33,10 @@ public class Damage extends Effect{
         this.duration = this.duration - 1;
         return true;
     }
+
+    /**Copy a Damage effect in order ton have new bullets */
+    @Override
+    public Effect copy(){
+        return new Damage(this.name,this.duration,this.stackable, this.damage);
+    }
 }
