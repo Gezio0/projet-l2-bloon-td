@@ -64,10 +64,19 @@ public class Game {
     */
     public void loop() throws NoNextCellException{
         List<GameObject> gameObjectToDestroy = new LinkedList<GameObject>();
+        List<GameObject> gameObjectsToAdd = new LinkedList<>();
 
         // Clock des gameobjects
-        for (GameObject gameObject : this.gameObjects){
-            gameObject.onClock(this.clock);
+        for (GameObject gameObject : this.gameObjects) {
+            boolean eventTrigerred = gameObject.onClock(this.clock);
+
+            if (gameObject instanceof Bullet && eventTrigerred){
+                Bullet b = (Bullet) gameObject;
+                for (Effect e : b.getEffects()){
+                    gameObjectsToAdd.add(e);
+                }
+            }
+
             if(gameObject.toDestroy()){
                 gameObjectToDestroy.add(gameObject);
             }
@@ -87,6 +96,10 @@ public class Game {
                     this.addGameObject(bullet);
                 }
             }
+       }
+
+       for (GameObject newObj : gameObjectsToAdd){
+            this.addGameObject(newObj);
        }
 
 

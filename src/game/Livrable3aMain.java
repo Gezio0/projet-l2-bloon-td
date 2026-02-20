@@ -41,17 +41,17 @@ public class Livrable3aMain {
 
                 // Towers
                 Cell cell1 = towerCell(board,width,height);
-                Tower classicTower1 = new Tower(3, 500, classicBullet, 1, cell1, p, game);
+                Tower classicTower1 = new Tower(6, 500, classicBullet, 20, cell1, p, game);
                 Cell cell2 = towerCell(board,width,height);
-                Tower classicTower2 = new Tower(3, 500, classicBullet, 1, cell2, p, game);
+                Tower classicTower2 = new Tower(6, 500, classicBullet, 20, cell2, p, game);
                 Cell cell3 = towerCell(board,width,height);
-                Tower slowingTower1 = new Tower(3, 500, slowingBullet, 1, cell3, p, game);
+                Tower slowingTower1 = new Tower(6, 500, slowingBullet, 20, cell3, p, game);
                 Cell cell4 = towerCell(board,width,height);
-                Tower slowingTower2 = new Tower(3, 500, slowingBullet, 1, cell4, p, game);
+                Tower slowingTower2 = new Tower(6, 500, slowingBullet, 20, cell4, p, game);
                 Cell cell5 = towerCell(board,width,height);
-                Tower freezingTower1 = new Tower(3, 500, freezingBullet, 1, cell5, p, game);
+                Tower freezingTower1 = new Tower(6, 500, freezingBullet, 20, cell5, p, game);
                 Cell cell6 = towerCell(board,width,height);
-                Tower freezingTower2 = new Tower(3, 500, freezingBullet, 1, cell6, p, game);
+                Tower freezingTower2 = new Tower(6, 500, freezingBullet, 20, cell6, p, game);
 
                 game.setTower(classicTower1);
                 game.setTower(classicTower2);

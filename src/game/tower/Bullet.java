@@ -1,8 +1,10 @@
 package game.tower;
 
+import game.Game;
 import game.GameObject;
 import game.balloon.*;
 import java.util.*;
+
 /** Represent a Tower bullet that can hit or apply effects to a balloon or a group of balloon */
 public class Bullet extends GameObject{
 
@@ -38,7 +40,6 @@ public class Bullet extends GameObject{
         this.timeLeft = timeLeft;
         this.effects = effects;
         this.target = null;
-        
     }
 
     /** get the area damage of this bullet
@@ -95,8 +96,8 @@ public class Bullet extends GameObject{
             this.timeLeft--;
             if (this.timeLeft==0){
                 Set<Balloon> balloonsTargeted = this.finalTargets();
-                for(Balloon b : balloonsTargeted){
-                    for(Effect effect : this.effects){
+                for(Effect effect : this.effects){
+                    for(Balloon b : balloonsTargeted){
                         effect.addTarget(b);
                     }
                 }

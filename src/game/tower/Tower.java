@@ -23,6 +23,8 @@ public class Tower extends GameObject{
     protected List<Cell> cellInRange;
     /**time before the tower can shoot an other time*/
     protected int reloadTime;
+    /**Bloon td game */
+    protected Game game;
 
 
 
@@ -43,6 +45,7 @@ public class Tower extends GameObject{
         this.reloadTime = reloadTime;
         this.cell = cell;
         this.paths = paths;
+        this.game = game;
         this.cellInRange = new ArrayList<Cell>();
         int maxX = this.cell.getX()+this.range;
         int maxY = this.cell.getY()+this.range;
