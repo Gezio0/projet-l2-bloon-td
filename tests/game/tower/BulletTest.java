@@ -15,7 +15,7 @@ public class BulletTest {
     public void before() throws TooMuchPathsException,NoNextCellException{
         this.effects = new ArrayList<>();
         this.effects.add(new Damage("damage",0, false, 1));
-        this.bullet = new Bullet(0, 10, this.effects);
+        this.bullet = new Bullet(-1, 10, this.effects);
 
         this.balloons = new HashSet<>();
         
@@ -34,7 +34,7 @@ public class BulletTest {
     }
     @Test
     public void getAreaTest(){
-        assertEquals(this.bullet.getArea(),0);
+        assertEquals(this.bullet.getArea(),-1);
     }
     @Test
     public void getTimeLeftTest(){

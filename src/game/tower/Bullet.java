@@ -79,7 +79,7 @@ public class Bullet extends GameObject{
         int maxY = this.target.getCell().getCell().getY()+this.area;
         int minX = this.target.getCell().getCell().getX()-this.area;
         int minY = this.target.getCell().getCell().getY()-this.area;
-        if(this.area>0){
+        if(this.area>-1){
         for(Balloon b:this.balloons){
             int balloonX = b.getCell().getCell().getX();
             int balloonY = b.getCell().getCell().getY();
