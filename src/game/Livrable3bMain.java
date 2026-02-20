@@ -3,7 +3,6 @@ import game.board.*;
 import game.exception.*;
 import game.path.*;
 import game.tower.*;
-
 import java.util.*;
 
 public class Livrable3bMain {
@@ -42,17 +41,17 @@ public class Livrable3bMain {
 
                 // Towers
                 Cell cell1 = towerCell(board,width,height);
-                Tower classicTower1 = new Tower(6, 500, classicBullet, 20, cell1, p, game);
+                Tower classicTower1 = new Tower(6, 500, classicBullet, 20, cell1, p);
                 Cell cell2 = towerCell(board,width,height);
-                Tower classicTower2 = new Tower(6, 500, classicBullet, 20, cell2, p, game);
+                Tower classicTower2 = new Tower(6, 500, classicBullet, 20, cell2, p);
                 Cell cell3 = towerCell(board,width,height);
-                Tower slowingTower1 = new Tower(6, 500, slowingBullet, 20, cell3, p, game);
+                Tower slowingTower1 = new Tower(6, 500, slowingBullet, 20, cell3, p);
                 Cell cell4 = towerCell(board,width,height);
-                Tower slowingTower2 = new Tower(6, 500, slowingBullet, 20, cell4, p, game);
+                Tower slowingTower2 = new Tower(6, 500, slowingBullet, 20, cell4, p);
                 Cell cell5 = towerCell(board,width,height);
-                Tower freezingTower1 = new Tower(6, 500, freezingBullet, 20, cell5, p, game);
+                Tower freezingTower1 = new Tower(6, 500, freezingBullet, 20, cell5, p);
                 Cell cell6 = towerCell(board,width,height);
-                Tower freezingTower2 = new Tower(6, 500, freezingBullet, 20, cell6, p, game);
+                Tower freezingTower2 = new Tower(6, 500, freezingBullet, 20, cell6, p);
 
                 game.setTower(classicTower1);
                 game.setTower(classicTower2);

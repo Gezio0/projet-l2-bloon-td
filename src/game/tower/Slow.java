@@ -11,7 +11,10 @@ public class Slow extends Effect{
     /*method that applies the effect Slow (wich slow the balloon) to the balloon list and removes the effect when its durability reaches 0  */
     public void applyEffect(int clock){
         if (this.duration >= 0){
-            for (Balloon b: this.balloons){
+            for(Balloon b:this.balloons){
+                if(b.isDead()){
+                    continue; 
+                }
                 b.setTimeSlower(2);
                 if (this.isFirstTick){
                     System.out.println("Balloon "+ b+ " is slowed for" + this.duration + " turn : " + clock);
@@ -20,12 +23,15 @@ public class Slow extends Effect{
             this.isFirstTick = false;
         }
         else{
-            for (Balloon b: this.balloons){
-                b.setTimeSlower(1);
+             for (Balloon b: this.balloons){
+                if (!b.isDead()) {
+                    b.setTimeSlower(1);
+                }
             }
             this.destroy();
         }
     }
+    
 
     /**Copy a Slow effect in order to have new bullets */
     @Override

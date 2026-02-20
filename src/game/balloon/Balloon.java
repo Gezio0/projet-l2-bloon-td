@@ -1,8 +1,8 @@
 package game.balloon;
 
+import game.*;
 import game.exception.NoNextCellException;
 import game.path.*;
-import game.*;
 
 
 /**Represents a bloon td game balloon, moving on the board from the start
@@ -120,7 +120,7 @@ public class Balloon extends GameObject {
         }
         if(this.isFinished()){
             System.out.println("Balloon : " + this.toString() + " left the board at clock : " + clock);
-            destroy();
+            this.destroy();
         }
         return false;
     }
@@ -130,7 +130,9 @@ public class Balloon extends GameObject {
      * @param damage damage dealt to the balloon
      */
     public void decreaseResistance(int damage){
+        if (!this.isDead()) {
         this.resistance = this.resistance - damage;
+        }
     }
 
 

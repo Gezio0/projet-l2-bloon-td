@@ -83,12 +83,12 @@ public class Game {
         }
 
         // Clock des ballons
-       /** for (Balloon balloon : this.balloons){
-            balloon.onClock(this.clock);
+       for (Balloon balloon : this.balloons){
+            
             if(balloon.toDestroy()){
                 gameObjectToDestroy.add(balloon);
             }
-        }*/
+        }
        for(Tower t: this.towers){
             if(t.onClock(this.clock)){
                 Bullet bullet = t.shoot(this.balloons);
