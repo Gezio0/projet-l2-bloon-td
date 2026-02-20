@@ -35,14 +35,31 @@ public class TowerTest {
 
     @Test
     public void getRangeTest(){
-        assertTrue(this.tower.getRange(),10);
-        assertFalse(this.tower.getRange(),0);
-        assertFalse(this.tower.getRange(),9);
-        assertFalse(this.tower.getRange(),11);
+        assertEquals(this.tower.getRange(),10);
+        
     }
+    @Test
     public void getCostTest(){
-        assertTrue(this.tower.getCost(),80);
+        assertEquals(this.tower.getCost(),80);
     }
-    
+    @Test
+    public void getBulletTest(){
+        assertEquals(this.tower.getBullet(),this.bullet);
+    }
+    @Test
+    public void getReloadTimeTest(){
+        assertEquals(this.tower.getReloadTime(),5);
+    }
+    @Test
+    public void getCellTest(){
+        assertEquals(this.tower.getCell(),new Cell(2,2));
+    }
+    @Test
+    public void SameTowerCellTest(){
+        assertTrue(this.tower.SameTowerCell(this.tower));
+        assertFalse(this.tower.SameTowerCell(new Tower(0, 0, this.bullet, 0,new Cell(0,0), this.paths)));
+    }
+
+
 
 }
