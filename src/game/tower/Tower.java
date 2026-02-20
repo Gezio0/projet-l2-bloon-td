@@ -36,7 +36,7 @@ public class Tower extends GameObject{
      *
      * 
      */
-    public Tower(int range, int cost, Bullet bullet,int reloadTime,Cell cell,List<Path> paths,Game game) {
+    public Tower(int range, int cost, Bullet bullet,int reloadTime,Cell cell,List<Path> paths) {
         this.range = range;
         this.cost = cost;
         this.bullet = bullet;
@@ -62,19 +62,19 @@ public class Tower extends GameObject{
      * @return int
      */
     public int getRange() {
-        return range;
+        return this.range;
     }
     /**get the cost of this tower
      * @return int
      */
     public int getCost() {
-        return cost;
+        return this.cost;
     }
     /**get the bullet of this tower
      * @return Bullet
      */
     public Bullet getBullet() {
-        return bullet;
+        return this.bullet;
     }
 
     /**return the distance of a balloon and a cell pathpath
@@ -123,12 +123,13 @@ public class Tower extends GameObject{
      * 
      * 
      */
-    public Bullet shoot(Set<Balloon>balloons){
+    public Bullet[] shoot(Set<Balloon>balloons){
         Balloon target= this.isInRange(balloons);
-        Bullet projectile = null;
+        Bullet[] projectile = new Bullet[1] ;
         if(target!=null){
-            projectile = new Bullet(this.bullet.getArea(),this.bullet.getTimeLeft(),this.bullet.getEffects());
-            projectile.addTarget(target);
+            projectile[0] =(new Bullet(this.bullet.getArea(),this.bullet.getTimeLeft(),this.bullet.getEffects()));
+            projectile[0].setBalloons(balloons);
+            projectile[0].addTarget(target);
         }
         return projectile;
     }
@@ -140,10 +141,7 @@ public class Tower extends GameObject{
     */
     @Override
     public boolean onClock(int clock) {
-        if (clock%this.reloadTime==0){
-                return true;
-        }
-        return false;
+        return clock%this.reloadTime==0;
     }
 
 

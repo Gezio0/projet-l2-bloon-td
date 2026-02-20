@@ -82,8 +82,10 @@ public class Game {
         }*/
        for(Tower t: this.towers){
             if(t.onClock(this.clock)){
-                Bullet bullet = t.shoot(this.balloons);
-                this.addGameObject(bullet);
+                Bullet[] bullets = t.shoot(this.balloons);
+                for(Bullet b : bullets){
+                    this.addGameObject(b);
+                }
             }
        }
 
