@@ -141,18 +141,18 @@ public class Tower extends GameObject{
      * if a target is found, it creates a new bullet with the properties of 
      * the current tower's bullet
      * @param Set<Balloon> balloons that are currently in the game
-     * @return a new Bullet if a target is found,
+     * @return a new List of Bullet if a target is found,
      * else null.
      * 
      * 
      */
-    public Bullet[] shoot(Set<Balloon>balloons){
+    public List<Bullet> shoot(Set<Balloon>balloons){// return a list to potentially extend this class for a tower who shoot multiple bullets
         Balloon target= this.isInRange(balloons);
-        Bullet[] projectile = new Bullet[1] ;
+        List<Bullet> projectile = new ArrayList<>();
         if(target!=null){
-            projectile[0] =(new Bullet(this.bullet.getArea(),this.bullet.getTimeLeft(),this.bullet.getEffects()));
-            projectile[0].setBalloons(balloons);
-            projectile[0].addTarget(target);
+            projectile.add(new Bullet(this.bullet.getArea(),this.bullet.getTimeLeft(),this.bullet.getEffects()));
+            projectile.get(0).setBalloons(balloons);
+            projectile.get(0).addTarget(target);
         }
         return projectile;
     }
