@@ -56,6 +56,11 @@ public class BulletTest {
         assertEquals(null, this.bullet.getTarget());
     }
 
-    
+    @Test
+    public void addTargetAfterTest(){
+        Balloon b = new Balloon(0, 0, null);
+        this.bullet.addTarget(b);
+        assertEquals(b, this.bullet.getTarget());
+    }
 
 }
