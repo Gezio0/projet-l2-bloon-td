@@ -58,6 +58,12 @@ public class Tower extends GameObject{
         }
 
     }
+    /**get the reload time of this tower
+     * @return int
+     */
+    public int getReloadTime(){
+        return this.reloadTime;
+    }
     /**get the range of this tower
      * @return int
      */
@@ -75,6 +81,13 @@ public class Tower extends GameObject{
      */
     public Bullet getBullet() {
         return this.bullet;
+    }
+    /**
+     * get the cell of this tower
+     * @return Cell
+     */
+    public Cell getCell(){
+        return this.cell;
     }
 
     /**return the distance of a balloon and a cell pathpath
@@ -113,6 +126,16 @@ public class Tower extends GameObject{
             }
         }
         return balloonTargeted;
+    }
+    /**check if two tower has the sameCell
+     * @return true if they have the same cell, else false
+     */
+    public boolean SameTowerCell(Object object){
+        if (!(object instanceof Tower)){
+            return false;
+        }
+        Tower o = (Tower) object;
+        return this.cell.equals(o.getCell());
     }
     /**attemps to fire a projectile at a target
      * if a target is found, it creates a new bullet with the properties of 
