@@ -23,6 +23,8 @@ public class Tower extends GameObject{
     protected List<Cell> cellInRange;
     /**time before the tower can shoot an other time*/
     protected int reloadTime;
+    /**Bloon td game */
+    protected Game game;
 
 
 

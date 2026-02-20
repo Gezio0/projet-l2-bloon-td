@@ -1,7 +1,5 @@
 package game.tower;
-import game.GameObject;
 import game.balloon.*;
-import java.util.*;
 
 public class Slow extends Effect{
     
@@ -11,11 +9,15 @@ public class Slow extends Effect{
     }
 
     /*method that applies the effect Slow (wich slow the balloon) to the balloon list and removes the effect when its durability reaches 0  */
-    public void applyEffect(){
+    public void applyEffect(int clock){
         if (this.duration >= 0){
             for (Balloon b: this.balloons){
                 b.setTimeSlower(2);
+                if (this.isFirstTick){
+                    System.out.println("Balloon "+ b+ " is slowed for" + this.duration + " turn : " + clock);
+                }
             }
+            this.isFirstTick = false;
         }
         else{
             for (Balloon b: this.balloons){
@@ -25,12 +27,10 @@ public class Slow extends Effect{
         }
     }
 
-    /**method that allows the effect to be applied every clock cycle  
-    * @return boolean true 
-    */
-    public boolean onClock(){
-        this.applyEffect();
-        return true;
+    /**Copy a Slow effect in order to have new bullets */
+    @Override
+    public Effect copy(){
+        return new Slow(this.name,this.duration,this.stackable);
     }
 }
 

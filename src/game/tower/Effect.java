@@ -9,6 +9,7 @@ public abstract class Effect extends GameObject {
     protected String name;
     protected boolean stackable;
     protected List<Balloon> balloons;
+    protected boolean isFirstTick;
 
     public Effect(String name, int duration, boolean stackable){
         super();
@@ -16,6 +17,7 @@ public abstract class Effect extends GameObject {
         this.duration = duration;
         this.stackable = stackable;
         this.balloons = new LinkedList<Balloon>();
+        this.isFirstTick = true;
     }
 
     public String getName(){
@@ -38,7 +40,13 @@ public abstract class Effect extends GameObject {
         this.balloons.add(balloon);
     }
 
-    public abstract void applyEffect();
+    public abstract void applyEffect(int clock);
     
-    public abstract boolean onClock(int clock);
+    public boolean onClock(int clock){
+        this.applyEffect(clock);
+        this.duration = this.duration -1;
+        return true;
+    }
+
+    public abstract Effect copy();
 }

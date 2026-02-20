@@ -119,7 +119,7 @@ public class Balloon extends GameObject {
             return true;
         }
         if(this.isFinished()){
-            System.out.println("Ballon : " + this.toString() + " destroyed at clock : " + clock);
+            System.out.println("Balloon : " + this.toString() + " left the board at clock : " + clock);
             destroy();
         }
         return false;
