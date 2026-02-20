@@ -148,3 +148,4 @@ public class Game {
         this.addGameObject(effect);
     }
 }
+

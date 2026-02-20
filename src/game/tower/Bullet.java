@@ -1,6 +1,5 @@
 package game.tower;
 
-import game.Game;
 import game.GameObject;
 import game.balloon.*;
 import java.util.*;
@@ -41,12 +40,23 @@ public class Bullet extends GameObject{
         this.effects = effects;
         this.target = null;
     }
-
+    /**get the balloons of this bullet
+     * @return Set<Balloons>
+     */
+    public Set<Balloon> getBalloons(){
+        return this.balloons;
+    }
     /** get the area damage of this bullet
      * @return int
      */
     public int getArea() {
         return this.area;
+    }
+    /**get the target of this bullet
+     * @return null if not defined, else a balloon
+     */
+    public Balloon getTarget(){
+        return this.target;
     }
 
     /** get the time left of this bullet
@@ -64,16 +74,19 @@ public class Bullet extends GameObject{
      */
     protected Set<Balloon> finalTargets(){
         Set<Balloon> balloonsTargeted = new HashSet<>();
+        balloonsTargeted.add(this.target);
         int maxX = this.target.getCell().getCell().getX()+this.area;
         int maxY = this.target.getCell().getCell().getY()+this.area;
         int minX = this.target.getCell().getCell().getX()-this.area;
         int minY = this.target.getCell().getCell().getY()-this.area;
+        if(this.area>-1){
         for(Balloon b:this.balloons){
             int balloonX = b.getCell().getCell().getX();
             int balloonY = b.getCell().getCell().getY();
             if(balloonX>=minX&&balloonX<=maxX&&balloonY>=minY&&balloonY<=maxY){
                 balloonsTargeted.add(b);
             }
+        }
         }
         return balloonsTargeted;
     }
@@ -109,7 +122,9 @@ public class Bullet extends GameObject{
         }
         
 
-    /**add a target to the balloon */
+    /**add a target to the bullet
+     * @param b a balloon
+     */
     public void addTarget(Balloon b){
         this.target = b;
     }

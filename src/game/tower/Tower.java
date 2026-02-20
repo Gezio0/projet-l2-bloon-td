@@ -38,14 +38,13 @@ public class Tower extends GameObject{
      *
      * 
      */
-    public Tower(int range, int cost, Bullet bullet,int reloadTime,Cell cell,List<Path> paths,Game game) {
+    public Tower(int range, int cost, Bullet bullet,int reloadTime,Cell cell,List<Path> paths) {
         this.range = range;
         this.cost = cost;
         this.bullet = bullet;
         this.reloadTime = reloadTime;
         this.cell = cell;
         this.paths = paths;
-        this.game = game;
         this.cellInRange = new ArrayList<Cell>();
         int maxX = this.cell.getX()+this.range;
         int maxY = this.cell.getY()+this.range;
@@ -62,23 +61,36 @@ public class Tower extends GameObject{
         }
 
     }
+    /**get the reload time of this tower
+     * @return int
+     */
+    public int getReloadTime(){
+        return this.reloadTime;
+    }
     /**get the range of this tower
      * @return int
      */
     public int getRange() {
-        return range;
+        return this.range;
     }
     /**get the cost of this tower
      * @return int
      */
     public int getCost() {
-        return cost;
+        return this.cost;
     }
     /**get the bullet of this tower
      * @return Bullet
      */
     public Bullet getBullet() {
-        return bullet;
+        return this.bullet;
+    }
+    /**
+     * get the cell of this tower
+     * @return Cell
+     */
+    public Cell getCell(){
+        return this.cell;
     }
 
     /**return the distance of a balloon and a cell pathpath
@@ -118,11 +130,21 @@ public class Tower extends GameObject{
         }
         return balloonTargeted;
     }
+    /**check if two tower has the sameCell
+     * @return true if they have the same cell, else false
+     */
+    public boolean SameTowerCell(Object object){
+        if (!(object instanceof Tower)){
+            return false;
+        }
+        Tower o = (Tower) object;
+        return this.cell.equals(o.getCell());
+    }
     /**attemps to fire a projectile at a target
      * if a target is found, it creates a new bullet with the properties of 
      * the current tower's bullet
      * @param Set<Balloon> balloons that are currently in the game
-     * @return a new Bullet if a target is found,
+     * @return a new List of Bullet if a target is found,
      * else null.
      * 
      * 
@@ -143,6 +165,7 @@ public class Tower extends GameObject{
         return projectile;
     }
 
+
     /**updates the tower's state every game tick
      * it is checking if the tower is ready to shoot or not
      * @param int the current clock of the game
@@ -150,10 +173,7 @@ public class Tower extends GameObject{
     */
     @Override
     public boolean onClock(int clock) {
-        if (clock%this.reloadTime==0){
-                return true;
-        }
-        return false;
+        return clock%this.reloadTime==0;
     }
 
 
