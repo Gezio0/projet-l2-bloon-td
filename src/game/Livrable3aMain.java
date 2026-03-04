@@ -38,19 +38,24 @@ public class Livrable3aMain {
                 Bullet slowingBullet = new Bullet(0, 1, slowingTowerEffects);
                 Bullet freezingBullet = new Bullet(0, 1, freezingTowerEffects);
 
+                
+                // Empty Upgrade
+                List<Upgrade> listUp = new ArrayList<>();
+                
+                
                 // Towers
                 Cell cell1 = towerCell(board,width,height);
-                Tower classicTower1 = new Tower(6, 500, classicBullet, 20, cell1, p);
+                Tower classicTower1 = new Tower(6, 500, classicBullet, 20, cell1, p,listUp);
                 Cell cell2 = towerCell(board,width,height);
-                Tower classicTower2 = new Tower(6, 500, classicBullet, 20, cell2, p);
+                Tower classicTower2 = new Tower(6, 500, classicBullet, 20, cell2, p,listUp);
                 Cell cell3 = towerCell(board,width,height);
-                Tower slowingTower1 = new Tower(6, 500, slowingBullet, 20, cell3, p);
+                Tower slowingTower1 = new Tower(6, 500, slowingBullet, 20, cell3, p,listUp);
                 Cell cell4 = towerCell(board,width,height);
-                Tower slowingTower2 = new Tower(6, 500, slowingBullet, 20, cell4, p);
+                Tower slowingTower2 = new Tower(6, 500, slowingBullet, 20, cell4, p,listUp);
                 Cell cell5 = towerCell(board,width,height);
-                Tower freezingTower1 = new Tower(6, 500, freezingBullet, 20, cell5, p);
+                Tower freezingTower1 = new Tower(6, 500, freezingBullet, 20, cell5, p,listUp);
                 Cell cell6 = towerCell(board,width,height);
-                Tower freezingTower2 = new Tower(6, 500, freezingBullet, 20, cell6, p);
+                Tower freezingTower2 = new Tower(6, 500, freezingBullet, 20, cell6, p,listUp);
 
                 game.setTower(classicTower1);
                 game.setTower(classicTower2);

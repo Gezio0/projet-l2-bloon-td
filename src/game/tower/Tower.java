@@ -1,5 +1,5 @@
 package game.tower;
-import game.Game;
+import game.tower.upgrade.*;
 import game.GameObject;
 import game.balloon.Balloon;
 import game.path.*;
@@ -23,8 +23,8 @@ public class Tower extends GameObject{
     protected List<Cell> cellInRange;
     /**time before the tower can shoot an other time*/
     protected int reloadTime;
-    /**Bloon td game */
-    protected Game game;
+    /**the list of possible upgrades on this tower*/
+    protected List<Upgrade> listUpgrades;
 
 
 
@@ -38,13 +38,14 @@ public class Tower extends GameObject{
      *
      * 
      */
-    public Tower(int range, int cost, Bullet bullet,int reloadTime,Cell cell,List<Path> paths) {
+    public Tower(int range, int cost, Bullet bullet,int reloadTime,Cell cell,List<Path> paths,List<Upgrade> listUpgrades) {
         this.range = range;
         this.cost = cost;
         this.bullet = bullet;
         this.reloadTime = reloadTime;
         this.cell = cell;
         this.paths = paths;
+        this.listUpgrades = listUpgrades;
         this.cellInRange = new ArrayList<Cell>();
         int maxX = this.cell.getX()+this.range;
         int maxY = this.cell.getY()+this.range;
@@ -92,6 +93,39 @@ public class Tower extends GameObject{
     public Cell getCell(){
         return this.cell;
     }
+    /**get the list of ugrades
+     * @return List<Upgrade>
+     */
+    public List<Upgrade> getListUpgrades(){
+        return this.listUpgrades;
+    }
+
+    /** set a new range for this tower
+     * @param range int
+     * 
+    */
+    public void setRange(int range) {
+        this.range = range;
+    }
+    
+    /**set a new reloadTime for this tower
+     * @param reloadTime
+     */
+    public void setReloadTime(int reloadTime) {
+        this.reloadTime = reloadTime;
+    }
+    
+    /**upgrade this tower according to the number in parameter
+     * the number need to be between 0 and the listUpgrades'size
+     * if it is outside this range then it will do nothing
+     * @param number int
+    */
+    public void upgrade(int number){
+        if (number>=0 && number<this.listUpgrades.size()){
+            this.listUpgrades.get(number).evolve(this);
+        }
+    }
+
 
     /**return the distance of a balloon and a cell pathpath
      *distance : sqrt((LastCellPathX-BalloonX)²+(LastCellPathY-BalloonY²). 
@@ -175,6 +209,7 @@ public class Tower extends GameObject{
     public boolean onClock(int clock) {
         return clock%this.reloadTime==0;
     }
+    
 
 
     
