@@ -16,4 +16,10 @@ public class AreaBulletEvolution extends Upgrade{
     public int getCost(){
         return this.cost;
     }
+
+    public void evolve(Tower tower){
+        Bullet b = tower.getBullet();
+        int areaOfBullet = b.getArea();
+        int newArea = areaOfBullet + this.area;
+    }   
 }
