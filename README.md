@@ -229,10 +229,20 @@ Finaliser les tests pour toute l'équipe, tout mettre en commun, tester, puis fa
 ## Semaine 7
 
 ### Ce qui a été réalisé
+![alt text](images/UMLS7p3.png)
+![alt text](images/UMLs7p4.png)
+
+Nous sommes en train d'implémenter des fonctionnalités upgrades qui permettront de modifier les tours afin d'appliquer les évolutions.
+Nous avons aussi du rajouter un attribut dans la classe tour afin de rajouter une liste d'évolutions possibles qui sera pris dans la construction.
 
 ### Difficultés rencontrées
+La seule difficulté rencontrée cette semaine est qu'il faut bien faire attention à pouvoir appliquer plusieurs évolutions sans effacer celles qui ont étés appliquées précedemment.
 
 ### Objectifs pour la semaine et répartition du travail par membre
+Merwan : classe CooldownEvolution, AreaBulletEvolution et modification de la classe Damage.
+Yanis : classe RangeEvolution et BulletDamageEvolution.
+J-M : modification de la classe Tower.
+Noé : modification de Bullet et ajout de la classe abstraite Upgrade.
 
 ## Semaine 8
 
