@@ -15,7 +15,7 @@ public class CooldownEvolution extends Upgrade{
     */
     public void evolve(Tower tower){
         int cd = tower.getReloadTime();
-        int newCd = cd * this.multiplier;
+        int newCd = (int) Math.floor(cd * this.multiplier);
         tower.setReloadTime(newCd);
     }
 }
