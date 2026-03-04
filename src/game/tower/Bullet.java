@@ -52,6 +52,14 @@ public class Bullet extends GameObject{
     public int getArea() {
         return this.area;
     }
+
+    /** set the area of this bullet
+     * @param area
+     */
+    public void setArea(int area){
+        this.area = area;
+    }
+
     /**get the target of this bullet
      * @return null if not defined, else a balloon
      */
