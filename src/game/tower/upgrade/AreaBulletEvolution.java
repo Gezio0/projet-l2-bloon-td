@@ -13,5 +13,7 @@ public class AreaBulletEvolution extends Upgrade{
 
     }
 
-
+    public int getCost(){
+        return this.cost;
+    }
 }
