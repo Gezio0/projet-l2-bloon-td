@@ -3,12 +3,25 @@ package game.tower.upgrade;
 /**
  * A class managing Range upgrades
  */
-public class RangeUpgrade {
+public class RangeUpgrade extends Upgrade{
     /**the value to multiply a tower range */
     protected double multiplier;
     
-    public RangeUpgrade(double multiplier){
-        super();
+    /**
+     * Builds a RangeUpgrade class with a multiplier
+     * @param multiplier
+     */
+    public RangeUpgrade(int cost,double multiplier){
+        super(cost);
         this.multiplier = multiplier;
+    }
+
+    /**
+     * 
+     * @return
+     */
+    @Override
+    public double getRangeMultiplier(){
+        return this.multiplier;
     }
 }
