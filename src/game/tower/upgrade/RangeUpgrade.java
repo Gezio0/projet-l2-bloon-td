@@ -17,8 +17,8 @@ public class RangeUpgrade extends Upgrade{
     }
 
     /**
-     * 
-     * @return
+     * Get the range multiplier.
+     * @return the range multiplier.
      */
     @Override
     public double getRangeMultiplier(){
