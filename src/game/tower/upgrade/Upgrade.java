@@ -1,7 +1,5 @@
 package game.tower.upgrade;
 
-import game.tower.Tower;
-
 /**An abstract class that represent an upgrade in the game*/
 public abstract class Upgrade {
 
@@ -13,8 +11,12 @@ public abstract class Upgrade {
         this.cost = cost;
     }
 
-    /** Upgrade a tower
-    * @param tower the tower to upgrade
-    */
-    public abstract void evolve(Tower tower);
+    /**
+     * Get the damage multiplier.
+     * @return the damage multiplier, 0 if this upgrade does not concern Damages.
+     */
+    public double getDamageMultiplier(){
+        return 0.0;
+    }
+    
 }
