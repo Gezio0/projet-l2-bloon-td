@@ -19,4 +19,11 @@ public abstract class Upgrade {
         return 0.0;
     }
     
+    /**
+     * Get the range multiplier.
+     * @return the range multiplier, 0 if this upgrade does not concern range.
+     */
+    public double getRangeMultiplier(){
+        return 0.0;
+    }
 }
