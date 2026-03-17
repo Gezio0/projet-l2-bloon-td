@@ -26,4 +26,12 @@ public abstract class Upgrade {
     public double getRangeMultiplier(){
         return 0.0;
     }
+
+    /**
+     * Get the area of effect multiplier.
+     * @return the aoe multiplier, 0 if this upgrade does not concern area of effect.
+     */
+    public double getAreaMultiplier(){
+        return 0.0;
+    }
 }
