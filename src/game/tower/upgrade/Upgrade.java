@@ -34,4 +34,12 @@ public abstract class Upgrade {
     public double getAreaMultiplier(){
         return 0.0;
     }
+
+    /**
+     * Get the cooldown multiplier.
+     * @return the cooldown multiplier, 0 if this upgrade does not concern cooldown.
+     */
+    public double getCooldownMultiplier(){
+        return 0.0;
+    }
 }
