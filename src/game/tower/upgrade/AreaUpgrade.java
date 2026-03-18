@@ -24,5 +24,13 @@ public class AreaUpgrade extends Upgrade {
     public double getAreaMultiplier(){
         return this.multiplier;
     }
+
+    /**
+     * Display the upgrade with its name and percentage buff
+     */
+    @Override
+    public String toString(){
+        return "Upgrade : aoe, buff : + " + this.multiplier*10 + "%"; 
+    }
     
 }
