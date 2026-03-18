@@ -84,4 +84,16 @@ public class UpgradeTree {
         }
         return multiplier;
     }
+
+    /**
+     * Get the whole area of effect multiplier (sum of the different buffs)
+     * @return the multiplier
+     */
+    public double getAreaMultiplier(){
+        double multiplier = 1.00;
+        for (Upgrade upgrade : this.activeUpgrades){
+            multiplier += upgrade.getAreaMultiplier();
+        }
+        return multiplier;
+    }
 }
