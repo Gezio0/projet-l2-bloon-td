@@ -49,7 +49,6 @@ public class Tower extends GameObject{
         //this.cellInRange = new ArrayList<Cell>();
         
         
-        }
 
     }
 
@@ -58,10 +57,10 @@ public class Tower extends GameObject{
      */
     public List<Cell> getCellInRange(){
         List<Cell> cellInRange = new ArrayList<Cell>();
-        int maxX = this.cell.getX()+this.range*this.upgradeTree.getRangeMultiplier();
-        int maxY = this.cell.getY()+this.range*this.upgradeTree.getRangeMultiplier();
-        int minX = this.cell.getX()-this.range*this.upgradeTree.getRangeMultiplier();
-        int minY = this.cell.getY()-this.range*this.upgradeTree.getRangeMultiplier();
+        int maxX = (int) Math.ceil(this.cell.getX()+this.range*this.upgradeTree.getRangeMultiplier());
+        int maxY = (int) Math.ceil(this.cell.getY()+this.range*this.upgradeTree.getRangeMultiplier());
+        int minX = (int) Math.ceil(this.cell.getX()-this.range*this.upgradeTree.getRangeMultiplier());
+        int minY = (int) Math.ceil(this.cell.getY()-this.range*this.upgradeTree.getRangeMultiplier());
         for(Path p : paths){
             List<CellPath> cellpaths= p.getPath();
             for(CellPath cp : cellpaths){
@@ -71,6 +70,7 @@ public class Tower extends GameObject{
                 }
             }
         }
+        return cellInRange;
     }
     /**get the reload time of this tower
      * @return int
@@ -210,8 +210,9 @@ public class Tower extends GameObject{
             for (Effect effect : this.bullet.getEffects()){
                 Effect modifiedEffect =  effect.copy();
                 if (modifiedEffect instanceof Damage){
-                     int modifiedDamage = (int) Math.ceil(modifiedEffect.getDamage()*this.upgradeTree.getDamageMultiplier());
-                    modifiedEffect.setDamage(modifiedDamage);
+                    Damage damage = (Damage) modifiedEffect;
+                    int modifiedDamage = (int) Math.ceil(damage.getDamage()*this.upgradeTree.getDamageMultiplier());
+                    damage.setDamage(modifiedDamage);
                 }
                 
                 newEffects.add(modifiedEffect);
@@ -233,7 +234,7 @@ public class Tower extends GameObject{
     */
     @Override
     public boolean onClock(int clock) {
-        int time = (int) Math.ceil(this.reloadTime*this.upgradeTree);
+        int time = (int) Math.ceil((this.reloadTime*this.upgradeTree.getCooldownMultiplier()));
         return clock%(time)==0;
     }
     
