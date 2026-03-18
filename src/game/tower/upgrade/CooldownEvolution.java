@@ -1,23 +1,27 @@
 package game.tower.upgrade;
 
-import game.tower.*;
-
-public class CooldownEvolution extends Upgrade{
+/**
+ * A class managing cooldown upgrades
+ */
+public class CooldownUpgrade extends Upgrade {
+    /**the value to multiply a tower cooldown */
     protected double multiplier;
-
-    /*constructor of the class CooldownEvolution that modify the time for reload a bullet to a specific tower */
-    public CooldownEvolution(int cost, double multiplier){
-        super();
+    
+    /**
+     * Builds a CooldownUpgrade class with a multiplier
+     * @param multiplier
+     */
+    public CooldownUpgrade(int cost,double multiplier){
+        super(cost);
         this.multiplier = multiplier;
-        this.cost = cost;
     }
 
-    /** upgrade the tower in parameter by setting its reload time lower 
-    * @param tower the tower to upgrade
-    */
-    public void evolve(Tower tower){
-        int cd = tower.getReloadTime();
-        int newCd = (int) Math.floor(cd * this.multiplier);
-        tower.setReloadTime(newCd);
+    /**
+     * Get the cooldown multiplier.
+     * @return the cooldown multiplier.
+     */
+    @Override
+    public double getCooldownMultiplier(){
+        return this.multiplier;
     }
 }
