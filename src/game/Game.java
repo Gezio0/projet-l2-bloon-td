@@ -112,6 +112,16 @@ public class Game {
     }
 
     /**
+     * Do a wave of the game
+     * @throws NoNextCellException 
+    */
+    public void playWave() throws NoNextCellException{
+        while (!this.isFinished()){
+            this.loop();
+        }
+    }
+
+    /**
      * Return a set of the balloons in this game
      * @return a set of the balloons in this game
     */
@@ -125,6 +135,14 @@ public class Game {
     */
     public void setTower(Tower t){
         this.towers.add(t);
+    }
+
+    /**
+     * Add a tower in the game
+     * @param t the tower to add
+    */
+    public Set<Tower> getTowers(){
+        return this.towers;
     }
 
     /**
