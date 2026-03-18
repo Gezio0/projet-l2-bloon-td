@@ -60,4 +60,16 @@ public class UpgradeTree {
     public List<Upgrade> getInactiveUpgrades(){
         return this.inactiveUpgrades;
     }
+
+    /**
+     * Get the whole range multiplier (sum of the different buffs)
+     * @return the multiplier
+     */
+    public double getRangeMultiplier(){
+        double multiplier = 1.00;
+        for (Upgrade upgrade : this.activeUpgrades){
+            multiplier += upgrade.getRangeMultiplier();
+        }
+        return multiplier;
+    }
 }
