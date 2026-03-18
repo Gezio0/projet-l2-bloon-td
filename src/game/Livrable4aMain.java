@@ -109,6 +109,18 @@ public class Livrable4aMain {
                     }
                     System.out.println("Wave " + (i+1) + "finished");
                 }
+                
+                for(int i = 0;i<5;i++){
+                    game.playWave();
+                    for(Tower tower : game.getTowers()){
+                        UpgradeTree upgradeTree = tower.getUpgradeTree();
+                        List<Upgrade> upgrades = upgradeTree.getActiveUpgrades();
+                        Upgrade upgrade = upgrades.get(0);
+                        tower.sellUp(upgrade);
+                        System.out.println("Sold :" + upgrade.toString() + "for tower :" + tower.toString());
+                    }
+                    System.out.println("Wave " + (i+6) + "finished");
+                }
 
 
                 
