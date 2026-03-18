@@ -52,4 +52,12 @@ public class UpgradeTree {
     public List<Upgrade> getActiveUpgrades(){
         return this.activeUpgrades;
     }
+
+    /**
+     * Get the list of inactive upgrades
+     * @return the list of inactive upgrades
+     */
+    public List<Upgrade> getInactiveUpgrades(){
+        return this.inactiveUpgrades;
+    }
 }
