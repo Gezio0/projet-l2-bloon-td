@@ -99,9 +99,17 @@ Enfin, la gestion d’un grand nombre d’objets reste complexe. Il faut constam
 ## Livrable 4
 
 ### Atteinte des objectifs
+Au cours de ce livrable, nous avons implémenté un système d’upgrades permettant de faire évoluer dynamiquement les tours. Une première approche consistait à modifier directement les attributs des tours (portée, dégâts, cadence), mais celle-ci s’est révélée limitée, notamment pour gérer la revente des améliorations. Nous avons donc repensé ce système en adoptant une modélisation basée sur des multiplicateurs.
+
+Désormais, chaque tour possède deux listes distinctes : une liste d’évolutions actives et une liste d’évolutions inactives. Lorsqu’un joueur achète une amélioration, celle-ci est déplacée dans la liste des évolutions actives ; inversement, lorsqu’elle est vendue, elle est replacée dans la liste des évolutions inactives. Ce fonctionnement permet de ne jamais perdre l’information sur les upgrades disponibles tout en facilitant les changements d’état.
+
+Les effets des évolutions sont appliqués dynamiquement : à chaque mise à jour, la tour parcourt la liste des évolutions actives et cumule leurs multiplicateurs (portée, dégâts, vitesse d’attaque, etc.). Chaque type d’évolution n’impacte qu’une caractéristique donnée, les autres multiplicateurs restant neutres (valeur nulle ou 1 selon l’implémentation), ce qui garantit une composition correcte des effets même lorsque plusieurs upgrades sont appliquées simultanément.
+
+Ce changement de modélisation a impliqué des modifications importantes dans les classes Tower, Bullet et Upgrade, ainsi que l’ajout de nouvelles méthodes pour gérer l’achat, la vente et l’application des effets. Enfin, nous avons également finalisé l’implémentation du système de vagues dans la classe Game, permettant de structurer le déroulement du jeu en plusieurs phases successives.
 
 ### Difficultés restant à résoudre
-
+La principale difficulté a été de repenser entièrement le système d’upgrades afin de gérer correctement la revente. L’ancienne implémentation, basée sur des modifications directes des attributs, ne permettait pas de revenir facilement à un état précédent sans stocker des copies des objets. Le passage à un système basé sur des listes d’évolutions et des multiplicateurs a permis de résoudre ce problème, mais a nécessité une refonte importante du code.
+Maintenant dans le prochain livrable nous allons ajouter un moyen de gérer les evolutions en les achetant ou les vendant a chaque manche avec un systeme de monnaie, recuperer notre argent apres la vente d'une evolution etc.
 ## Livrable 5
 
 ### Atteinte des objectifs
