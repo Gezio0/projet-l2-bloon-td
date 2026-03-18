@@ -27,6 +27,6 @@ public class RangeUpgrade extends Upgrade{
 
     @Override
     public String toString(){
-        return "Upgrade : range, buff : + " + this.multiplier; 
+        return "Upgrade : range, buff : + " + this.multiplier*10 + "%"; 
     }
 }
