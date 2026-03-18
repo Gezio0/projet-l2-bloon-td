@@ -42,4 +42,6 @@ public abstract class Upgrade {
     public double getCooldownMultiplier(){
         return 0.0;
     }
+
+    public abstract String toString();
 }
