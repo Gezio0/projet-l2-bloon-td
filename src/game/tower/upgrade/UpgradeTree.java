@@ -96,4 +96,17 @@ public class UpgradeTree {
         }
         return multiplier;
     }
+
+    /**
+     * Get the whole cooldown multiplier (sum of the different buffs)
+     * @return the multiplier
+     */
+    public double getCooldownMultiplier(){
+        double multiplier = 1.00;
+        for (Upgrade upgrade : this.activeUpgrades){
+            multiplier -= upgrade.getCooldownMultiplier();
+        }
+        return multiplier;
+    }
+
 }
