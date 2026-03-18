@@ -97,7 +97,7 @@ Enfin, la gestion d’un grand nombre d’objets reste complexe. Il faut constam
 ![alt text](images/UMLS7p1.png)
 
 ## Livrable 4
-
+![alt text](images/UMLlivrable4.png)
 ### Atteinte des objectifs
 Au cours de ce livrable, nous avons implémenté un système d’upgrades permettant de faire évoluer dynamiquement les tours. Une première approche consistait à modifier directement les attributs des tours (portée, dégâts, cadence), mais celle-ci s’est révélée limitée, notamment pour gérer la revente des améliorations. Nous avons donc repensé ce système en adoptant une modélisation basée sur des multiplicateurs.
 
@@ -263,6 +263,7 @@ Noé : modification de Bullet et ajout de la classe abstraite Upgrade.
 ## Semaine 9
 
 ### Ce qui a été réalisé
+![alt text](images/UMLlivrable4.png)
 Grosses modifications au niveau des upgrades avec un changement du systeme, nous partons sur un systeme de multiplier pour gérer l'évolution de nos tours. Des modifications doivent donc être apporté a la classe Tower, une methode pour acheter et une methode pour vendre les evolutions ainsi qu'une methode pour appliquer le multiplier.
 Des modifications ont donc aussi été ajouté au code de la semaine precedente sur la partie Upgrade avec de nouvelles methodes pour obtenir les multipliers de chaque evolution.
 Ces multiplier seront ensuite additionnés pour permettre d'appliquer plusieurs evolutions a la meme tour.
