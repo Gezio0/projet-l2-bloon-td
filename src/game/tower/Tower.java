@@ -24,7 +24,7 @@ public class Tower extends GameObject{
     /**time before the tower can shoot an other time*/
     protected int reloadTime;
     /**the list of possible upgrades on this tower*/
-    protected List<Upgrade> listUpgrades;
+    protected UpgradeTree upgradeTree;
 
 
 
@@ -38,19 +38,30 @@ public class Tower extends GameObject{
      *
      * 
      */
-    public Tower(int range, int cost, Bullet bullet,int reloadTime,Cell cell,List<Path> paths,List<Upgrade> listUpgrades) {
+    public Tower(int range, int cost, Bullet bullet,int reloadTime,Cell cell,List<Path> paths,UpgradeTree upgradeTree) {
         this.range = range;
         this.cost = cost;
         this.bullet = bullet;
         this.reloadTime = reloadTime;
         this.cell = cell;
         this.paths = paths;
-        this.listUpgrades = listUpgrades;
-        this.cellInRange = new ArrayList<Cell>();
-        int maxX = this.cell.getX()+this.range;
-        int maxY = this.cell.getY()+this.range;
-        int minX = this.cell.getX()-this.range;
-        int minY = this.cell.getY()-this.range;
+        this.upgradeTree = upgradeTree;
+        //this.cellInRange = new ArrayList<Cell>();
+        
+        
+        }
+
+    }
+
+    /**get the cells in the range of this tower
+     * @return List<Cell>
+     */
+    public List<Cell> getCellInRange(){
+        List<Cell> cellInRange = new ArrayList<Cell>();
+        int maxX = this.cell.getX()+this.range*this.upgradeTree.getRangeMultiplier();
+        int maxY = this.cell.getY()+this.range*this.upgradeTree.getRangeMultiplier();
+        int minX = this.cell.getX()-this.range*this.upgradeTree.getRangeMultiplier();
+        int minY = this.cell.getY()-this.range*this.upgradeTree.getRangeMultiplier();
         for(Path p : paths){
             List<CellPath> cellpaths= p.getPath();
             for(CellPath cp : cellpaths){
@@ -60,7 +71,6 @@ public class Tower extends GameObject{
                 }
             }
         }
-
     }
     /**get the reload time of this tower
      * @return int
@@ -93,13 +103,7 @@ public class Tower extends GameObject{
     public Cell getCell(){
         return this.cell;
     }
-    /**get the list of ugrades
-     * @return List<Upgrade>
-     */
-    public List<Upgrade> getListUpgrades(){
-        return this.listUpgrades;
-    }
-
+    
     /** set a new range for this tower
      * @param range int
      * 
@@ -115,17 +119,30 @@ public class Tower extends GameObject{
         this.reloadTime = reloadTime;
     }
     
-    /**upgrade this tower according to the number in parameter
-     * the number need to be between 0 and the listUpgrades'size
-     * if it is outside this range then it will do nothing
-     * @param number int
+    /**buy an upgrade according to the upgrade in parameter
+     * if this tower don't own this upgrade then it will do nothing
+     * @param up Upgrade 
     */
-    public void upgrade(int number){
-        if (number>=0 && number<this.listUpgrades.size()){
-            this.listUpgrades.get(number).evolve(this);
-        }
+    public void buyUp(Upgrade up){
+        this.upgradeTree.buy(up);
     }
 
+
+    /**sell an upgrade according to the upgrade in parameter
+     * if this tower don't own this upgrade then it will do nothing
+     * @param up Upgrade 
+    */
+    public void sellUp(Upgrade up){
+        this.upgradeTree.sell(up);
+    }
+
+
+    /**get the Upgrade Tree of this tower
+    * @return UpgradeTree
+    */
+    public UpgradeTree getUpgradeTree(){
+        return this.upgradeTree;
+    }
 
     /**return the distance of a balloon and a cell pathpath
      *distance : sqrt((LastCellPathX-BalloonX)²+(LastCellPathY-BalloonY²). 
@@ -147,10 +164,11 @@ public class Tower extends GameObject{
     protected Balloon isInRange(Set<Balloon> balloons){
         Balloon balloonTargeted = null;
         double distanceMin = Double.MAX_VALUE;
+        List<Cell> cellInRange= this.getCellInRange();
         for(Balloon b : balloons){
 
             Cell bCell = b.getCell().getCell();
-            if(this.cellInRange.contains(bCell)){
+            if(cellInRange.contains(bCell)){
 
                 for(Path p : this.paths){
                     CellPath lasCellPath = p.getLastCell();
@@ -190,9 +208,17 @@ public class Tower extends GameObject{
             List<Effect> newEffects = new LinkedList<>();
 
             for (Effect effect : this.bullet.getEffects()){
-                newEffects.add(effect.copy());
+                Effect modifiedEffect =  effect.copy();
+                if (modifiedEffect instanceof Damage){
+                     int modifiedDamage = (int) Math.ceil(modifiedEffect.getDamage()*this.upgradeTree.getDamageMultiplier());
+                    modifiedEffect.setDamage(modifiedDamage);
+                }
+                
+                newEffects.add(modifiedEffect);
             }
-            projectile = new Bullet(this.bullet.getArea(),this.bullet.getTimeLeft(),newEffects);
+            int modifiedArea = (int) Math.ceil(this.bullet.getArea()*this.upgradeTree.getAreaMultiplier());
+            projectile = new Bullet(modifiedArea,
+            this.bullet.getTimeLeft(),newEffects);
             projectile.addTarget(target);
             projectile.setBalloons(balloons);
         }
@@ -207,7 +233,8 @@ public class Tower extends GameObject{
     */
     @Override
     public boolean onClock(int clock) {
-        return clock%this.reloadTime==0;
+        int time = (int) Math.ceil(this.reloadTime*this.upgradeTree);
+        return clock%(time)==0;
     }
     
 
