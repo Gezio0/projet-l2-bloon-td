@@ -21,6 +21,11 @@ public class UpgradeTree {
         this.inactiveUpgrades = new ArrayList<>(inactiveUpgrades);
     }
 
+    /**
+     * Switch an upgrade from the inactiveUpgrades list to the active one
+     * No effect if upgrade is not in the inactive list.
+     * @param upgrade the upgrade to buy
+     */
     public void buy(Upgrade upgrade){
         if (this.inactiveUpgrades.contains(upgrade)){
             this.inactiveUpgrades.remove(upgrade);
