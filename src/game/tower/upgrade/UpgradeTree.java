@@ -32,4 +32,16 @@ public class UpgradeTree {
             this.activeUpgrades.add(upgrade);
         }
     }
+
+    /**
+     * Switch an upgrade from the activeUpgrades list to the inactive one
+     * No effect if upgrade is not in the active list.
+     * @param upgrade the upgrade to sell
+     */
+    public void sell(Upgrade upgrade){
+        if (this.activeUpgrades.contains(upgrade)){
+            this.activeUpgrades.remove(upgrade);
+            this.inactiveUpgrades.add(upgrade);
+        }
+    }
 }
