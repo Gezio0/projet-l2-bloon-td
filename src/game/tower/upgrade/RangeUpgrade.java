@@ -24,4 +24,9 @@ public class RangeUpgrade extends Upgrade{
     public double getRangeMultiplier(){
         return this.multiplier;
     }
+
+    @Override
+    public String toString(){
+        return "Upgrade : range, buff : + " + this.multiplier; 
+    }
 }
