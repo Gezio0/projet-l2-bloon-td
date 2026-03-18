@@ -266,7 +266,7 @@ La semaine precedente nous avions totalement oublié de prendre en compte le fai
 Yanis - modifications de classe Upgrade
 JM - modifications de Tower
 Merwan - Livrable4a et readme livrable
-noe - Livrable 4b et modifications game
+noe - Livrable 4b et ajout de la methode playWave 
 ## Semaine 10
 
 ### Ce qui a été réalisé
