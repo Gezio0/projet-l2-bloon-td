@@ -19,6 +19,19 @@ public class Damage extends Effect{
         this.damage = damage;
     }
 
+    /*return the damage of the effect */
+    public int getDamage(){
+        return this.damage;
+    }
+
+    /** set the damage of the effect whit the value in parameter
+     * @param damageToSet new damage for this effect
+     */
+    public void setDamage(int damageToSet){
+        this.damage = damageToSet;
+    }
+
+
     /*method that applies the effect Damage to the balloon list and removes the effect when its durability reaches 0  */
     public void applyEffect(int clock){
         if (this.duration >= 0){
