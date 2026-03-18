@@ -260,9 +260,13 @@ Des modifications ont donc aussi été ajouté au code de la semaine precedente 
 Ces multiplier seront ensuite additionnés pour permettre d'appliquer plusieurs evolutions a la meme tour.
 Enfin en vu d'ajouter un systeme de manche dans le livrable nous reflechissons a modifier la classe Game.
 ### Difficultés rencontrées
+La semaine precedente nous avions totalement oublié de prendre en compte le fait que nous pouvons acheter mais surtout REVENDRE une evolution. Notre precedente implementation qui modifiait directement la valeur des degats etc n'etait donc pas optimale car si l'on voulait vendre une evolution et revenir a un etat precedent il aurait fallu sauvegarder une copie de la tour comme elle etait avant l'evolution. Avec nôtre nouveau systeme les evolutions actives sont stockées dans une liste, les inactives aussi et il suffit juste de switcher une evolution d'une liste a une autre.
 
 ### Objectifs pour la semaine et répartition du travail par membre
-
+Yanis - modifications de classe Upgrade
+JM - modifications de Tower
+Merwan - Livrable4a et readme livrable
+noe - Livrable 4b et modifications game
 ## Semaine 10
 
 ### Ce qui a été réalisé
