@@ -44,4 +44,12 @@ public class UpgradeTree {
             this.inactiveUpgrades.add(upgrade);
         }
     }
+
+    /**
+     * Get the list of active upgrades
+     * @return the list of active upgrades
+     */
+    public List<Upgrade> getActiveUpgrades(){
+        return this.activeUpgrades;
+    }
 }
