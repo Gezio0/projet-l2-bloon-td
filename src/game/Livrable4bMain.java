@@ -45,10 +45,10 @@ public class Livrable4bMain {
                 List<Upgrade> upgradesFreeze = new ArrayList<Upgrade>();
                 List<Upgrade> slowingTower = new ArrayList<Upgrade>();
 
-                Upgrade cooldownUpgrade = new CooldownEvolution(0.2);
-                Upgrade areaUpgrade = new AreaBulletEvolution(1);
-                Upgrade damageUpgrade = new BulletDamageEvolution(3);
-                Upgrade rangeUpgrade = new RangeEvolution(0.2);
+                Upgrade cooldownUpgrade = new CooldownEvolution(10,0.2);
+                Upgrade areaUpgrade = new AreaBulletEvolution(10,1);
+                Upgrade damageUpgrade = new BulletDamageEvolution(10,3);
+                Upgrade rangeUpgrade = new RangeEvolution(10,0.2);
 
                 upgradesClassic.add(cooldownUpgrade);
                 upgradesClassic.add(areaUpgrade);
