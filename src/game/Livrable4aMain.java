@@ -10,7 +10,38 @@ public class Livrable4aMain {
         if (args.length>=3){
             try {
                 // Upgrades
-                
+                List<Upgrade> upgradesClassic = new ArrayList<Upgrade>();
+                List<Upgrade> upgradesFreeze = new ArrayList<Upgrade>();
+                List<Upgrade> slowingTower = new ArrayList<Upgrade>();
+
+                Upgrade cooldownUpgrade = new CooldownEvolution(0.2);
+                Upgrade areaUpgrade = new AreaBulletEvolution(1);
+                Upgrade damageUpgrade = new BulletDamageEvolution(3);
+                Upgrade rangeUpgrade = new RangeEvolution(0.2);
+
+                upgradesClassic.add(cooldownUpgrade);
+                upgradesClassic.add(areaUpgrade);
+                upgradesClassic.add(damageUpgrade);
+                upgradesClassic.add(damageUpgrade);
+                upgradesClassic.add(rangeUpgrade);
+
+                upgradesFreeze.add(rangeUpgrade);
+                upgradesFreeze.add(rangeUpgrade);
+                upgradesFreeze.add(rangeUpgrade);
+                upgradesFreeze.add(cooldownUpgrade);
+                upgradesFreeze.add(cooldownUpgrade);
+
+                slowingTower.add(rangeUpgrade);
+                slowingTower.add(rangeUpgrade);
+                slowingTower.add(rangeUpgrade);
+                slowingTower.add(cooldownUpgrade);
+                slowingTower.add(cooldownUpgrade);
+
+                UpgradeTree upgradeTreeClassic = new UpgradeTree(upgradesClassic);
+                UpgradeTree upgradeTreeFreeze = new UpgradeTree(upgradesFreeze);
+                UpgradeTree upgradeTreeSlowing = new UpgradeTree(slowingTower);
+
+
 
                 // Board and path
                 int height = Integer.parseInt(args[0]);
@@ -69,10 +100,7 @@ public class Livrable4aMain {
 
 
 
-                for(int i = 0;i<10;i++){
-                    playWave();
-                }
-
+                
             }
             catch ( Exception e) {
                     System.out.println("args need to be int type");
