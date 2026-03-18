@@ -261,9 +261,11 @@ Ces multiplier seront ensuite additionnés pour permettre d'appliquer plusieurs 
 Enfin en vu d'ajouter un systeme de manche dans le livrable nous reflechissons a modifier la classe Game.
 ### Difficultés rencontrées
 La semaine precedente nous avions totalement oublié de prendre en compte le fait que nous pouvons acheter mais surtout REVENDRE une evolution. Notre precedente implementation qui modifiait directement la valeur des degats etc n'etait donc pas optimale car si l'on voulait vendre une evolution et revenir a un etat precedent il aurait fallu sauvegarder une copie de la tour comme elle etait avant l'evolution. Avec nôtre nouveau systeme les evolutions actives sont stockées dans une liste, les inactives aussi et il suffit juste de switcher une evolution d'une liste a une autre.
+Ensuite lors d'une upgrade on itere sur la liste des evolutions actives et on recupere admettons leur multiplier de range, on additionne tout. L'evolution qui s'occupe de range va ajouter une valeur les autres additionnerons 0 donc a la fin nous aurons bien le bon multiplier.
+
 
 ### Objectifs pour la semaine et répartition du travail par membre
-Yanis - modifications de classe Upgrade
+Yanis - modifications de classe Upgrade et ajoute de la classe UpgradeTree
 JM - modifications de Tower
 Merwan - Livrable4a et readme livrable
 noe - Livrable 4b et ajout de la methode playWave 
