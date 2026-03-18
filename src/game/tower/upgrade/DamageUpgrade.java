@@ -24,4 +24,12 @@ public class DamageUpgrade extends Upgrade{
     public double getDamageMultiplier(){
         return this.multiplier;
     }
+
+    /**
+     * Display the upgrade with its name and percentage buff
+     */
+    @Override
+    public String toString(){
+        return "Upgrade : damage, buff : + " + this.multiplier*10 + "%"; 
+    }
 }
