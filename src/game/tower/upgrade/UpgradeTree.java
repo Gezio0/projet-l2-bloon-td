@@ -20,4 +20,11 @@ public class UpgradeTree {
         this.activeUpgrades = new ArrayList<>();
         this.inactiveUpgrades = new ArrayList<>(inactiveUpgrades);
     }
+
+    public void buy(Upgrade upgrade){
+        if (this.inactiveUpgrades.contains(upgrade)){
+            this.inactiveUpgrades.remove(upgrade);
+            this.activeUpgrades.add(upgrade);
+        }
+    }
 }
