@@ -1,25 +1,28 @@
 package game.tower.upgrade;
 
-import game.tower.*;
-
-public class AreaBulletEvolution extends Upgrade{
-
-    protected int area;
-
-    public AreaBulletEvolution(int cost,int area){
-        super();
-        this.area = area;
-        this.cost = cost;
-
+/**
+ * A class managing area of effect upgrades
+ */
+public class AreaUpgrade extends Upgrade {
+    /**the value to multiply a bullet area of effect */
+    protected double multiplier;
+    
+    /**
+     * Builds a AreaUpgrade class with a multiplier
+     * @param multiplier
+     */
+    public AreaUpgrade(int cost,double multiplier){
+        super(cost);
+        this.multiplier = multiplier;
     }
 
-    public int getCost(){
-        return this.cost;
+    /**
+     * Get the area of effect multiplier.
+     * @return the area of effect multiplier.
+     */
+    @Override
+    public double getAreaMultiplier(){
+        return this.multiplier;
     }
-
-    public void evolve(Tower tower){
-        Bullet b = tower.getBullet();
-        int areaOfBullet = b.getArea();
-        int newArea = areaOfBullet + this.area;
-    }   
+    
 }
