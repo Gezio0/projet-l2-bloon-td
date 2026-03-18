@@ -98,6 +98,17 @@ public class Livrable4aMain {
                 game.setTower(freezingTower1);
                 game.setTower(freezingTower2);
 
+                for(int i = 0;i<5;i++){
+                    game.playWave();
+                    for(Tower tower : game.getTowers()){
+                        UpgradeTree upgradeTree = tower.getUpgradeTree();
+                        List<Upgrade> upgradesAvailabe = upgradeTree.getInactiveUpgrades();
+                        Upgrade upgrade = upgradesAvailabe.get(i);
+                        tower.buyUp(upgrade);
+                        System.out.println("Buyed :" + upgrade.toString() + "for tower :" + tower.toString());
+                    }
+                    System.out.println("Wave " + (i+1) + "finished");
+                }
 
 
                 
