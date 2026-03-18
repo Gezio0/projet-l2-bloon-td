@@ -255,7 +255,10 @@ Noé : modification de Bullet et ajout de la classe abstraite Upgrade.
 ## Semaine 9
 
 ### Ce qui a été réalisé
-
+Grosses modifications au niveau des upgrades avec un changement du systeme, nous partons sur un systeme de multiplier pour gérer l'évolution de nos tours. Des modifications doivent donc être apporté a la classe Tower, une methode pour acheter et une methode pour vendre les evolutions ainsi qu'une methode pour appliquer le multiplier.
+Des modifications ont donc aussi été ajouté au code de la semaine precedente sur la partie Upgrade avec de nouvelles methodes pour obtenir les multipliers de chaque evolution.
+Ces multiplier seront ensuite additionnés pour permettre d'appliquer plusieurs evolutions a la meme tour.
+Enfin en vu d'ajouter un systeme de manche dans le livrable nous reflechissons a modifier la classe Game.
 ### Difficultés rencontrées
 
 ### Objectifs pour la semaine et répartition du travail par membre
