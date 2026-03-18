@@ -97,11 +97,19 @@ Enfin, la gestion d’un grand nombre d’objets reste complexe. Il faut constam
 ![alt text](images/UMLS7p1.png)
 
 ## Livrable 4
-
+![alt text](images/UMLlivrable4.png)
 ### Atteinte des objectifs
+Au cours de ce livrable, nous avons implémenté un système d’upgrades permettant de faire évoluer dynamiquement les tours. Une première approche consistait à modifier directement les attributs des tours (portée, dégâts, cadence), mais celle-ci s’est révélée limitée, notamment pour gérer la revente des améliorations. Nous avons donc repensé ce système en adoptant une modélisation basée sur des multiplicateurs.
+
+Désormais, chaque tour possède deux listes distinctes : une liste d’évolutions actives et une liste d’évolutions inactives. Lorsqu’un joueur achète une amélioration, celle-ci est déplacée dans la liste des évolutions actives ; inversement, lorsqu’elle est vendue, elle est replacée dans la liste des évolutions inactives. Ce fonctionnement permet de ne jamais perdre l’information sur les upgrades disponibles tout en facilitant les changements d’état.
+
+Les effets des évolutions sont appliqués dynamiquement : à chaque mise à jour, la tour parcourt la liste des évolutions actives et cumule leurs multiplicateurs (portée, dégâts, vitesse d’attaque, etc.). Chaque type d’évolution n’impacte qu’une caractéristique donnée, les autres multiplicateurs restant neutres (valeur nulle ou 1 selon l’implémentation), ce qui garantit une composition correcte des effets même lorsque plusieurs upgrades sont appliquées simultanément.
+
+Ce changement de modélisation a impliqué des modifications importantes dans les classes Tower, Bullet et Upgrade, ainsi que l’ajout de nouvelles méthodes pour gérer l’achat, la vente et l’application des effets. Enfin, nous avons également finalisé l’implémentation du système de vagues dans la classe Game, permettant de structurer le déroulement du jeu en plusieurs phases successives.
 
 ### Difficultés restant à résoudre
-
+La principale difficulté a été de repenser entièrement le système d’upgrades afin de gérer correctement la revente. L’ancienne implémentation, basée sur des modifications directes des attributs, ne permettait pas de revenir facilement à un état précédent sans stocker des copies des objets. Le passage à un système basé sur des listes d’évolutions et des multiplicateurs a permis de résoudre ce problème, mais a nécessité une refonte importante du code.
+Maintenant dans le prochain livrable nous allons ajouter un moyen de gérer les evolutions en les achetant ou les vendant a chaque manche avec un systeme de monnaie, recuperer notre argent apres la vente d'une evolution etc.
 ## Livrable 5
 
 ### Atteinte des objectifs
@@ -255,11 +263,21 @@ Noé : modification de Bullet et ajout de la classe abstraite Upgrade.
 ## Semaine 9
 
 ### Ce qui a été réalisé
-
+![alt text](images/UMLlivrable4.png)
+Grosses modifications au niveau des upgrades avec un changement du systeme, nous partons sur un systeme de multiplier pour gérer l'évolution de nos tours. Des modifications doivent donc être apporté a la classe Tower, une methode pour acheter et une methode pour vendre les evolutions ainsi qu'une methode pour appliquer le multiplier.
+Des modifications ont donc aussi été ajouté au code de la semaine precedente sur la partie Upgrade avec de nouvelles methodes pour obtenir les multipliers de chaque evolution.
+Ces multiplier seront ensuite additionnés pour permettre d'appliquer plusieurs evolutions a la meme tour.
+Enfin en vu d'ajouter un systeme de manche dans le livrable nous reflechissons a modifier la classe Game.
 ### Difficultés rencontrées
+La semaine precedente nous avions totalement oublié de prendre en compte le fait que nous pouvons acheter mais surtout REVENDRE une evolution. Notre precedente implementation qui modifiait directement la valeur des degats etc n'etait donc pas optimale car si l'on voulait vendre une evolution et revenir a un etat precedent il aurait fallu sauvegarder une copie de la tour comme elle etait avant l'evolution. Avec nôtre nouveau systeme les evolutions actives sont stockées dans une liste, les inactives aussi et il suffit juste de switcher une evolution d'une liste a une autre.
+Ensuite lors d'une upgrade on itere sur la liste des evolutions actives et on recupere admettons leur multiplier de range, on additionne tout. L'evolution qui s'occupe de range va ajouter une valeur les autres additionnerons 0 donc a la fin nous aurons bien le bon multiplier.
+
 
 ### Objectifs pour la semaine et répartition du travail par membre
-
+Yanis - modifications de classe Upgrade et ajoute de la classe UpgradeTree
+JM - modifications de Tower
+Merwan - Livrable4a et readme livrable
+noe - Livrable 4b et ajout de la methode playWave 
 ## Semaine 10
 
 ### Ce qui a été réalisé
