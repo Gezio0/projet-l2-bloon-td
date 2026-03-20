@@ -28,10 +28,19 @@ public class UpgradeTreeTest {
         assertEquals(range1,tree.getActiveUpgrades()[0]);
     }
 
-        @Test
+    @Test
     public void sellTest(){
         tree.buy(range1);
         tree.sell(range1);
         assertTrue(tree.getActiveUpgrades().isEmpty());
+    }
+
+    @Test
+    public void getMultiplierTest(){
+        tree.buy(range1);
+        tree.buy(range2);
+        tree.buy(damage1);
+
+        assertTrue(tree.getRangeMultiplier() == 1.70);
     }
 }
