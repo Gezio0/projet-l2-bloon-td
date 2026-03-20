@@ -16,9 +16,9 @@ public class UpgradeTreeTest {
         Upgrade range1 = new RangeUpgrade(0, 0.20);
         Upgrade range2 = new RangeUpgrade(0, 0.50);
         Upgrade damage1 = new RangeUpgrade(0, 0.30);
-        upgrades.push(range1);
-        upgrades.push(range2);
-        upgrades.push(damage1);
+        upgrades.add(range1);
+        upgrades.add(range2);
+        upgrades.add(damage1);
         UpgradeTreeTest tree = new UpgradeTree(upgrades);
     }
 
@@ -26,5 +26,12 @@ public class UpgradeTreeTest {
     public void buyTest(){
         tree.buy(range1);
         assertEquals(range1,tree.getActiveUpgrades()[0]);
+    }
+
+        @Test
+    public void sellTest(){
+        tree.buy(range1);
+        tree.sell(range1);
+        assertTrue(tree.getActiveUpgrades().isEmpty());
     }
 }
