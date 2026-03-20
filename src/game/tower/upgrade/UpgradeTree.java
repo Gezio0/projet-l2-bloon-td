@@ -18,7 +18,10 @@ public class UpgradeTree {
      */
     public UpgradeTree(List<Upgrade> inactiveUpgrades){
         this.activeUpgrades = new ArrayList<>();
-        this.inactiveUpgrades = new ArrayList<>(inactiveUpgrades);
+        this.inactiveUpgrades = new ArrayList<>();
+        for(Upgrade upgrade : inactiveUpgrades){
+            this.inactiveUpgrades.add(upgrade);
+        }
     }
 
     /**

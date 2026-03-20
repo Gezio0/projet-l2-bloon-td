@@ -1,3 +1,4 @@
+
 package game;
 import game.board.*;
 import game.exception.*;
@@ -6,6 +7,7 @@ import game.tower.*;
 import java.util.*;
 
 public class Livrable3aMain {
+    /*
     public static void main(String[] args) throws TooMuchPathsException,NoNextCellException{
         if (args.length>=3){
             try {
@@ -92,4 +94,5 @@ public class Livrable3aMain {
         board.getCell(x, y).setEmpty(false);
         return board.getCell(x, y);
     }
+    */
 }

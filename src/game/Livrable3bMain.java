@@ -7,6 +7,7 @@ import game.tower.upgrade.*;
 import java.util.*;
 
 public class Livrable3bMain {
+    /*
     public static void main(String[] args) throws TooMuchPathsException,NoNextCellException{
         if (args.length>=4){
             try {
@@ -91,4 +92,5 @@ public class Livrable3bMain {
         board.getCell(x, y).setEmpty(false);
         return board.getCell(x, y);
     }
+    */
 }
