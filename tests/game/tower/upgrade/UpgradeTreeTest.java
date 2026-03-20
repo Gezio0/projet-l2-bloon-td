@@ -21,4 +21,10 @@ public class UpgradeTreeTest {
         upgrades.push(damage1);
         UpgradeTreeTest tree = new UpgradeTree(upgrades);
     }
+
+    @Test
+    public void buyTest(){
+        tree.buy(range1);
+        assertEquals(range1,tree.getActiveUpgrades()[0]);
+    }
 }
