@@ -45,37 +45,16 @@ public class Livrable4aMain {
                 // Empty Upgrade
                 List<Upgrade> listUp = new ArrayList<>();
                 
-                
-                // Towers
-                Cell cell1 = towerCell(board,width,height);
-                Tower classicTower1 = new Tower(6, 500, classicBullet, 20, cell1, p,listUp);
-                Cell cell2 = towerCell(board,width,height);
-                Tower classicTower2 = new Tower(6, 500, classicBullet, 20, cell2, p,listUp);
-                Cell cell3 = towerCell(board,width,height);
-                Tower slowingTower1 = new Tower(6, 500, slowingBullet, 20, cell3, p,listUp);
-                Cell cell4 = towerCell(board,width,height);
-                Tower slowingTower2 = new Tower(6, 500, slowingBullet, 20, cell4, p,listUp);
-                Cell cell5 = towerCell(board,width,height);
-                Tower freezingTower1 = new Tower(6, 500, freezingBullet, 20, cell5, p,listUp);
-                Cell cell6 = towerCell(board,width,height);
-                Tower freezingTower2 = new Tower(6, 500, freezingBullet, 20, cell6, p,listUp);
-
-                game.setTower(classicTower1);
-                game.setTower(classicTower2);
-                game.setTower(slowingTower1);
-                game.setTower(slowingTower2);
-                game.setTower(freezingTower1);
-                game.setTower(freezingTower2);
 
                 // Upgrades
                 List<Upgrade> upgradesClassic = new ArrayList<Upgrade>();
                 List<Upgrade> upgradesFreeze = new ArrayList<Upgrade>();
                 List<Upgrade> slowingTower = new ArrayList<Upgrade>();
 
-                Upgrade cooldownUpgrade = new CooldownEvolution(10,0.2);
-                Upgrade areaUpgrade = new AreaBulletEvolution(10,1);
-                Upgrade damageUpgrade = new BulletDamageEvolution(10,3);
-                Upgrade rangeUpgrade = new RangeEvolution(10,0.2);
+                Upgrade cooldownUpgrade = new CooldownUpgrade(10,0.2);
+                Upgrade areaUpgrade = new AreaUpgrade(10,1);
+                Upgrade damageUpgrade = new DamageUpgrade(10,3);
+                Upgrade rangeUpgrade = new RangeUpgrade(10,0.2);
 
                 upgradesClassic.add(cooldownUpgrade);
                 upgradesClassic.add(areaUpgrade);
@@ -98,6 +77,30 @@ public class Livrable4aMain {
                 UpgradeTree upgradeTreeClassic = new UpgradeTree(upgradesClassic);
                 UpgradeTree upgradeTreeFreeze = new UpgradeTree(upgradesFreeze);
                 UpgradeTree upgradeTreeSlowing = new UpgradeTree(slowingTower);
+                UpgradeTree upgradeTreeClassic1 = new UpgradeTree(upgradesClassic);
+                UpgradeTree upgradeTreeFreeze1 = new UpgradeTree(upgradesFreeze);
+                UpgradeTree upgradeTreeSlowing1 = new UpgradeTree(slowingTower);
+
+                // Towers
+                Cell cell1 = towerCell(board,width,height);
+                Tower classicTower1 = new Tower(6, 500, classicBullet, 20, cell1, p,upgradeTreeClassic);
+                Cell cell2 = towerCell(board,width,height);
+                Tower classicTower2 = new Tower(6, 500, classicBullet, 20, cell2, p,upgradeTreeClassic1);
+                Cell cell3 = towerCell(board,width,height);
+                Tower slowingTower1 = new Tower(6, 500, slowingBullet, 20, cell3, p,upgradeTreeSlowing);
+                Cell cell4 = towerCell(board,width,height);
+                Tower slowingTower2 = new Tower(6, 500, slowingBullet, 20, cell4, p,upgradeTreeSlowing1);
+                Cell cell5 = towerCell(board,width,height);
+                Tower freezingTower1 = new Tower(6, 500, freezingBullet, 20, cell5, p,upgradeTreeFreeze);
+                Cell cell6 = towerCell(board,width,height);
+                Tower freezingTower2 = new Tower(6, 500, freezingBullet, 20, cell6, p,upgradeTreeFreeze1);
+
+                game.setTower(classicTower1);
+                game.setTower(classicTower2);
+                game.setTower(slowingTower1);
+                game.setTower(slowingTower2);
+                game.setTower(freezingTower1);
+                game.setTower(freezingTower2);
 
 
                 for(int i = 0;i<5;i++){
@@ -105,11 +108,11 @@ public class Livrable4aMain {
                     for(Tower tower : game.getTowers()){
                         UpgradeTree upgradeTree = tower.getUpgradeTree();
                         List<Upgrade> upgradesAvailabe = upgradeTree.getInactiveUpgrades();
-                        Upgrade upgrade = upgradesAvailabe.get(i);
+                        Upgrade upgrade = upgradesAvailabe.get(0);
                         tower.buyUp(upgrade);
-                        System.out.println("Buyed :" + upgrade.toString() + "for tower :" + tower.toString());
+                        System.out.println("Bought :" + upgrade.toString() + "for tower :" + tower.toString());
                     }
-                    System.out.println("Wave " + (i+1) + "finished");
+                    System.out.println("\nWave " + (i+1) + " finished\n");
                 }
                 
                 for(int i = 0;i<5;i++){
@@ -121,7 +124,7 @@ public class Livrable4aMain {
                         tower.sellUp(upgrade);
                         System.out.println("Sold :" + upgrade.toString() + "for tower :" + tower.toString());
                     }
-                    System.out.println("Wave " + (i+6) + "finished");
+                    System.out.println("\nWave " + (i+6) + " finished\n");
                 }
 
 
