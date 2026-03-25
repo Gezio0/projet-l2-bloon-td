@@ -2,6 +2,8 @@ package game.tower;
 import java.util.*;
 import game.balloon.*;
 import game.path.*;
+import game.tower.upgrade.Upgrade;
+import game.tower.upgrade.UpgradeTree;
 import game.exception.*;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -11,6 +13,7 @@ public class BulletTest {
     private Set<Balloon> balloons;
     private List<Path> paths;
     private Tower tower;
+    private UpgradeTree upgrade;
     @BeforeEach
     public void before() throws TooMuchPathsException,NoNextCellException{
         this.effects = new ArrayList<>();
@@ -26,7 +29,9 @@ public class BulletTest {
         Path p = new Path(cp);
         this.paths =new ArrayList<>();
         this.paths.add(p);
-        this.tower = new Tower(2, 80, this.bullet, 5,new Cell(3,1), this.paths);
+        List<Upgrade> upgradesClassic = new ArrayList<Upgrade>();
+        this.upgrade = new UpgradeTree(upgradesClassic);
+        this.tower = new Tower(2, 80, this.bullet, 5,new Cell(3,1), this.paths,this.upgrade);
 
         for(int i = 0;i<5;i++){
             this.balloons.add(new Balloon(10, 2, cp));
@@ -64,7 +69,7 @@ public class BulletTest {
     }
     @Test 
     public void onClockOneBallonWithOutAreaTest()throws NoNextCellException{
-        Balloon balloon = new Balloon(10, 2, this.paths.getFirst().getFirstCell());
+        Balloon balloon = new Balloon(10, 2, this.paths.get(0).getFirstCell());
         this.balloons.add(balloon);
         this.bullet.setBalloons(this.balloons);
         balloon.moveForward();
@@ -79,17 +84,17 @@ public class BulletTest {
             
         }
         assertEquals(2, balloon.getResistance());
-        this.effects.getFirst().onClock(1);
+        this.effects.get(0).onClock(1);
         assertEquals(1, balloon.getResistance());
-        this.effects.getFirst().onClock(1);
+        this.effects.get(0).onClock(1);
         assertEquals(1, balloon.getResistance());
 
 
     }
      @Test 
     public void onClockTwoBalloonWithOutAreaTest()throws NoNextCellException{
-        Balloon balloon = new Balloon(10, 2, this.paths.getFirst().getFirstCell());
-        Balloon balloon2 = new Balloon(10, 2, this.paths.getFirst().getFirstCell());
+        Balloon balloon = new Balloon(10, 2, this.paths.get(0).getFirstCell());
+        Balloon balloon2 = new Balloon(10, 2, this.paths.get(0).getFirstCell());
         this.balloons.add(balloon);
         this.balloons.add(balloon2);
         this.bullet.setBalloons(this.balloons);
@@ -108,18 +113,18 @@ public class BulletTest {
             
         }
         assertEquals(2, balloon.getResistance());
-        this.effects.getFirst().onClock(1);
+        this.effects.get(0).onClock(1);
         assertEquals(1, balloon.getResistance());
         assertEquals(2,balloon2.getResistance());
-        this.effects.getFirst().onClock(1);
+        this.effects.get(0).onClock(1);
         assertEquals(1, balloon.getResistance());
 
 
     }
     @Test
     public void onClockTwoBalloonWithAreaTest()throws NoNextCellException{
-        Balloon balloon = new Balloon(10, 2, this.paths.getFirst().getFirstCell());
-        Balloon balloon2 = new Balloon(10, 2, this.paths.getFirst().getFirstCell());
+        Balloon balloon = new Balloon(10, 2, this.paths.get(0).getFirstCell());
+        Balloon balloon2 = new Balloon(10, 2, this.paths.get(0).getFirstCell());
         this.balloons.add(balloon);
         this.balloons.add(balloon2);
         Bullet bul = new Bullet(1, 10, this.effects);
@@ -140,10 +145,10 @@ public class BulletTest {
             
         }
         assertEquals(2, balloon.getResistance());
-        this.effects.getFirst().onClock(1);
+        this.effects.get(0).onClock(1);
         assertEquals(1, balloon.getResistance());
         assertEquals(1,balloon2.getResistance());
-        this.effects.getFirst().onClock(1);
+        this.effects.get(0).onClock(1);
         assertEquals(1, balloon.getResistance());
         assertEquals(1,balloon2.getResistance());
     }
