@@ -42,11 +42,6 @@ Un lien vers une image de l'UML doit être fourni (une photo d'un diagramme UML 
     make docs
     
 ```
-*Pour executer les jar :*
-```bash
-    make execjar4aEx
-    make execjar4bEx  
-```
 ```bash
     make clean
     
@@ -146,6 +141,40 @@ Ce changement de modélisation a impliqué des modifications importantes dans le
 ### Difficultés restant à résoudre
 La principale difficulté a été de repenser entièrement le système d’upgrades afin de gérer correctement la revente. L’ancienne implémentation, basée sur des modifications directes des attributs, ne permettait pas de revenir facilement à un état précédent sans stocker des copies des objets. Le passage à un système basé sur des listes d’évolutions et des multiplicateurs a permis de résoudre ce problème, mais a nécessité une refonte importante du code.
 Maintenant dans le prochain livrable nous allons ajouter un moyen de gérer les evolutions en les achetant ou les vendant a chaque manche avec un systeme de monnaie, recuperer notre argent apres la vente d'une evolution etc.
+*Commandes pour compiler et executer les fichiers :*
+```bash
+    make classes
+
+```
+```bash
+    make tests
+    
+```
+```bash
+    make jar
+    
+```
+```bash
+    make runtests
+    
+```
+```bash
+    make docs
+    
+```
+```bash
+    make docs
+    
+```
+*Pour executer les jar :*
+```bash
+    make execjar4aEx
+    make execjar4bEx  
+```
+```bash
+    make clean
+    
+```
 ## Livrable 5
 
 ### Atteinte des objectifs
