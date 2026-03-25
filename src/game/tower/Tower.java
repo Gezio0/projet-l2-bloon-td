@@ -238,7 +238,10 @@ public class Tower extends GameObject{
         return clock%(time)==0;
     }
     
-
+    @Override
+    public String toString(){
+        return "Tower, range : " + this.range + " reload time :"  + this.reloadTime ;
+    }
 
     
 
