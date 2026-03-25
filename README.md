@@ -17,6 +17,42 @@ Les paragraphes concernant les livrables doivent être remplis avant la date de 
 
 Un lien vers une image de l'UML doit être fourni (une photo d'un diagramme UML fait à la main est suffisant).
 
+*Commandes pour compiler et executer les fichiers :*
+```bash
+    make classes
+
+```
+```bash
+    make tests
+    
+```
+```bash
+    make jar
+    
+```
+```bash
+    make runtests
+    
+```
+```bash
+    make docs
+    
+```
+```bash
+    make docs
+    
+```
+*Pour executer les jar :*
+```bash
+    make execjar4aEx
+    make execjar4bEx  
+```
+```bash
+    make clean
+    
+```
+
+
 ## Livrable 1
 #### Voici les commandes de compilations :
 
