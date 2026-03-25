@@ -76,13 +76,13 @@ public class Tower extends GameObject{
      * @return int
      */
     public int getReloadTime(){
-        return this.reloadTime;
+        return ((int) Math.ceil(this.reloadTime*this.upgradeTree.getCooldownMultiplier()));
     }
     /**get the range of this tower
      * @return int
      */
     public int getRange() {
-        return this.range;
+        return ((int) Math.ceil(this.range*this.upgradeTree.getRangeMultiplier()));
     }
     /**get the cost of this tower
      * @return int
@@ -240,7 +240,7 @@ public class Tower extends GameObject{
     
     @Override
     public String toString(){
-        return "Tower, range : " + this.range + " reload time :"  + this.reloadTime ;
+        return "Tower, range : " + this.getRange() + " reload time :"  + this.getReloadTime();
     }
 
     
