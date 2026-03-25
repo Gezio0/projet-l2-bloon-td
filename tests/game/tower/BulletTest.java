@@ -31,7 +31,7 @@ public class BulletTest {
         this.paths.add(p);
         List<Upgrade> upgradesClassic = new ArrayList<Upgrade>();
         this.upgrade = new UpgradeTree(upgradesClassic);
-        this.tower = new Tower(2, 80, this.bullet, 5,new Cell(3,1), this.paths,this.upgrade);
+        this.tower = new Tower(2, 80, this.bullet, 5,new Cell(3,1), this.paths,this.upgrade,"tower");
 
         for(int i = 0;i<5;i++){
             this.balloons.add(new Balloon(10, 2, cp));

@@ -25,6 +25,8 @@ public class Tower extends GameObject{
     protected int reloadTime;
     /**the list of possible upgrades on this tower*/
     protected UpgradeTree upgradeTree;
+    /**the name of this tower */
+    protected String name;
 
 
 
@@ -38,7 +40,7 @@ public class Tower extends GameObject{
      *
      * 
      */
-    public Tower(int range, int cost, Bullet bullet,int reloadTime,Cell cell,List<Path> paths,UpgradeTree upgradeTree) {
+    public Tower(int range, int cost, Bullet bullet,int reloadTime,Cell cell,List<Path> paths,UpgradeTree upgradeTree,String name) {
         this.range = range;
         this.cost = cost;
         this.bullet = bullet;
@@ -46,8 +48,8 @@ public class Tower extends GameObject{
         this.cell = cell;
         this.paths = paths;
         this.upgradeTree = upgradeTree;
-        //this.cellInRange = new ArrayList<Cell>();
         
+        this.name = name;
         
 
     }
@@ -243,6 +245,15 @@ public class Tower extends GameObject{
         return "Tower, range : " + this.getRange() + " reload time :"  + this.getReloadTime();
     }
 
+
+
+
+    /**get the name of this tower
+     * @return String
+     */
+    public String getName(){
+        return this.name;
+    }
     
 
 }
