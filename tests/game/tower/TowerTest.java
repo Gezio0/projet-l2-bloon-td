@@ -2,6 +2,8 @@ package game.tower;
 import java.util.*;
 import game.balloon.*;
 import game.path.*;
+import game.tower.upgrade.Upgrade;
+import game.tower.upgrade.UpgradeTree;
 import game.exception.*;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,6 +14,7 @@ public class TowerTest {
     private Set<Balloon> balloons;
     private List<Path> paths;
     private Tower tower;
+    private UpgradeTree upgrade;
     
     @BeforeEach
     public void before() throws TooMuchPathsException,NoNextCellException{
@@ -27,8 +30,10 @@ public class TowerTest {
         Path p = new Path(cp);
         this.paths =new ArrayList<>();
         this.paths.add(p);
-        this.tower = new Tower(2, 80, this.bullet, 5,new Cell(3,1), this.paths);
-
+        List<Upgrade> upgradesClassic = new ArrayList<Upgrade>();
+        this.upgrade = new UpgradeTree(upgradesClassic);
+        this.tower = new Tower(2, 80, this.bullet, 5,new Cell(3,1), this.paths,this.upgrade);
+        
     }
 
     @Test
@@ -55,18 +60,18 @@ public class TowerTest {
     @Test
     public void SameTowerCellTest(){
         assertTrue(this.tower.SameTowerCell(this.tower));
-        assertFalse(this.tower.SameTowerCell(new Tower(0, 0, this.bullet, 0,new Cell(0,0), this.paths)));
+        assertFalse(this.tower.SameTowerCell(new Tower(0, 0, this.bullet, 0,new Cell(0,0), this.paths,this.upgrade)));
     }
     @Test
     public void shootNotInRangeTest(){
-        Balloon balloonTarget = new Balloon(10,2,this.paths.getFirst().getFirstCell());
+        Balloon balloonTarget = new Balloon(10,2,this.paths.get(0).getFirstCell());
         this.balloons.add(balloonTarget);
         Bullet b = this.tower.shoot(this.balloons);
         assertEquals(null,b);
     }
     @Test
     public void shootInRangeTest()throws NoNextCellException{
-        Balloon balloonTarget = new Balloon(10,2,this.paths.getFirst().getFirstCell());
+        Balloon balloonTarget = new Balloon(10,2,this.paths.get(0).getFirstCell());
         this.balloons.add(balloonTarget);
         balloonTarget.moveForward();
         balloonTarget.moveForward();
