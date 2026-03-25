@@ -317,10 +317,17 @@ noe - Livrable 4b et ajout de la methode playWave
 ## Semaine 10
 
 ### Ce qui a été réalisé
-
+![alt text](images/UMLS10.png)
+Nous avons décidé d'ajouter une classe Player afin de gérer le joueur, son argent, ses actions ainsi qu'une classe shop qui determinera ce qu'il pourra acheter.
+Nous n'avons pour l'instant pas ajouter de classe pour utiliser Scanner car nous voulons d'abord revoir son utilisation.
 ### Difficultés rencontrées
+Nous n'avons pas été clair sur l'effet exact des méthodes buyTower, buyUpgrade etc ... de la classe Player. Donc nous avons pour l'instant une v1 qui s'occupe uniquement de la partie transaction. Nous prévoyons sûrement d'ajouter d'autres effets à ces méthodes afin de pouvoir par exemple poser une tour grâce à ses méthodes.
 
 ### Objectifs pour la semaine et répartition du travail par membre
+Yanis - Livrable et utilisation de Scanner
+JM - Livrable et ajout de tests
+Merwan - classe Player
+noe - classe Shop et modification de la classe Game
 
 ## Semaine 11
 
