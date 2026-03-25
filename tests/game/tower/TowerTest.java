@@ -32,7 +32,7 @@ public class TowerTest {
         this.paths.add(p);
         List<Upgrade> upgradesClassic = new ArrayList<Upgrade>();
         this.upgrade = new UpgradeTree(upgradesClassic);
-        this.tower = new Tower(2, 80, this.bullet, 5,new Cell(3,1), this.paths,this.upgrade);
+        this.tower = new Tower(2, 80, this.bullet, 5,new Cell(3,1), this.paths,this.upgrade,"towerName");
         
     }
 
@@ -60,7 +60,7 @@ public class TowerTest {
     @Test
     public void SameTowerCellTest(){
         assertTrue(this.tower.SameTowerCell(this.tower));
-        assertFalse(this.tower.SameTowerCell(new Tower(0, 0, this.bullet, 0,new Cell(0,0), this.paths,this.upgrade)));
+        assertFalse(this.tower.SameTowerCell(new Tower(0, 0, this.bullet, 0,new Cell(0,0), this.paths,this.upgrade,"towerName")));
     }
     @Test
     public void shootNotInRangeTest(){

@@ -42,6 +42,12 @@ public abstract class Upgrade {
     public double getCooldownMultiplier(){
         return 0.0;
     }
+    /**get the cost of this upgrade
+     * @return int 
+     */
+    public int getCost(){
+        return this.cost;
+    }
 
     public abstract String toString();
 }

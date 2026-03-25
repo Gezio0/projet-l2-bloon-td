@@ -83,17 +83,17 @@ public class Livrable4aMain {
 
                 // Towers
                 Cell cell1 = towerCell(board,width,height);
-                Tower classicTower1 = new Tower(6, 500, classicBullet, 20, cell1, p,upgradeTreeClassic);
+                Tower classicTower1 = new Tower(6, 500, classicBullet, 20, cell1, p,upgradeTreeClassic,"classic");
                 Cell cell2 = towerCell(board,width,height);
-                Tower classicTower2 = new Tower(6, 500, classicBullet, 20, cell2, p,upgradeTreeClassic1);
+                Tower classicTower2 = new Tower(6, 500, classicBullet, 20, cell2, p,upgradeTreeClassic1,"classic");
                 Cell cell3 = towerCell(board,width,height);
-                Tower slowingTower1 = new Tower(6, 500, slowingBullet, 20, cell3, p,upgradeTreeSlowing);
+                Tower slowingTower1 = new Tower(6, 500, slowingBullet, 20, cell3, p,upgradeTreeSlowing,"slow");
                 Cell cell4 = towerCell(board,width,height);
-                Tower slowingTower2 = new Tower(6, 500, slowingBullet, 20, cell4, p,upgradeTreeSlowing1);
+                Tower slowingTower2 = new Tower(6, 500, slowingBullet, 20, cell4, p,upgradeTreeSlowing1,"slow");
                 Cell cell5 = towerCell(board,width,height);
-                Tower freezingTower1 = new Tower(6, 500, freezingBullet, 20, cell5, p,upgradeTreeFreeze);
+                Tower freezingTower1 = new Tower(6, 500, freezingBullet, 20, cell5, p,upgradeTreeFreeze,"freeze");
                 Cell cell6 = towerCell(board,width,height);
-                Tower freezingTower2 = new Tower(6, 500, freezingBullet, 20, cell6, p,upgradeTreeFreeze1);
+                Tower freezingTower2 = new Tower(6, 500, freezingBullet, 20, cell6, p,upgradeTreeFreeze1,"freeze");
 
                 game.setTower(classicTower1);
                 game.setTower(classicTower2);
