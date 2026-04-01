@@ -362,9 +362,18 @@ noe - classe Shop et modification de la classe Game
 
 ### Ce qui a été réalisé
 
+Nous avons réalisé une nouvelle version de Player qui cette fois ci prend en compte le placement et la suppression des tours et des evolutions dans le jeu.
+Nous avons aussi débuté le travail sur les livrables.
+
 ### Difficultés rencontrées
+Se souvenir de quelles méthodes appeler pour la gestions des tours et des evolutions et savoir où l'on traite ces méthodes (Ex : doit on placer une tour depuis la classe Game ou la classe Player).
+Comprendre le fonctionnement de listchooser pour pouvoir l'implementer efficacement dans notre jeu. Elle nous sera notamment utile dans le placement des tours.
 
 ### Objectifs pour la semaine et répartition du travail par membre
+Yanis - Livrable5a et implementation de listchooser
+JM - Livrable5b
+Merwan - Finalisation de Player
+noe - Implementer les inputs dans Game.
 
 ## Semaine 12
 
