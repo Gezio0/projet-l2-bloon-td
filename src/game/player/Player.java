@@ -26,10 +26,12 @@ public class Player{
 
     }
 
-    public boolean buyTower(Tower tower){
+    public boolean buyTower(Tower tower,int x,int y){
         int cost = tower.getCost();
         if(canBuyTower()){
             this.money = this.money - cost;
+            Tower tower2 = tower.copy();
+            tower2.setCell(x,y);
             System.out.println("Tower "+ tower.getName()+ " was purchased for "+ cost + " gold. The player has now "+ this.money + " gold.");
             return true;
         }
@@ -43,6 +45,7 @@ public class Player{
         int cost = tower.getCost();
         this.money = this.money + 0.8*cost;
         System.out.println("You sold "+ tower.getName()+" for "+0.8*cost);
+        tower.toDestroy();
         return true;
     }
 
@@ -51,15 +54,19 @@ public class Player{
         return this.money >= cost;
     }
 
-    public boolean canBuyUpgrade(Upgrade upgrade){
-        int cost = upgrade.getCost();
-        return this.money > cost;
+    public boolean canBuyUpgrade(Tower tower, Upgrade upgrade){
+        if(tower.getUpgradeTree().contains(upgrade)){
+            int cost = upgrade.getCost();
+            return this.money > cost;
+        }
+        return false;
     }
 
-    public boolean buyUpgrade(Upgrade upgrade){
+    public boolean buyUpgrade(Tower tower, Upgrade upgrade){
         int cost = upgrade.getCost();
         if(canBuyUpgrade()){
             this.money = this.money - cost;
+            tower.buyUp(upgrade);
             System.out.println("Upgrade was purchased for "+ cost + " gold. The player has now "+ this.money + " gold.");
             return true;
         }
@@ -69,11 +76,15 @@ public class Player{
         }
     }
 
-    public boolean sellUpgrade( Upgrade upgrade){
+    public boolean sellUpgrade(Tower tower,Upgrade upgrade){
         int cost = upgrade.getCost();
         this.money = this.money + 0.8*cost;
         System.out.println("You sold "+ tower.getName()+" for "+0.8*cost);
+        tower.getUpgradeTree().sell(upgrade);
         return true;
     }
 
+    public void decreaseLife(){
+        this.lives = this.lives - 1;
+    }
 }
