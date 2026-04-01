@@ -6,6 +6,7 @@ import java.util.*;
 import game.balloon.*;
 import game.tower.*;
 import game.player.*;
+import game.input.*;
 
 /**A game of a bloons td game */
 public class Game {
@@ -52,6 +53,27 @@ public class Game {
             }
         }
         this.board = board;
+    }
+
+    public void placeTowerUser(){
+        String x;
+        String y;
+        boolean good = false;
+        while(!good){
+            try {
+                System.out.println("x :");
+                x = Input.readString();
+                System.out.println("y :");
+                y = Input.readString();
+               good = this.goodCoordinate(Integer.parseInt(x),Integer.parseInt(y));
+            } catch (Exception e) {
+                System.out.println("Error"); 
+            }
+        }
+    }
+
+    private boolean goodCoordinate(int x,int y){
+        return 
     }
 
     /**
