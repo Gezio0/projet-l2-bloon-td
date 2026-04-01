@@ -43,7 +43,7 @@ public class Player{
 
     public boolean sellTower(Tower tower){
         int cost = tower.getCost();
-        this.money = this.money + 0.8*cost;
+        this.money = this.money + (int)(Math.floor(0.8*cost));
         System.out.println("You sold "+ tower.getName()+" for "+0.8*cost);
         tower.toDestroy();
         return true;
