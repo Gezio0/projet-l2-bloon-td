@@ -250,7 +250,17 @@ public class Tower extends GameObject{
     
     @Override
     public String toString(){
-        return "Tower, range : " + this.getRange() + " reload time :"  + this.getReloadTime();
+        int modifiedDamage = 0;
+        for (Effect effect : this.bullet.getEffects()){
+            Effect modifiedEffect =  effect.copy();
+            if (modifiedEffect instanceof Damage){
+                Damage damage = (Damage) modifiedEffect;
+                modifiedDamage = (int) Math.ceil(damage.getDamage()*this.upgradeTree.getDamageMultiplier());
+            }
+        }
+        int modifiedArea = (int) Math.ceil(this.bullet.getArea()*this.upgradeTree.getAreaMultiplier());
+
+        return "Tower, range : " + this.getRange() + " reload time : "  + this.getReloadTime() + " area : " + modifiedArea + " damage : " + modifiedDamage ;
     }
 
 
