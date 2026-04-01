@@ -21,6 +21,8 @@ public class playerTest {
     private Upgrade range2 ;
     private Upgrade damage1 ;
     private UpgradeTree tree;
+    private Shop shop;
+    private Player player;
     @BeforeEach
     public void before() throws TooMuchPathsException,NoNextCellException{
         this.effects = new ArrayList<>();
@@ -35,6 +37,15 @@ public class playerTest {
         this.upgrades.add(damage1);
         this.tree = new UpgradeTree(upgrades);
         this.tree = new UpgradeTree(upgradesClassic);
-        this.tower = new Tower(2, 80, this.bullet, 5,new Cell(3,1), this.paths,this.tree,"tower");
+        this.tower = new Tower(2, 80, this.bullet, 5,null, this.paths,this.tree,"tower");
+        List<Tower> towers = new ArrayList<>();
+        towers.add(this.tower);
+        towers.add(new Tower(2, 80000000, this.bullet, 5,null, this.paths,this.tree,"tower"));
+        this.shop = new Shop(towers);
+        this.player = new Player(this.shop);
     }
+    public void buyTowerEnoughMoneyTest(){
+        assertTrue(this.player.buyTower(this.tower, 0, 0));
+    }
+    
 }
