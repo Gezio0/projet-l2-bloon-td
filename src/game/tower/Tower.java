@@ -120,7 +120,15 @@ public class Tower extends GameObject{
     public void setReloadTime(int reloadTime) {
         this.reloadTime = reloadTime;
     }
-    
+    /**set a new position to this tower
+     * warning : can be placed outside the game and on the path...
+     * @param x the x position
+     * @param y the y position
+     */
+    public void setCell(int x,int y){
+        this.cell = new Cell(x,y);
+
+    }
     /**buy an upgrade according to the upgrade in parameter
      * if this tower don't own this upgrade then it will do nothing
      * @param up Upgrade 
@@ -137,7 +145,7 @@ public class Tower extends GameObject{
     public void sellUp(Upgrade up){
         this.upgradeTree.sell(up);
     }
-
+    
 
     /**get the Upgrade Tree of this tower
     * @return UpgradeTree
