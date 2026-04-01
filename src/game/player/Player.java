@@ -87,4 +87,6 @@ public class Player{
     public void decreaseLife(){
         this.lives = this.lives - 1;
     }
+    
 }
+
