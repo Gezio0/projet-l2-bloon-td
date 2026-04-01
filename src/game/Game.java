@@ -5,6 +5,7 @@ import game.path.*;
 import java.util.*;
 import game.balloon.*;
 import game.tower.*;
+import game.player.*;
 
 /**A game of a bloons td game */
 public class Game {
@@ -18,6 +19,9 @@ public class Game {
     protected Set<Balloon> balloons;
     /**Game's towers */
     protected Set<Tower> towers;
+    /**Game's player */
+    protected Player player;
+
     /**
      * Builds a Game with a given board and balloons number
      * @param board Game's board
@@ -55,7 +59,7 @@ public class Game {
      * @return true if the game is finished
     */
     public boolean isFinished(){
-        return balloons.size() == 0;
+        return player.getLives() <= 0;
     }
 
     /**
