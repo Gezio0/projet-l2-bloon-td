@@ -262,6 +262,12 @@ public class Tower extends GameObject{
     public String getName(){
         return this.name;
     }
+    /**copy this tower and returns it
+     * @return a new tower with the same attributes as this tower
+     */
+    public Tower copy(){
+        return new Tower(this.range, this.cost, this.bullet, this.reloadTime, this.cell, this.paths, this.upgradeTree, this.name);
+    }
     
 
 }
