@@ -1,7 +1,8 @@
 package game.player;
 import game.*;
-
-
+import game.tower.*;
+import game.tower.upgrade.*;
+import java.util.*;
 
 public class Player{
     protected int lives;
@@ -28,7 +29,7 @@ public class Player{
 
     public boolean buyTower(Tower tower,int x,int y){
         int cost = tower.getCost();
-        if(canBuyTower()){
+        if(this.canBuyTower(tower)){
             this.money = this.money - cost;
             Tower tower2 = tower.copy();
             tower2.setCell(x,y);
@@ -55,7 +56,7 @@ public class Player{
     }
 
     public boolean canBuyUpgrade(Tower tower, Upgrade upgrade){
-        if(tower.getUpgradeTree().contains(upgrade)){
+        if(tower.getUpgradeTree().getInactiveUpgrades().contains(upgrade)){
             int cost = upgrade.getCost();
             return this.money > cost;
         }
@@ -64,7 +65,7 @@ public class Player{
 
     public boolean buyUpgrade(Tower tower, Upgrade upgrade){
         int cost = upgrade.getCost();
-        if(canBuyUpgrade()){
+        if(this.canBuyUpgrade(tower,upgrade)){
             this.money = this.money - cost;
             tower.buyUp(upgrade);
             System.out.println("Upgrade was purchased for "+ cost + " gold. The player has now "+ this.money + " gold.");
@@ -78,7 +79,7 @@ public class Player{
 
     public boolean sellUpgrade(Tower tower,Upgrade upgrade){
         int cost = upgrade.getCost();
-        this.money = this.money + 0.8*cost;
+        this.money = this.money + (int)(Math.floor(0.8*cost));
         System.out.println("You sold "+ tower.getName()+" for "+0.8*cost);
         tower.getUpgradeTree().sell(upgrade);
         return true;
