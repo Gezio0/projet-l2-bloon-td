@@ -23,9 +23,7 @@ public class Player{
         return this.lives;
     }
 
-    public void buyUpgrade(Tower tower){
 
-    }
 
     public boolean buyTower(Tower tower,int x,int y){
         int cost = tower.getCost();
