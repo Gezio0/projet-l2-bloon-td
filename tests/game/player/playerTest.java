@@ -73,8 +73,14 @@ public class playerTest {
         assertFalse(this.player.canBuyUpgrade(this.towers.get(0),new DamageUpgrade(0,350)));
         assertFalse(this.player.canBuyUpgrade(this.towers.get(0),this.range2));
     }
+    @Test
+    public void buyUpgradeTest(){
+        this.player.buyTower(this.towers.get(0), 0, 0);
+        assertTrue(this.player.buyUpgrade(this.towers.get(0),this.range1));
+        assertFalse(this.player.buyUpgrade(this.towers.get(0),new DamageUpgrade(0,350)));
+        assertFalse(this.player.buyUpgrade(this.towers.get(0),this.range2));
+    }    
     
-
 
 
 }
