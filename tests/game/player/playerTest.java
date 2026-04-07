@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import org.junit.jupiter.api.BeforeEach;
+
 import game.balloon.Balloon;
 import game.exception.NoNextCellException;
 import game.exception.TooMuchPathsException;
@@ -15,7 +17,7 @@ public class playerTest {
     private Bullet bullet;
     private Set<Balloon> balloons;
     private List<Path> paths;
-    private Tower tower;
+    private List<Tower> towers;
     private List<Upgrade> upgrades;
     private Upgrade range1 ;
     private Upgrade range2 ;
@@ -37,15 +39,21 @@ public class playerTest {
         this.upgrades.add(damage1);
         this.tree = new UpgradeTree(upgrades);
         this.tree = new UpgradeTree(upgradesClassic);
-        this.tower = new Tower(2, 80, this.bullet, 5,null, this.paths,this.tree,"tower");
-        List<Tower> towers = new ArrayList<>();
+        this.towers = new ArrayList<>();
+        this.towers.add(new Tower(2, 80, this.bullet, 5,null, this.paths,this.tree,"tower"));
+        
         towers.add(this.tower);
         towers.add(new Tower(2, 80000000, this.bullet, 5,null, this.paths,this.tree,"tower"));
         this.shop = new Shop(towers);
         this.player = new Player(this.shop);
     }
     public void buyTowerEnoughMoneyTest(){
-        assertTrue(this.player.buyTower(this.tower, 0, 0));
+        assertTrue(this.player.buyTower(this.towers.get(0), 0, 0));
     }
+    public void buyTowerNotEnoughMoneyTest(){
+        assertFalse(this.player.buyTower(towers.get(1), 0, 0));
+    }
+    
+    
     
 }
