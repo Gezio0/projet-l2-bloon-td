@@ -13,6 +13,7 @@ import game.exception.TooMuchPathsException;
 import game.tower.*;
 import game.tower.upgrade.*;
 import game.path.*;
+import game.player.*;
 public class playerTest {
     private List<Effect> effects;
     private Bullet bullet;
@@ -42,8 +43,6 @@ public class playerTest {
         this.tree = new UpgradeTree(upgradesClassic);
         this.towers = new ArrayList<>();
         this.towers.add(new Tower(2, 80, this.bullet, 5,null, this.paths,this.tree,"tower"));
-        
-        towers.add(this.tower);
         towers.add(new Tower(2, 80000000, this.bullet, 5,null, this.paths,this.tree,"tower"));
         this.shop = new Shop(towers);
         this.player = new Player(this.shop);
