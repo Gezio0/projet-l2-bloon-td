@@ -61,6 +61,11 @@ public class playerTest {
         this.player.buyTower(this.towers.get(0), 0, 0);
         assertTrue(this.player.sellTower(this.towers.get(0)));
     }
+    @Test 
+    public void canBuyTowerTest(){
+        assertTrue(this.player.canBuyTower(this.towers.get(0)));
+        assertFalse(this.player.canBuyTower(this.towers.get(1)));
+    }
     
 
     
