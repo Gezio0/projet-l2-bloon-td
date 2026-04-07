@@ -1,8 +1,8 @@
-package listchooser;
+package game.listchooser;
 
 import java.util.List;
 
-import listchooser.util.Input;
+import game.listchooser.util.Input;
 
 public class InteractiveListChooser<T> implements ListChooser<T> {
 
