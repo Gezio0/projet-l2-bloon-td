@@ -89,7 +89,13 @@ public class playerTest {
         assertFalse(this.player.sellUpgrade(this.towers.get(0),this.range2));
     }
     
-    
+    @Test
+    public void decreaseLifeTest(){
+        for(int i =19;i>=0;i--){
+            this.player.decreaseLife();
+            assertEquals(this.player.getLives(),i);
+        }
+    }
 
 
 
