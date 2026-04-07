@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 
 import game.balloon.Balloon;
@@ -47,13 +48,21 @@ public class playerTest {
         this.shop = new Shop(towers);
         this.player = new Player(this.shop);
     }
+    @Test
     public void buyTowerEnoughMoneyTest(){
         assertTrue(this.player.buyTower(this.towers.get(0), 0, 0));
     }
+    @Test
     public void buyTowerNotEnoughMoneyTest(){
         assertFalse(this.player.buyTower(towers.get(1), 0, 0));
     }
+    @Test
+    public void sellTowerTest(){
+        this.player.buyTower(this.towers.get(0), 0, 0);
+        assertTrue(this.player.sellTower(this.towers.get(0)));
+    }
     
+
     
     
 }
