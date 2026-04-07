@@ -8,7 +8,7 @@ import game.tower.upgrade.Upgrade;
 public class UpgradeTowerAction implements ManageAction{
     /**the player */
     protected Player player ;
-    /**the tower to place */
+    /**the tower to upgrade */
     protected Tower tower;
     /**the upgrade to buy */
     protected Upgrade upgrade;
