@@ -1,6 +1,5 @@
 package game.manageAction;
 
-import game.Game;
 import game.player.Player;
 import game.tower.Tower;
 import game.tower.upgrade.Upgrade;
@@ -24,6 +23,14 @@ public class UpgradeTowerAction implements ManageAction{
         this.player = player;
         this.tower = tower;
         this.upgrade = upgrade;
+    }
+
+    /**
+     * Perform the action to upgrade the tower
+     */
+    @Override
+    public void perform(){
+        this.player.buyUpgrade(tower, upgrade);
     }
 }
 
