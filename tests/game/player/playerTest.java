@@ -33,7 +33,7 @@ public class playerTest {
         this.bullet = new Bullet(-1, 10, this.effects);
         List<Upgrade> upgradesClassic = new ArrayList<Upgrade>();
         this.range1 = new RangeUpgrade(0, 0.20);
-        this.range2 = new RangeUpgrade(0, 0.50);
+        this.range2 = new RangeUpgrade(100000, 0.50);
         this.damage1 = new DamageUpgrade(0, 0.30);
         this.upgrades.add(range1);
         this.upgrades.add(range2);
@@ -66,8 +66,15 @@ public class playerTest {
         assertTrue(this.player.canBuyTower(this.towers.get(0)));
         assertFalse(this.player.canBuyTower(this.towers.get(1)));
     }
+    @Test
+    public void canBuyUpgradeTest(){
+        this.player.buyTower(this.towers.get(0), 0, 0);
+        assertTrue(this.player.canBuyUpgrade(this.towers.get(0),this.range1));
+        assertFalse(this.player.canBuyUpgrade(this.towers.get(0),new DamageUpgrade(0,350)));
+        assertFalse(this.player.canBuyUpgrade(this.towers.get(0),this.range2));
+    }
     
 
-    
-    
+
+
 }
