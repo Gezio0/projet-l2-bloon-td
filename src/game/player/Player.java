@@ -1,30 +1,52 @@
 package game.player;
-import game.*;
 import game.tower.*;
 import game.tower.upgrade.*;
-import java.util.*;
 
+/**A class for a bloonstd game player */
 public class Player{
+    /**player lives, game ends if lives hits 0 */
     protected int lives;
+    /**player money used to buy and upgrade towers */
     protected int money;
+    /**A shop where the player can buy towers and its upgrades */
     protected Shop shop;
 
+    /**
+     * Build a player with the game shop
+     * @param shop the shop where the player can buy
+     */
     public Player(Shop shop){
         this.shop = shop;
         this.money = 2500;
         this.lives = 20;
     }
 
+    /**
+     * Get the player money
+     * @return the player money
+     */
     public int getMoney(){
         return this.money;
     }
     
+    /**
+     * Get the player lives
+     * @return the player lives
+     */
     public int getLives(){
         return this.lives;
     }
 
 
-
+    /**
+     * Buy a tower to a (x,y) position.
+     * This method does not set the tower.
+     * If the player does not have enough money to buy the tower, this method returns null.
+     * @param tower The tower to buy.
+     * @param x x coordinate
+     * @param y y coordinate
+     * @return the tower or null if the player does not have enough money.
+     */
     public Tower buyTower(Tower tower,int x,int y){
         int cost = tower.getCost();
         if(this.canBuyTower(tower)){
@@ -40,6 +62,11 @@ public class Player{
         }
     }
 
+    /**
+     * sell and destroy a tower
+     * @param tower the tower to sell
+     * @return true
+     */
     public boolean sellTower(Tower tower){
         int cost = tower.getCost();
         this.money = this.money + (int)(Math.floor(0.8*cost));
@@ -48,11 +75,22 @@ public class Player{
         return true;
     }
 
+    /**
+     * True if the player can afford the tower
+     * @param tower the tower to buy
+     * @return true if player money >= tower cost
+     */
     public boolean canBuyTower(Tower tower){
         int cost = tower.getCost();
         return this.money >= cost;
     }
 
+    /**
+     * True if the tower have this upgrade and the player can afford it.
+     * @param tower the tower to be upgraded
+     * @param upgrade the upgrade to be bought
+     * @return true if the upgrade can be applied
+     */
     public boolean canBuyUpgrade(Tower tower, Upgrade upgrade){
         if(tower.getUpgradeTree().getInactiveUpgrades().contains(upgrade)){
             int cost = upgrade.getCost();
@@ -61,6 +99,12 @@ public class Player{
         return false;
     }
 
+    /**
+     * Buy the upgrade if it can be bought
+     * @param tower the tower to upgrade
+     * @param upgrade the upgrade to buy
+     * @return true if the upgrade is successful
+     */
     public boolean buyUpgrade(Tower tower, Upgrade upgrade){
         int cost = upgrade.getCost();
         if(this.canBuyUpgrade(tower,upgrade)){
@@ -75,6 +119,12 @@ public class Player{
         }
     }
 
+    /**
+     * Sell a tower upgrade
+     * @param tower the tower to downgrade
+     * @param upgrade the upgrade to sell
+     * @return true
+     */
     public boolean sellUpgrade(Tower tower,Upgrade upgrade){
         int cost = upgrade.getCost();
         this.money = this.money + (int)(Math.floor(0.8*cost));
@@ -83,6 +133,9 @@ public class Player{
         return true;
     }
 
+    /**
+     * decrease the player life by 1.
+     */
     public void decreaseLife(){
         this.lives = this.lives - 1;
     }
