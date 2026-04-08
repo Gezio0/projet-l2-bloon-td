@@ -54,7 +54,7 @@ public class Player{
             Tower tower2 = tower.copy();
             tower2.setCell(x,y);
             System.out.println("Tower "+ tower.getName()+ " was purchased for "+ cost + " gold. The player has now "+ this.money + " gold.");
-            return tower;
+            return tower2;
         }
         else{
             System.out.println("You don't have enough money");
