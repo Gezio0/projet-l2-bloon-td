@@ -25,18 +25,18 @@ public class Player{
 
 
 
-    public boolean buyTower(Tower tower,int x,int y){
+    public Tower buyTower(Tower tower,int x,int y){
         int cost = tower.getCost();
         if(this.canBuyTower(tower)){
             this.money = this.money - cost;
             Tower tower2 = tower.copy();
             tower2.setCell(x,y);
             System.out.println("Tower "+ tower.getName()+ " was purchased for "+ cost + " gold. The player has now "+ this.money + " gold.");
-            return true;
+            return tower;
         }
         else{
             System.out.println("You don't have enough money");
-            return false;
+            return null;
         }
     }
 
