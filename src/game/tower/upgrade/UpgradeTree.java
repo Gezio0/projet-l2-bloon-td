@@ -41,11 +41,13 @@ public class UpgradeTree {
      * No effect if upgrade is not in the active list.
      * @param upgrade the upgrade to sell
      */
-    public void sell(Upgrade upgrade){
+    public boolean sell(Upgrade upgrade){
         if (this.activeUpgrades.contains(upgrade)){
             this.activeUpgrades.remove(upgrade);
             this.inactiveUpgrades.add(upgrade);
+            return true;
         }
+        return false;
     }
 
     /**

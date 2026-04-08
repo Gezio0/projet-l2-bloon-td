@@ -8,7 +8,7 @@ import java.util.*;
 
 public class Livrable4aMain {
     public static void main(String[] args) throws TooMuchPathsException,NoNextCellException{
-        if (args.length>=3){
+       /* if (args.length>=3){
             try {
                 
 
@@ -149,6 +149,6 @@ public class Livrable4aMain {
             y = rng.nextInt(height);
         }
         board.getCell(x, y).setEmpty(false);
-        return board.getCell(x, y);
+        return board.getCell(x, y);*/
     }
 }

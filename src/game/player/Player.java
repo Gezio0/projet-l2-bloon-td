@@ -128,9 +128,11 @@ public class Player{
     public boolean sellUpgrade(Tower tower,Upgrade upgrade){
         int cost = upgrade.getCost();
         this.money = this.money + (int)(Math.floor(0.8*cost));
-        System.out.println("You sold "+ tower.getName()+" for "+0.8*cost);
-        tower.getUpgradeTree().sell(upgrade);
-        return true;
+        if(tower.getUpgradeTree().sell(upgrade)){
+            System.out.println("You sold "+ tower.getName()+" for "+0.8*cost);
+            return true;
+        }
+        return false;
     }
 
     /**

@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Livrable2aMain {
     public static void main(String[] args) throws TooMuchPathsException,NoNextCellException{
-        if (args.length>=2){
+        /*if (args.length>=2){
             try {
                 int height = Integer.parseInt(args[0]);
                 int width = Integer.parseInt(args[1]);
@@ -29,6 +29,6 @@ public class Livrable2aMain {
         }
         else {
             System.out.println("2 args needed");
-        }
+        }*/
     }
 }

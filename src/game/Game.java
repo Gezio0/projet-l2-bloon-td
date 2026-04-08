@@ -27,7 +27,7 @@ public class Game {
      * @param board Game's board
      * @param NbBalloons Game's balloons number
      */
-    public Game(Board board,int NbBalloons){
+    public Game(Board board,int NbBalloons,Player player){
         this.clock = 0;
         this.gameObjects = new HashSet<GameObject>();
         this.balloons = new HashSet<Balloon>();
@@ -52,6 +52,7 @@ public class Game {
             }
         }
         this.board = board;
+        this.player = player;
     }
 
     /**
