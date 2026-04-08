@@ -2,7 +2,7 @@ JFLAGS = -d classes -sourcepath src
 
 .PHONY: all classes docs jar tests runtests clean
 
-all: classes
+all: classes docs runtests 
 
 classes:
 	@mkdir -p classes
