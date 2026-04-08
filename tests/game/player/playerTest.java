@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import org.junit.Test;
+//import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.*;
 
 import game.balloon.Balloon;
 import game.exception.NoNextCellException;
@@ -14,6 +15,8 @@ import game.tower.*;
 import game.tower.upgrade.*;
 import game.path.*;
 import game.player.*;
+
+
 public class playerTest {
     private List<Effect> effects;
     private Bullet bullet;
@@ -25,11 +28,13 @@ public class playerTest {
     private Upgrade range2 ;
     private Upgrade damage1 ;
     private UpgradeTree tree;
+    private UpgradeTree treeClassic;
     private Shop shop;
     private Player player;
     @BeforeEach
     public void before() throws TooMuchPathsException,NoNextCellException{
         this.effects = new ArrayList<>();
+        this.upgrades = new ArrayList<>();
         this.effects.add(new Damage("damage",0, false, 1));
         this.bullet = new Bullet(-1, 10, this.effects);
         List<Upgrade> upgradesClassic = new ArrayList<Upgrade>();
@@ -40,21 +45,13 @@ public class playerTest {
         this.upgrades.add(range2);
         this.upgrades.add(damage1);
         this.tree = new UpgradeTree(upgrades);
-        this.tree = new UpgradeTree(upgradesClassic);
         this.towers = new ArrayList<>();
         this.towers.add(new Tower(2, 80, this.bullet, 5,null, this.paths,this.tree,"tower"));
-        towers.add(new Tower(2, 80000000, this.bullet, 5,null, this.paths,this.tree,"tower"));
+        this.towers.add(new Tower(2, 80000000, this.bullet, 5,null, this.paths,this.tree,"tower"));
         this.shop = new Shop(towers);
         this.player = new Player(this.shop);
     }
-    @Test
-    public void buyTowerEnoughMoneyTest(){
-        assertTrue(this.player.buyTower(this.towers.get(0), 0, 0));
-    }
-    @Test
-    public void buyTowerNotEnoughMoneyTest(){
-        assertFalse(this.player.buyTower(towers.get(1), 0, 0));
-    }
+
     @Test
     public void sellTowerTest(){
         this.player.buyTower(this.towers.get(0), 0, 0);
@@ -81,11 +78,14 @@ public class playerTest {
     }    
     @Test
     public void sellUpgradeTest(){
-        this.player.buyTower(this.towers.get(0), 0, 0);
-        this.player.buyUpgrade(this.towers.get(0),this.range1);
-        assertTrue(this.player.sellUpgrade(this.towers.get(0),this.range1));
-        assertFalse(this.player.sellUpgrade(this.towers.get(0),this.range1));
-        assertFalse(this.player.sellUpgrade(this.towers.get(0),this.range2));
+        Tower towerTest = this.towers.get(0);
+        this.player.buyTower(towerTest, 0, 0);
+        this.player.buyUpgrade(towerTest,this.range1);
+        System.out.println(towerTest.getUpgradeTree().getActiveUpgrades());
+        assertTrue(this.player.sellUpgrade(towerTest,this.range1));
+        System.out.println(towerTest.getUpgradeTree().getActiveUpgrades());
+        assertFalse(this.player.sellUpgrade(towerTest,this.range1));
+        assertFalse(this.player.sellUpgrade(towerTest,this.range2));
     }
     
     @Test

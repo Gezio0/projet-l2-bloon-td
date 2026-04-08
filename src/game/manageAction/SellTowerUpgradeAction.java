@@ -5,7 +5,7 @@ import game.tower.Tower;
 import game.tower.upgrade.Upgrade;
 
 /**A class to sell a tower upgrade */
-public class sellTowerUpgradeAction implements ManageAction{
+public class SellTowerUpgradeAction implements ManageAction{
     /**the player */
     protected Player player ;
     /**the tower */
@@ -19,7 +19,7 @@ public class sellTowerUpgradeAction implements ManageAction{
      * @param tower
      * @param upgrade
      */
-    public sellTowerUpgradeAction(Player player, Tower tower, Upgrade upgrade){
+    public SellTowerUpgradeAction(Player player, Tower tower, Upgrade upgrade){
         this.player = player;
         this.tower = tower;
         this.upgrade = upgrade;
