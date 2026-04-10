@@ -357,7 +357,8 @@ noe - classe Shop et modification de la classe Game
 ## Semaine 11
 
 ### Ce qui a été réalisé
-
+![alt text](images/ReadmeS11Player.png)
+![alt text](images/ReadmeS11Tower.png)
 Nous avons réalisé une nouvelle version de Player qui cette fois ci prend en compte le placement et la suppression des tours et des evolutions dans le jeu.
 Nous avons aussi débuté le travail sur les livrables.
 
@@ -374,7 +375,12 @@ noe - Implementer les inputs dans Game.
 ## Semaine 12
 
 ### Ce qui a été réalisé
+![alt text](images/UMLS12.png)
+Nous avons implémentés une interface actions ainsi que toutes les classes Actions qui les implémentent afin de gérer tout type d'action effectuable par le joueur.
+Nous avons aussi utilisés les listchooser pour les interactions avec le joueur
 
-### Difficultés rencontrées
+### Difficultés rencontrées*
+Il s'avère que vendre et retirer les tours du jeu est assez complexe car il faut s'assurer que ce que l'on retire soit le bon objet.
 
 ### Objectifs pour finaliser le projet et répartition du travail par membre
+Nous nous réunirons plusieurs fois pour discuter du projet et nous répartir les tâches au cours des 2 prochaines semaines car elles n'ont pas encore été bien répartis.

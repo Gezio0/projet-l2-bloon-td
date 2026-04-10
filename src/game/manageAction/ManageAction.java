@@ -4,6 +4,6 @@ package game.manageAction;
 public interface ManageAction {
 
     /**Perform the action */
-    void perform();
+    public void perform();
     
 }
