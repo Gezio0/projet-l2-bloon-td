@@ -19,33 +19,14 @@ Un lien vers une image de l'UML doit être fourni (une photo d'un diagramme UML 
 
 *Commandes pour compiler et executer les fichiers :*
 ```bash
-    make classes
+    make all
 
-```
-```bash
-    make tests
-    
-```
-```bash
-    make jar
-    
-```
-```bash
-    make runtests
-    
-```
-```bash
-    make docs
-    
-```
-```bash
-    make docs
-    
 ```
 ```bash
     make clean
     
 ```
+
 
 
 ## Livrable 1
@@ -176,6 +157,21 @@ Maintenant dans le prochain livrable nous allons ajouter un moyen de gérer les 
     
 ```
 ## Livrable 5
+*Commandes pour compiler et executer les fichiers :*
+```bash
+    make all
+
+```
+```bash
+    make clean
+
+```
+
+*Exemple *
+```bash
+    make execjar5
+
+```
 
 ### Atteinte des objectifs
 
