@@ -17,7 +17,7 @@ docs:
 jar: classes
 	jar cfe livrable4a.jar game.Livrable4aMain -C classes .
 	jar cfe livrable4b.jar game.Livrable4bMain -C classes .
-
+	jar cfe livrable5.jar game.Livrable5 -C classes .
 tests:
 	javac -classpath junit-console.jar:classes $$(find tests -name "*.java") -d classes/tests 
 
