@@ -19,6 +19,8 @@ public class Game {
     protected Set<Balloon> balloons;
     /**Game's towers */
     protected Set<Tower> towers;
+    /**number of balloons */
+    protected int nbBalloons;
     /**Game's player */
     protected Player player;
 
@@ -32,12 +34,18 @@ public class Game {
         this.gameObjects = new HashSet<GameObject>();
         this.balloons = new HashSet<Balloon>();
         this.towers = new HashSet<>();
+        this.nbBalloons =NbBalloons;
+        this.board = board;
+        this.player = player;
+    }
+
+    public void init_balloons(){
         List<Path> paths = board.getPaths();
         int pathIndex = 0;
         int pathsNumber = paths.size();
 
         Random rng = new Random();
-        for(int i = 0 ; i < NbBalloons ; i++){
+        for(int i = 0 ; i < this.nbBalloons ; i++){
             
             CellPath cellStart = paths.get(pathIndex).getFirstCell();
             int clockSpeed = rng.nextInt(40) + 10; // 10 ~ 50
@@ -51,16 +59,13 @@ public class Game {
                 pathIndex++;
             }
         }
-        this.board = board;
-        this.player = player;
     }
-
     /**
      * Return true if the game is finished
      * @return true if the game is finished
     */
     public boolean isFinished(){
-        return player.getLives() <= 0;
+        return (player.getLives() <= 0)||(balloons.isEmpty());
     }
 
     /**
