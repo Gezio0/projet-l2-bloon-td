@@ -2,10 +2,7 @@ package game;
 import game.board.*;
 import game.exception.*;
 import game.listchooser.*;
-import game.manageAction.BuyTowerAction;
-import game.manageAction.ManageAction;
-import game.manageAction.UpgradeTowerAction;
-import game.manageAction.sellTowerUpgradeAction;
+import game.manageAction.*;
 import game.path.*;
 import game.player.*;
 import game.tower.*;
@@ -204,7 +201,7 @@ public class Livrable5 {
                     action = new UpgradeTowerAction(player, selectedTower, selectedUpgrade);
                    
                 } else {
-                    action = new sellTowerUpgradeAction(player, selectedTower, selectedUpgrade);
+                    action = new SellTowerUpgradeAction(player, selectedTower, selectedUpgrade);
                     
                 }
                 
