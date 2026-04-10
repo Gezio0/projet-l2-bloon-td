@@ -84,17 +84,17 @@ public class Livrable5 {
 
                 // Towers
                 Cell cell1 = towerCell(board,width,height);
-                Tower classicTower1 = new Tower(6, 500, classicBullet, 100, cell1, p,upgradeTreeClassic,"classic");
+                Tower classicTower1 = new Tower(6, 200, classicBullet, 100, cell1, p,upgradeTreeClassic,"classic");
                 Cell cell2 = towerCell(board,width,height);
-                Tower classicTower2 = new Tower(6, 500, classicBullet, 120, cell2, p,upgradeTreeClassic1,"classic");
+                Tower classicTower2 = new Tower(6, 200, classicBullet, 120, cell2, p,upgradeTreeClassic1,"classic");
                 Cell cell3 = towerCell(board,width,height);
-                Tower slowingTower1 = new Tower(6, 500, slowingBullet,150 , cell3, p,upgradeTreeSlowing,"slow");
+                Tower slowingTower1 = new Tower(6, 100, slowingBullet,150 , cell3, p,upgradeTreeSlowing,"slow");
                 Cell cell4 = towerCell(board,width,height);
-                Tower slowingTower2 = new Tower(6, 500, slowingBullet, 150, cell4, p,upgradeTreeSlowing1,"slow");
+                Tower slowingTower2 = new Tower(6, 100, slowingBullet, 150, cell4, p,upgradeTreeSlowing1,"slow");
                 Cell cell5 = towerCell(board,width,height);
-                Tower freezingTower1 = new Tower(6, 500, freezingBullet, 150, cell5, p,upgradeTreeFreeze,"freeze");
+                Tower freezingTower1 = new Tower(6, 50, freezingBullet, 150, cell5, p,upgradeTreeFreeze,"freeze");
                 Cell cell6 = towerCell(board,width,height);
-                Tower freezingTower2 = new Tower(6, 500, freezingBullet, 150, cell6, p,upgradeTreeFreeze1,"freeze");
+                Tower freezingTower2 = new Tower(6, 100, freezingBullet, 150, cell6, p,upgradeTreeFreeze1,"freeze");
                 
                 
 
