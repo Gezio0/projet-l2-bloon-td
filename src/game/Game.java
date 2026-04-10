@@ -38,7 +38,10 @@ public class Game {
         this.board = board;
         this.player = player;
     }
-
+    /**add a fixed number of balloons according to the game
+     * with a random speed and resistance
+     *
+    */
     public void init_balloons(){
         List<Path> paths = board.getPaths();
         int pathIndex = 0;

@@ -174,9 +174,16 @@ Maintenant dans le prochain livrable nous allons ajouter un moyen de gérer les 
 ```
 
 ### Atteinte des objectifs
+Au cours de ce livrable, nous avons mis en place la gestion de l'économie du joueur et restructuré les interactions avec le jeu. Une première approche aurait consisté à appeler directement les méthodes de construction depuis notre programme principal, mais cela créait une dépendance trop forte avec l'affichage. Nous avons donc créé une interface ManageAction implémentée par des classes spécifiques (BuyTowerAction, UpgradeTowerAction, SellTowerUpgradeAction).
+
+Maintenant, le Shop fonctionne comme un catalogue contenant uniquement des "modèles" de tours. Lorsqu'un joueur effectue un achat via une Action, le système vérifie son solde d'or, lui retire de l'argent, clone le modèle de la boutique et place la nouvelle tour sur le plateau. Ce fonctionnement permet de sécuriser les transactions du joueur.
 
 ### Difficultés restant à résoudre
+La principale difficulté de ce livrable a été de synchroniser correctement la boucle des manches, avec les événements du jeu et les conditions de victoire.
 
+ De plus un défi d'équilibrage subsistait concernant l'apparition des ballons.La différence entre la vitesse d'attaque de nos tours et la vitesse de déplacement des ballons crée un effet de blocage où de nombreux ballons sont détruits avant même d'avoir pu avancer. Dans la version finale du projet, il nous faudra donc équilibrer les statistiques globales des tours et intégrer l'InteractiveListChooser pour les choix d'un vrai joueur.
+
+ ![alt text](images/Livrable5.png)
 ## Livrable 6
 
 ### Atteinte des objectifs
