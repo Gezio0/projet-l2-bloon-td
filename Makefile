@@ -34,5 +34,5 @@ execjar4bEx :
 clean:
 	rm -rf classes/*
 	rm -rf docs/*
-	rm -f livrable3a.jar livrable4b.jar
+	rm -f livrable4a.jar livrable4b.jar livrable5.jar 
 
