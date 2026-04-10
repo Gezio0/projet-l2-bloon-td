@@ -1,8 +1,8 @@
 package game.manageAction;
 
 import game.Game;
-import game.player.Player;
-import game.tower.Tower;
+import game.player.*;
+import game.tower.*;
 
 /**A class to buy a tower */
 public class BuyTowerAction implements ManageAction {

@@ -1,9 +1,13 @@
 package game;
 import game.board.*;
 import game.exception.*;
+import game.listchooser.*;
+import game.manageAction.BuyTowerAction;
+import game.manageAction.ManageAction;
+import game.manageAction.UpgradeTowerAction;
+import game.manageAction.sellTowerUpgradeAction;
 import game.path.*;
-import game.player.Player;
-import game.player.Shop;
+import game.player.*;
 import game.tower.*;
 import game.tower.upgrade.*;
 import java.util.*;
@@ -44,8 +48,6 @@ public class Livrable5 {
                 Bullet freezingBullet = new Bullet(0, 1, freezingTowerEffects);
 
                 
-                // Empty Upgrade
-                List<Upgrade> listUp = new ArrayList<>();
                 
 
                 // Upgrades
@@ -85,20 +87,22 @@ public class Livrable5 {
 
                 // Towers
                 Cell cell1 = towerCell(board,width,height);
-                Tower classicTower1 = new Tower(6, 500, classicBullet, 20, cell1, p,upgradeTreeClassic,"classic");
+                Tower classicTower1 = new Tower(6, 500, classicBullet, 100, cell1, p,upgradeTreeClassic,"classic");
                 Cell cell2 = towerCell(board,width,height);
-                Tower classicTower2 = new Tower(6, 500, classicBullet, 20, cell2, p,upgradeTreeClassic1,"classic");
+                Tower classicTower2 = new Tower(6, 500, classicBullet, 120, cell2, p,upgradeTreeClassic1,"classic");
                 Cell cell3 = towerCell(board,width,height);
-                Tower slowingTower1 = new Tower(6, 500, slowingBullet, 20, cell3, p,upgradeTreeSlowing,"slow");
+                Tower slowingTower1 = new Tower(6, 500, slowingBullet,150 , cell3, p,upgradeTreeSlowing,"slow");
                 Cell cell4 = towerCell(board,width,height);
-                Tower slowingTower2 = new Tower(6, 500, slowingBullet, 20, cell4, p,upgradeTreeSlowing1,"slow");
+                Tower slowingTower2 = new Tower(6, 500, slowingBullet, 150, cell4, p,upgradeTreeSlowing1,"slow");
                 Cell cell5 = towerCell(board,width,height);
-                Tower freezingTower1 = new Tower(6, 500, freezingBullet, 20, cell5, p,upgradeTreeFreeze,"freeze");
+                Tower freezingTower1 = new Tower(6, 500, freezingBullet, 150, cell5, p,upgradeTreeFreeze,"freeze");
                 Cell cell6 = towerCell(board,width,height);
-                Tower freezingTower2 = new Tower(6, 500, freezingBullet, 20, cell6, p,upgradeTreeFreeze1,"freeze");
+                Tower freezingTower2 = new Tower(6, 500, freezingBullet, 150, cell6, p,upgradeTreeFreeze1,"freeze");
+                
                 
 
                 //Shop
+
                 List<Tower> ltowers = new ArrayList<>();
                 ltowers.add(classicTower1);
                 ltowers.add(classicTower2);
@@ -111,38 +115,30 @@ public class Livrable5 {
                 //Player
                 Player player = new Player(shop);
 
-                // Game
+                //Game
+                Game game = new Game(board, nbOfBallons, player);
 
-                Game game;
-                
+                //purchase towers;
+                ManageAction buy1 = new BuyTowerAction(player, classicTower1, cell1.getX(), cell1.getY(), game);
+                buy1.perform();
+                ManageAction buy2 = new BuyTowerAction(player, classicTower2, cell2.getX(), cell2.getY(), game);
+                buy2.perform();
+                ManageAction buy3 = new BuyTowerAction(player, slowingTower1, cell3.getX(), cell3.getY(), game);
+                buy3.perform();
+                ManageAction buy4 = new BuyTowerAction(player, slowingTower2, cell4.getX(), cell4.getY(), game);
+                buy4.perform();
+                ManageAction buy5 = new BuyTowerAction(player, freezingTower1, cell5.getX(), cell5.getY(), game);
+                buy5.perform();
+                ManageAction buy6 = new BuyTowerAction(player, freezingTower2, cell6.getX(), cell6.getY(), game);
+                buy6.perform();
+
+            
                 
 
-                for(int i = 0;i<5;i++){
-                    game = new Game(board,nbOfBallons,player);
-                    game.playWave();
-                    for(Tower tower : game.getTowers()){
-                        UpgradeTree upgradeTree = tower.getUpgradeTree();
-                        List<Upgrade> upgradesAvailabe = upgradeTree.getInactiveUpgrades();
-                        Upgrade upgrade = upgradesAvailabe.get(0);
-                        tower.buyUp(upgrade);
-                        System.out.println("Bought :" + upgrade.toString() + "for tower :" + tower.toString());
-                    }
-                    System.out.println("\nWave " + (i+1) + " finished\n");
+                for (int wave = 1; wave <= 10; wave++) {
+                    boolean isUpgrading = (wave <= 5);
+                    playWaveWithAction(wave, isUpgrading, game, player);
                 }
-                
-                for(int i = 0;i<5;i++){
-                    game = new Game(board,nbOfBallons,player);
-                    game.playWave();
-                    for(Tower tower : game.getTowers()){
-                        UpgradeTree upgradeTree = tower.getUpgradeTree();
-                        List<Upgrade> upgrades = upgradeTree.getActiveUpgrades();
-                        Upgrade upgrade = upgrades.get(0);
-                        tower.sellUp(upgrade);
-                        System.out.println("Sold :" + upgrade.toString() + "for tower :" + tower.toString());
-                    }
-                    System.out.println("\nWave " + (i+6) + " finished\n");
-                }
-
 
                 
             }
@@ -167,4 +163,61 @@ public class Livrable5 {
         board.getCell(x, y).setEmpty(false);
         return board.getCell(x, y);
     }
+
+    private static void playWaveWithAction(int wave, boolean isUpgrading, Game game, Player player) {
+        try {
+            System.out.println("\n--- MANCHE " + wave + " ---");
+            
+            game.init_balloons();
+            
+
+            RandomListChooser<Tower> randomTowerChooser = new RandomListChooser<>();
+            RandomListChooser<Upgrade> randomUpgradeChooser = new RandomListChooser<>();
+            
+            List<Tower> eligibleTowers = new ArrayList<>();
+            for (Tower t : game.getTowers()) {
+                if (isUpgrading && !t.getUpgradeTree().getInactiveUpgrades().isEmpty()) {
+                    eligibleTowers.add(t);
+                } else if (!isUpgrading && !t.getUpgradeTree().getActiveUpgrades().isEmpty()) {
+                    eligibleTowers.add(t);
+                }
+            }
+            
+            Tower selectedTower = randomTowerChooser.choose("Sélection de la tour :", eligibleTowers);
+
+            if (selectedTower != null) {
+               
+                List<Upgrade> availableUpgrades;
+                if(isUpgrading){
+                    availableUpgrades=selectedTower.getUpgradeTree().getInactiveUpgrades();
+                }
+                else{
+                    availableUpgrades=selectedTower.getUpgradeTree().getActiveUpgrades();
+                }   
+                    
+                    
+                Upgrade selectedUpgrade = randomUpgradeChooser.choose("Sélection de l'amélioration :", availableUpgrades);
+
+                
+                ManageAction action;
+                if (isUpgrading) {
+                    action = new UpgradeTowerAction(player, selectedTower, selectedUpgrade);
+                   
+                } else {
+                    action = new sellTowerUpgradeAction(player, selectedTower, selectedUpgrade);
+                    
+                }
+                
+                action.perform();
+            }
+
+            
+            game.playWave();
+            System.out.println("Fin de la manche " + wave + ".\n");
+
+        } catch (NoNextCellException ex) {
+            System.out.println("Erreur de chemin : " + ex.getMessage());
+        }
+    }
 }
+
