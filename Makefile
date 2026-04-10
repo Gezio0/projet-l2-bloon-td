@@ -18,7 +18,9 @@ jar: classes
 	jar cfe livrable4a.jar game.Livrable4aMain -C classes .
 	jar cfe livrable4b.jar game.Livrable4bMain -C classes .
 	jar cfe livrable5.jar game.Livrable5 -C classes .
-tests:
+
+tests: classes
+	@mkdir -p classes/tests
 	javac -classpath junit-console.jar:classes $$(find tests -name "*.java") -d classes/tests 
 
 runtests: tests
@@ -35,7 +37,7 @@ execjar5: jar
 	java -jar livrable5.jar 10 10 5 
 
 clean:
-	rm -rf classes/*
-	rm -rf docs/*
+	rm -rf classes
+	rm -rf docs
 	rm -f livrable4a.jar livrable4b.jar livrable5.jar 
 
