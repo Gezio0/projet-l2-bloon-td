@@ -2,7 +2,7 @@ JFLAGS = -d classes -sourcepath src
 
 .PHONY: all classes docs jar tests runtests clean
 
-all: classes
+all: classes jar docs runtests 
 
 classes:
 	@mkdir -p classes
@@ -17,7 +17,7 @@ docs:
 jar: classes
 	jar cfe livrable4a.jar game.Livrable4aMain -C classes .
 	jar cfe livrable4b.jar game.Livrable4bMain -C classes .
-
+	jar cfe livrable5.jar game.Livrable5 -C classes .
 tests:
 	javac -classpath junit-console.jar:classes $$(find tests -name "*.java") -d classes/tests 
 
@@ -25,14 +25,17 @@ runtests: tests
 	java -jar junit-console.jar -classpath classes/tests:classes -scan-classpath
 
 
-execjar4aEx : 
+execjar4aEx: 
 	java -jar livrable4a.jar 10 10 5 
 
-execjar4bEx : 
+execjar4bEx: 
 	java -jar livrable4b.jar 10 10 5 10
+
+execjar5: jar
+	java -jar livrable5.jar 10 10 5 
 
 clean:
 	rm -rf classes/*
 	rm -rf docs/*
-	rm -f livrable3a.jar livrable4b.jar
+	rm -f livrable4a.jar livrable4b.jar livrable5.jar 
 
