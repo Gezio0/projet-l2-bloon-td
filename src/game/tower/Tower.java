@@ -250,7 +250,7 @@ public class Tower extends GameObject{
     
     @Override
     public String toString(){
-        return "Tower, range : " + this.getRange() + " reload time :"  + this.getReloadTime();
+        return "Tower: " +this.getName()+ ", range : " + this.getRange() + " reload time :"  + this.getReloadTime();
     }
 
 

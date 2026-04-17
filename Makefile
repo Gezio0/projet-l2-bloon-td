@@ -15,9 +15,8 @@ docs:
 
 
 jar: classes
-	jar cfe livrable4a.jar game.Livrable4aMain -C classes .
-	jar cfe livrable4b.jar game.Livrable4bMain -C classes .
-	jar cfe livrable5.jar game.Livrable5 -C classes .
+	jar cfe towerdefense_b_random.jar game.Towerdefense_b_random -C classes .
+	
 
 tests: classes
 	@mkdir -p classes/tests

@@ -44,4 +44,9 @@ public class BuyTowerAction implements ManageAction {
             this.game.setTower(towerToPlace);
         }
     }
+
+    @Override
+    public String toString(){
+        return "Buy a tower";
+    }
 }

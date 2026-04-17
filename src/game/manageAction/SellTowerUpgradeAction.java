@@ -32,6 +32,10 @@ public class SellTowerUpgradeAction implements ManageAction{
     public void perform(){
         this.player.sellUpgrade(tower, upgrade);
     }
+    @Override
+    public String toString(){
+        return "Sell a an Upgrade";
+    }
 }
 
 

@@ -36,6 +36,13 @@ public class Player{
     public int getLives(){
         return this.lives;
     }
+    /**
+     * Get the player's shop
+     * @return the player's shop
+     */
+    public Shop getShop(){
+        return this.shop;
+    }
 
 
     /**

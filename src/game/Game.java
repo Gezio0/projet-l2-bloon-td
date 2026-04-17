@@ -70,6 +70,9 @@ public class Game {
     public boolean isFinished(){
         return (player.getLives() <= 0)||(balloons.isEmpty());
     }
+    public boolean gameLost(){
+         return player.getLives() <= 0;
+    }
 
     /**
      * Do a turn of the game
@@ -99,6 +102,10 @@ public class Game {
        for (Balloon balloon : this.balloons){
             
             if(balloon.toDestroy()){
+                if (balloon.getResistance() > 0) {
+                    player.decreaseLife();
+                    System.out.println("Your lives have decreased, you have now : " + player.getLives());
+                }
                 gameObjectToDestroy.add(balloon);
             }
         }
