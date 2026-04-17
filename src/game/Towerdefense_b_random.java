@@ -12,15 +12,16 @@ import java.util.*;
 
 public class Towerdefense_b_random {
     public static void main(String[] args) throws TooMuchPathsException,NoNextCellException{
-        if (args.length>=2){
+        if (args.length>=3){
             try {
                 
 
                 // Board and path
                 int height = Integer.parseInt(args[1]);
                 int width = Integer.parseInt(args[0]);
+                int nbOfPaths = Integer.parseInt(args[2]);
                 int nbOfBallons = 15;
-                ClassicalBoard board = new ClassicalBoard(width,height);
+                MultiplePathBoard board = new MultiplePathBoard(width,height,nbOfPaths);
                 List<Path> p = board.getPaths();
                 System.out.println(p);
                 board.show();
