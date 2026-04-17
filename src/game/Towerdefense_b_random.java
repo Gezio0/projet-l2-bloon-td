@@ -17,10 +17,11 @@ public class Towerdefense_b_random {
                 
 
                 // Board and path
-                int height = Integer.parseInt(args[0]);
-                int width = Integer.parseInt(args[1]);
-                int nbOfBallons = Integer.parseInt(args[2]);
-                ClassicalBoard board = new ClassicalBoard(width,height);
+                int height = Integer.parseInt(args[1]);
+                int width = Integer.parseInt(args[0]);
+                int nbOfPaths = Integer.parseInt(args[2]);
+                int nbOfBallons = 15;
+                MultiplePathBoard board = new MultiplePathBoard(width,height,nbOfPaths);
                 List<Path> p = board.getPaths();
                 System.out.println(p);
                 board.show();
@@ -135,7 +136,7 @@ public class Towerdefense_b_random {
             }
         }
         else {
-            System.out.println("3 args needed");
+            System.out.println("2 args needed");
         }
     }
 
