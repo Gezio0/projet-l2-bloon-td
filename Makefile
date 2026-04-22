@@ -2,7 +2,7 @@ JFLAGS = -d classes -sourcepath src
 
 .PHONY: all classes docs jar tests runtests clean
 
-all: classes jar docs runtests 
+all: classes jar runtests 
 
 classes:
 	@mkdir -p classes
@@ -35,8 +35,11 @@ execjar4bEx:
 execjar5: jar
 	java -jar livrable5.jar 10 10 5 
 
+towerdefense_b_random: jar
+	java -jar towerdefense_b_random.jar 10 10 5 
+
 clean:
 	rm -rf classes
 	rm -rf docs
-	rm -f livrable4a.jar livrable4b.jar livrable5.jar 
+	rm -f livrable4a.jar livrable4b.jar livrable5.jar towerdefense_b_random
 
