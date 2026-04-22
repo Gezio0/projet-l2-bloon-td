@@ -48,9 +48,11 @@ public void getBalloonsMultipleBoardTest() throws TooMuchPathsException,NoNextCe
     Shop shop = new Shop(new ArrayList<>());
     Player player = new Player(shop);
     Game multipleGame = new Game(multiplePathBoard, 10,player);
-    Set<Balloon> multiBalloons =multipleGame.getBalloons();
     multipleGame.init_balloons();
+    Set<Balloon> multiBalloons =multipleGame.getBalloons();
+    
     assertEquals(multiBalloons.size(),10);
+    
     Game multipleGame2 = new Game(multiplePathBoard,50,player);
     multipleGame2.init_balloons();
     Set<Balloon> multipleBalloons2 =multipleGame2.getBalloons();
@@ -63,14 +65,14 @@ public void isFinishedClassicTest()throws TooMuchPathsException,NoNextCellExcept
     Board classicalBoard = new ClassicalBoard(10, 10);
     Shop shop = new Shop(new ArrayList<>());
     Player player = new Player(shop);
-    Game game = new Game(classicalBoard,0,player);
+    Game game = new Game(classicalBoard,15,player);
     game.init_balloons();
     assertFalse(game.isFinished());
     player.decreaseLife();
-    //assertFalse(game.isFinished());
-    /* for(int i = 0 ; i < 19 ; i ++){
+    assertFalse(game.isFinished());
+    for(int i = 0 ; i < 19 ; i ++){
         player.decreaseLife();
-    } */
+    }
     assertTrue(game.isFinished());
 
 }
@@ -79,8 +81,8 @@ public void isFinishedMultipleBoardTest()throws TooMuchPathsException,NoNextCell
     Board multipleBoard = new MultiplePathBoard(10, 10,3);
     Shop shop = new Shop(new ArrayList<>());
     Player player = new Player(shop);
-    Game game = new Game(multipleBoard,0,player);
-    
+    Game game = new Game(multipleBoard,15,player);
+    game.init_balloons();
     assertFalse(game.isFinished());
     player.decreaseLife();
     assertFalse(game.isFinished());
