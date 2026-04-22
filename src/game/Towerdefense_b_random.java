@@ -248,10 +248,12 @@ public class Towerdefense_b_random {
     private static ManageAction generateBuyUpgradeAction(Game game, Player player) {
         if (game.getTowers().isEmpty()) return null;
 
-        List<Tower> eligibleTowers = game.getTowers().stream()
-                .filter(t -> !t.getUpgradeTree().getInactiveUpgrades().isEmpty())
-                .toList();
-                
+        List<Tower> eligibleTowers = new ArrayList<>();
+        for (Tower t : game.getTowers()) {
+            if (!t.getUpgradeTree().getInactiveUpgrades().isEmpty()) {
+                eligibleTowers.add(t);
+            }
+        }
         if (eligibleTowers.isEmpty()) return null;
 
         RandomListChooser<Tower> randomTowerChooser = new RandomListChooser<>();
@@ -275,10 +277,12 @@ public class Towerdefense_b_random {
         if (game.getTowers().isEmpty()) return null;
 
     
-        List<Tower> eligibleTowers = game.getTowers().stream()
-                .filter(t -> !t.getUpgradeTree().getActiveUpgrades().isEmpty())
-                .toList();
-                
+        List<Tower> eligibleTowers = new ArrayList<>();
+        for (Tower t : game.getTowers()) {
+            if (!t.getUpgradeTree().getInactiveUpgrades().isEmpty()) {
+                eligibleTowers.add(t);
+            }
+        }
         if (eligibleTowers.isEmpty()) return null;
 
         RandomListChooser<Tower> randomTowerChooser = new RandomListChooser<>();
