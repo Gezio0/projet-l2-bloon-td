@@ -17,7 +17,7 @@ Les paragraphes concernant les livrables doivent être remplis avant la date de 
 
 Un lien vers une image de l'UML doit être fourni (une photo d'un diagramme UML fait à la main est suffisant).
 
-*Commandes pour compiler et executer les fichiers :*
+*Commandes pour compiler, exécuter les tests et faire la doc :*
 ```bash
     make all
 
@@ -27,6 +27,27 @@ Un lien vers une image de l'UML doit être fourni (une photo d'un diagramme UML 
     
 ```
 
+*Commandes pour exécuter les jar:*
+
+```bash
+    make make towerdefense_a_interactive
+    
+```
+
+```bash
+    make make towerdefense_b_interactive
+    
+```
+
+```bash
+    make towerdefense_a_random
+
+```
+
+```bash
+    make towerdefense_b_random
+
+```
 
 
 ## Livrable 1
@@ -187,6 +208,8 @@ La principale difficulté de ce livrable a été de synchroniser correctement la
 ## Livrable 6
 
 ### Atteinte des objectifs
+Nous avons pu atteindre les objectifs de chaque rendu. Pour finir le projet, nous n'avons pas rencontré de grandes difficultés étant donné qu'il s'agissait surtout d'assembler toutes les pièces de notre projet.
+Etant donné que nous nous sommes assurés tout au long du projet que chaque élément fonctionnait comme on le souhaitait, cette dernière partie s'est déroulée sans encombre.
 
 ### Difficultés restant à résoudre
 
