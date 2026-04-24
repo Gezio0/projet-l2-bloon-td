@@ -80,6 +80,7 @@ public abstract class Effect extends GameObject {
     /**
      * apply this effect to all balloon affected by this effect an decrease this effect duration
      * @param clock the game clock
+     * @return always true
     */
     public boolean onClock(int clock){
         this.applyEffect(clock);

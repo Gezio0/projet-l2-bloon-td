@@ -28,6 +28,7 @@ public class AreaUpgrade extends Upgrade {
 
     /**
      * Display the upgrade with its name and percentage buff
+     * @return a string
      */
     @Override
     public String toString(){

@@ -36,9 +36,9 @@ public class Tower extends GameObject{
      * @param bullet Bullet
      * @param cell Cell
      * @param paths List of paths
-     * 
-     *
-     * 
+     * @param reloadTime the reloading time of this tower
+     *@param upgradeTree the upgrade list of this tower
+     *@param name the name of this tower
      */
     public Tower(int range, int cost, Bullet bullet,int reloadTime,Cell cell,List<Path> paths,UpgradeTree upgradeTree,String name) {
         this.range = range;
@@ -156,8 +156,8 @@ public class Tower extends GameObject{
 
     /**return the distance of a balloon and a cell pathpath
      *distance : sqrt((LastCellPathX-BalloonX)²+(LastCellPathY-BalloonY²). 
-     * @param b1
-     * @param lastCellPath
+     * @param b1 a balloon
+     * @param lastCellPath the last cell of the current path.
      * @return double
      */
     protected double distance(Balloon b1,CellPath lastCellPath){

@@ -111,6 +111,7 @@ public class Bullet extends GameObject{
     /**Updates the bullet's state every game tick
      * if the bullet has time left before hitting a target, the timeleft decrease,
      * when there is no time left it applies all the effects balloons in the area of this bullet.
+     * @param clock the current clock of the game
      * @return false if bullet didn't hit the targets
     */
     @Override

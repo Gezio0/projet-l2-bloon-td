@@ -9,7 +9,7 @@ public class RangeUpgrade extends Upgrade{
     
     /**
      * Builds a RangeUpgrade class with a multiplier
-     * @param multiplier
+     * @param multiplier the multiplier of this upgrade
      */
     public RangeUpgrade(int cost,double multiplier){
         super(cost);
@@ -27,6 +27,7 @@ public class RangeUpgrade extends Upgrade{
 
     /**
      * Display the upgrade with its name and percentage buff
+     * @return a string
      */
     @Override
     public String toString(){

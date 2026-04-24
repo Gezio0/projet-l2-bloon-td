@@ -70,6 +70,9 @@ public class Game {
     public boolean isFinished(){
         return (player.getLives() <= 0)||(balloons.isEmpty());
     }
+    /**tells us if the game lost 
+     * @return true if the player's lives are lesser or equal than 0
+     */
     public boolean gameLost(){
          return player.getLives() <= 0;
     }
