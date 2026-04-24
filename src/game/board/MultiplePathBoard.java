@@ -82,7 +82,6 @@ public class MultiplePathBoard extends Board {
             }
 
             Path path = createPath(startX, startY, dirX, dirY);
-            System.out.println(path.getPath().size());
             this.addPath(path);
         }
         
@@ -141,31 +140,34 @@ public class MultiplePathBoard extends Board {
      * @throws NoNextCellException when trying to get a null cell
      */
     protected Path createPath(int x, int y, int dirX, int dirY) throws NoNextCellException,TooMuchPathsException{
-        CellPath previousCellPath = null;
-        Path path = null;
+        Cell firstCell = this.tab[x][y];
+        CellPath firstCellPath = new CellPath(firstCell);
 
         int currentX = x;
         int currentY = y;
 
+        currentX += dirX;
+        currentY += dirY;
+
+        Cell cell = this.tab[currentX][currentY];
+        CellPath currentCellPath = new CellPath(cell);
+        firstCellPath.setNext(currentCellPath);
+
+        currentX += dirX;
+        currentY += dirY;
+
         while (isIn(currentX,currentY)){
-            Cell cell = this.tab[currentX][currentY];
-            CellPath currentCellPath = new CellPath(cell);
+            Cell nextCell = this.tab[currentX][currentY];
+            CellPath nextCellPath = new CellPath(nextCell);
 
-            if (previousCellPath == null){
-                path = new Path(currentCellPath);
-            }
+            currentCellPath.setNext(nextCellPath);
 
-            if (previousCellPath != null){
-                previousCellPath.setNext(currentCellPath);
-            }
-
-            previousCellPath = currentCellPath;
+            currentCellPath = nextCellPath;
 
             currentX += dirX;
             currentY += dirY;
         }
-        return path;
-
+        return new Path(firstCellPath);
     }
 
 

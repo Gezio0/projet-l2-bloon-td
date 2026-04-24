@@ -70,8 +70,6 @@ public class Tower extends GameObject{
             List<CellPath> cellpaths= p.getPath();
             for(CellPath cp : cellpaths){
                 Cell c = cp.getCell();
-                System.out.println(i);
-                i++;
                 if( c.getX()<=maxX && c.getX()>=minX && c.getY()>=minY && c.getY()<=maxY){
                     cellInRange.add(c);
                 }
