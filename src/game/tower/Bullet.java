@@ -32,7 +32,7 @@ public class Bullet extends GameObject{
      *
      * @param area int
      * @param timeLeft int
-     * @param effects List<Effect>
+     * @param effects List of effects
      */
     public Bullet(int area, int timeLeft, List<Effect> effects) {
         this.area = area;
@@ -41,7 +41,7 @@ public class Bullet extends GameObject{
         this.target = null;
     }
     /**get the balloons of this bullet
-     * @return Set<Balloons>
+     * @return the set of balloons
      */
     public Set<Balloon> getBalloons(){
         return this.balloons;
@@ -54,7 +54,7 @@ public class Bullet extends GameObject{
     }
 
     /** set the area of this bullet
-     * @param area
+     * @param area the area of this bullet
      */
     public void setArea(int area){
         this.area = area;
@@ -73,12 +73,14 @@ public class Bullet extends GameObject{
     public int getTimeLeft() {
         return this.timeLeft;
     }
-    /** set a list of balloons that are currently in the game */
+    /** set a list of balloons that are currently in the game
+     * @param b a set of balloons
+    */
     public void setBalloons(Set<Balloon> b){
         this.balloons = b;
     }
     /**return all the balloons in the area of the bullet when it will hit the initial target
-     * @return Set<Balloon> all the balloons that are targeted.
+     * @return a set of all the balloons that are targeted.
      */
     protected Set<Balloon> finalTargets(){
         Set<Balloon> balloonsTargeted = new HashSet<>();
@@ -109,7 +111,7 @@ public class Bullet extends GameObject{
     /**Updates the bullet's state every game tick
      * if the bullet has time left before hitting a target, the timeleft decrease,
      * when there is no time left it applies all the effects balloons in the area of this bullet.
-     * @return 
+     * @return false if bullet didn't hit the targets
     */
     @Override
     public boolean onClock(int clock){

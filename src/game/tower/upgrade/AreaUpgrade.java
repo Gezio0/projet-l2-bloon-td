@@ -9,7 +9,8 @@ public class AreaUpgrade extends Upgrade {
     
     /**
      * Builds a AreaUpgrade class with a multiplier
-     * @param multiplier
+     * @param multiplier the multipler
+     * @param cost the cost of this upgrade
      */
     public AreaUpgrade(int cost,double multiplier){
         super(cost);

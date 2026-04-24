@@ -158,8 +158,9 @@ public class Game {
     }
 
     /**
-     * Add a tower in the game
-     * @param t the tower to add
+     * get the set of towers in the game
+     * @return the towers that are in the game
+     * 
     */
     public Set<Tower> getTowers(){
         return this.towers;
@@ -183,7 +184,7 @@ public class Game {
 
     /**
      * Delete a gameobject in the game
-     * @param o the GameObject to delete
+     * @param gameObject the GameObject to delete
     */
     public void DeleteGameObject(GameObject gameObject){
         this.gameObjects.remove(gameObject);
