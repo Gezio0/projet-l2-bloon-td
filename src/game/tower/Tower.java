@@ -35,10 +35,10 @@ public class Tower extends GameObject{
      * @param cost int
      * @param bullet Bullet
      * @param cell Cell
-     * @param paths List<Path>
-     * 
-     *
-     * 
+     * @param paths List of paths
+     * @param reloadTime the reloading time of this tower
+     *@param upgradeTree the upgrade list of this tower
+     *@param name the name of this tower
      */
     public Tower(int range, int cost, Bullet bullet,int reloadTime,Cell cell,List<Path> paths,UpgradeTree upgradeTree,String name) {
         this.range = range;
@@ -55,7 +55,7 @@ public class Tower extends GameObject{
     }
 
     /**get the cells in the range of this tower
-     * @return List<Cell>
+     * @return a List of cell
      */
     public List<Cell> getCellInRange(){
         List<Cell> cellInRange = new ArrayList<Cell>();
@@ -115,7 +115,7 @@ public class Tower extends GameObject{
     }
     
     /**set a new reloadTime for this tower
-     * @param reloadTime
+     * @param reloadTime int
      */
     public void setReloadTime(int reloadTime) {
         this.reloadTime = reloadTime;
@@ -156,8 +156,8 @@ public class Tower extends GameObject{
 
     /**return the distance of a balloon and a cell pathpath
      *distance : sqrt((LastCellPathX-BalloonX)²+(LastCellPathY-BalloonY²). 
-     * @param b1
-     * @param lastCellPath
+     * @param b1 a balloon
+     * @param lastCellPath the last cell of the current path.
      * @return double
      */
     protected double distance(Balloon b1,CellPath lastCellPath){
@@ -168,7 +168,7 @@ public class Tower extends GameObject{
     /**check if a balloon is in range, if it is then it will 
      * return the balloon that is the closest to end the path,
      * if it is not in range, then it will return null
-     * @param Set<Balloon> balloons that are currently in the game
+     * @param balloons a set of balloons that are currently in the game
      * @return balloon targeted
      */
     protected Balloon isInRange(Set<Balloon> balloons){
@@ -193,6 +193,7 @@ public class Tower extends GameObject{
         return balloonTargeted;
     }
     /**check if two tower has the sameCell
+     * @param object an object
      * @return true if they have the same cell, else false
      */
     public boolean SameTowerCell(Object object){
@@ -205,7 +206,7 @@ public class Tower extends GameObject{
     /**attemps to fire a projectile at a target
      * if a target is found, it creates a new bullet with the properties of 
      * the current tower's bullet
-     * @param Set<Balloon> balloons that are currently in the game
+     * @param balloons a set of balloons that are currently in the game
      * @return a new List of Bullet if a target is found,
      * else null.
      * 
@@ -239,7 +240,7 @@ public class Tower extends GameObject{
 
     /**updates the tower's state every game tick
      * it is checking if the tower is ready to shoot or not
-     * @param int the current clock of the game
+     * @param clock the current clock of the game
      * @return true if this tower is ready else false
     */
     @Override
@@ -257,7 +258,7 @@ public class Tower extends GameObject{
 
 
     /**get the name of this tower
-     * @return String
+     * @return the name of this tower
      */
     public String getName(){
         return this.name;

@@ -94,7 +94,7 @@ public class Balloon extends GameObject {
 
     /**
      * return true if the balloon is on the last cell of its path
-     * @return
+     * @return true if the balloon is on the last cell of its path
      */
     public boolean isFinished(){
         return this.cell.isFinished();
@@ -107,7 +107,7 @@ public class Balloon extends GameObject {
      * if clockSpeed = 3 and clock = 3 then move forward and return true
      * if clockSpeed = 6 and clock = 3 then move forward and return true
      * @param clock the current clock of the game (right now)
-     * @return
+     * @return true if the balloon moved
      */
     public boolean onClock(int clock){
         if (clock%(this.clockSpeed*this.timeSlower) == 0){
@@ -137,7 +137,7 @@ public class Balloon extends GameObject {
 
 
     /**
-     * return true if the balloon is dead (resistance <= 0)
+     * return true if the balloon is dead (resistance is less or equal than 0)
      * @return balloon state (true = dead, false = alive)
      */
     public boolean isDead(){

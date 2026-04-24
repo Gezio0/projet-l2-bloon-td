@@ -28,6 +28,7 @@ public class Game {
      * Builds a Game with a given board and balloons number
      * @param board Game's board
      * @param NbBalloons Game's balloons number
+     * @param player game's player
      */
     public Game(Board board,int NbBalloons,Player player){
         this.clock = 0;
@@ -70,13 +71,16 @@ public class Game {
     public boolean isFinished(){
         return (player.getLives() <= 0)||(balloons.isEmpty());
     }
+    /**tells us if the game lost 
+     * @return true if the player's lives are lesser or equal than 0
+     */
     public boolean gameLost(){
          return player.getLives() <= 0;
     }
 
     /**
      * Do a turn of the game
-     * @throws NoNextCellException 
+     * @throws NoNextCellException .
     */
     public void loop() throws NoNextCellException{
         List<GameObject> gameObjectToDestroy = new LinkedList<GameObject>();
@@ -133,7 +137,7 @@ public class Game {
 
     /**
      * Do a wave of the game
-     * @throws NoNextCellException 
+     * @throws NoNextCellException .
     */
     public void playWave() throws NoNextCellException{
         while (!this.isFinished()){
@@ -158,8 +162,9 @@ public class Game {
     }
 
     /**
-     * Add a tower in the game
-     * @param t the tower to add
+     * get the set of towers in the game
+     * @return the towers that are in the game
+     * 
     */
     public Set<Tower> getTowers(){
         return this.towers;
@@ -183,7 +188,7 @@ public class Game {
 
     /**
      * Delete a gameobject in the game
-     * @param o the GameObject to delete
+     * @param gameObject the GameObject to delete
     */
     public void DeleteGameObject(GameObject gameObject){
         this.gameObjects.remove(gameObject);

@@ -15,9 +15,9 @@ public class UpgradeTowerAction implements ManageAction{
 
     /**
      * An action to upgrade a tower with all the informations needed
-     * @param player
-     * @param tower
-     * @param upgrade
+        * @param player the player of the game
+     * @param tower the tower that the player want to upgrade
+     * @param upgrade the upgrade that the player want to buy
      */
     public UpgradeTowerAction(Player player, Tower tower, Upgrade upgrade){
         this.player = player;

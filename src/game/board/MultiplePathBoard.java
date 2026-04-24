@@ -16,7 +16,7 @@ public class MultiplePathBoard extends Board {
      * @param width the width of the board
      * @param height the height of the board
      * @param nbOfPaths the number of path
-     * @throws TooMuchPathsException when paths are exceeding the limit (> height/2 or width/2)
+     * @throws TooMuchPathsException when paths are exceeding the limit (greater than height/2 or width/2)
      * @throws NoNextCellException when trying to get a null cell
      */
     public MultiplePathBoard(int width, int height, int nbOfPaths) throws TooMuchPathsException,NoNextCellException{

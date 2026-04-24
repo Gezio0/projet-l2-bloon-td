@@ -19,7 +19,9 @@ public class Damage extends Effect{
         this.damage = damage;
     }
 
-    /*return the damage of the effect */
+    /**return the damage of the effect 
+    @return the damage 
+    */
     public int getDamage(){
         return this.damage;
     }
@@ -32,7 +34,10 @@ public class Damage extends Effect{
     }
 
 
-    /*method that applies the effect Damage to the balloon list and removes the effect when its durability reaches 0  */
+    /**method that applies the effect Damage to the balloon list and removes the effect when its durability reaches 0 
+     * @param clock the current clock of the game
+    */
+   @Override
     public void applyEffect(int clock){
         if (this.duration >= 0){
             

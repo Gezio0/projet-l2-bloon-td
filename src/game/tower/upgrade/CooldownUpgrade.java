@@ -9,7 +9,8 @@ public class CooldownUpgrade extends Upgrade {
     
     /**
      * Builds a CooldownUpgrade class with a multiplier
-     * @param multiplier
+     * @param cost the cost of this upgrade
+     * @param multiplier the multiplier of this upgrade
      */
     public CooldownUpgrade(int cost,double multiplier){
         super(cost);
@@ -27,6 +28,7 @@ public class CooldownUpgrade extends Upgrade {
 
     /**
      * Display the upgrade with its name and percentage buff
+     * @return a string
      */
     @Override
     public String toString(){

@@ -50,6 +50,8 @@ public abstract class GameObject {
 
     /**
      * get called at every clock of the game
+     * @param clock the current clock of the game
+     * @return true if the gameobject is ready, else false
     */
     public abstract boolean onClock(int clock);
 }

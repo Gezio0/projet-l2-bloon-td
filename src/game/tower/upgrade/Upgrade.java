@@ -6,7 +6,9 @@ public abstract class Upgrade {
     /*this upgrade's cost */
     protected int cost;
 
-    /*Build an upgarde with the given cost */
+    /**Build an upgarde with the given cost
+    *@param cost the cost of this upgrade 
+    */
     public Upgrade(int cost){
         this.cost = cost;
     }
@@ -48,6 +50,6 @@ public abstract class Upgrade {
     public int getCost(){
         return this.cost;
     }
-
+    @Override
     public abstract String toString();
 }

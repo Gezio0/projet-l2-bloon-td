@@ -40,6 +40,7 @@ public class UpgradeTree {
      * Switch an upgrade from the activeUpgrades list to the inactive one
      * No effect if upgrade is not in the active list.
      * @param upgrade the upgrade to sell
+     * @return true if you can sell the upgrade, else false
      */
     public boolean sell(Upgrade upgrade){
         if (this.activeUpgrades.contains(upgrade)){
