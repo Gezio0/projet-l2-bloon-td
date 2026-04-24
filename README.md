@@ -238,7 +238,7 @@ Finir le diagramme pour les plateaux différents. Pour cette semaine, aucune ré
 
 ### Ce qui a été réalisé
 Pour commencer nous avons modifier l'UML afin d'obtenir notre version potentiellement finale de la partie Board(les chemins,les cellules et le board en lui même ainsi que ces exceptions). Nous avons notamment terminer les sous classes de Board, 2 sous classes différente en fonction du type de plateau. Ensuite nous avons commencer a coder en se repartissant les classes.
-![alt text](UML2seance2final.png)
+![alt text](images/UML2seance2final.png)
 
 ### Difficultés rencontrées
 La création des chemins notamment la méthode initPath de la classe classicalBoard (nous n'avons pas encore commencé MultipleBoard), pour l'instant on a une idée de comment faire que l'on essayera de finir dans la semaine.
@@ -253,7 +253,7 @@ Pour ce qui est de MultipleBoard on essayera de refléchir ensemble en essayant 
 
 ## Semaine 3
 
-![alt text](umlSeance3.png)
+![alt text](images/umlSeance3.png)
 
 ne pas prendre en compte la classe balloon !!
 
