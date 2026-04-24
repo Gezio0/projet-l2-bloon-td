@@ -159,6 +159,7 @@ public class Game {
         while (!this.isFinished()){
             this.loop();
         }
+        this.nbBalloons += 5;
     }
 
     /**
