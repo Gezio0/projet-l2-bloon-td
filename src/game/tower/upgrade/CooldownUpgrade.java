@@ -9,6 +9,7 @@ public class CooldownUpgrade extends Upgrade {
     
     /**
      * Builds a CooldownUpgrade class with a multiplier
+     * @param cost the cost of this upgrade
      * @param multiplier the multiplier of this upgrade
      */
     public CooldownUpgrade(int cost,double multiplier){

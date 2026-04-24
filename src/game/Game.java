@@ -28,6 +28,7 @@ public class Game {
      * Builds a Game with a given board and balloons number
      * @param board Game's board
      * @param NbBalloons Game's balloons number
+     * @param player game's player
      */
     public Game(Board board,int NbBalloons,Player player){
         this.clock = 0;
@@ -79,7 +80,7 @@ public class Game {
 
     /**
      * Do a turn of the game
-     * @throws NoNextCellException 
+     * @throws NoNextCellException .
     */
     public void loop() throws NoNextCellException{
         List<GameObject> gameObjectToDestroy = new LinkedList<GameObject>();
@@ -136,7 +137,7 @@ public class Game {
 
     /**
      * Do a wave of the game
-     * @throws NoNextCellException 
+     * @throws NoNextCellException .
     */
     public void playWave() throws NoNextCellException{
         while (!this.isFinished()){

@@ -10,6 +10,7 @@ public class RangeUpgrade extends Upgrade{
     /**
      * Builds a RangeUpgrade class with a multiplier
      * @param multiplier the multiplier of this upgrade
+     * @param cost the cost of this upgrade
      */
     public RangeUpgrade(int cost,double multiplier){
         super(cost);

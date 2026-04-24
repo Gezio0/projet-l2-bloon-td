@@ -13,6 +13,8 @@ public class ClassicalBoard extends Board {
     /** create a classcial board with the length
      * @param width width of this board
      * @param height height of this board
+     *@throws TooMuchPathsException when paths are exceeding the limit (here it's 1)
+     * @throws NoNextCellException when trying to get a null cell
     */
     public ClassicalBoard(int width,int height) throws TooMuchPathsException,NoNextCellException{
         super(width,height);

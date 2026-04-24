@@ -9,6 +9,7 @@ public class DamageUpgrade extends Upgrade{
     
     /**
      * Builds a DamageUpgrade class with a multiplier
+     * @param cost the cost of this upgrade
      * @param multiplier the multiplier of this upgrade
      */
     public DamageUpgrade(int cost,double multiplier){
