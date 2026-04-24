@@ -162,9 +162,9 @@ public class Towerdefense_b_random {
     
         List<ActionType> actions = Arrays.asList(
             ActionType.BUYTOWER, 
-            ActionType.SELLTOWER, 
-            ActionType.BUYUPGRADE, 
-            ActionType.SELLUPGRADE, 
+         //   ActionType.SELLTOWER, 
+         //   ActionType.BUYUPGRADE, 
+        //    ActionType.SELLUPGRADE, 
             ActionType.DO_NOTHING
         );
 

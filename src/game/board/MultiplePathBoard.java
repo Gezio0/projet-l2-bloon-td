@@ -82,7 +82,7 @@ public class MultiplePathBoard extends Board {
             }
 
             Path path = createPath(startX, startY, dirX, dirY);
-
+            System.out.println(path.getPath().size());
             this.addPath(path);
         }
         

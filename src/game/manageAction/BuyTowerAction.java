@@ -39,7 +39,6 @@ public class BuyTowerAction implements ManageAction {
     @Override
     public void perform(){
         Tower towerToPlace = this.player.buyTower(tower, x, y);
-
         if (towerToPlace != null){
             this.game.setTower(towerToPlace);
         }
