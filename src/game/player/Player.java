@@ -85,7 +85,7 @@ public class Player{
     /**
      * True if the player can afford the tower
      * @param tower the tower to buy
-     * @return true if player money >= tower cost
+     * @return true if player money greater or equal to the tower cost
      */
     public boolean canBuyTower(Tower tower){
         int cost = tower.getCost();
@@ -130,7 +130,7 @@ public class Player{
      * Sell a tower upgrade
      * @param tower the tower to downgrade
      * @param upgrade the upgrade to sell
-     * @return true
+     * @return true if you can sell the upgrade, else false
      */
     public boolean sellUpgrade(Tower tower,Upgrade upgrade){
         int cost = upgrade.getCost();
