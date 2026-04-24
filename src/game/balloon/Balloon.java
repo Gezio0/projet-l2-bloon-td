@@ -132,6 +132,7 @@ public class Balloon extends GameObject {
     public void decreaseResistance(int damage){
         if (!this.isDead()) {
         this.resistance = this.resistance - damage;
+        System.out.println("Ouch");
         }
     }
 

@@ -63,10 +63,15 @@ public class Tower extends GameObject{
         int maxY = (int) Math.ceil(this.cell.getY()+this.range*this.upgradeTree.getRangeMultiplier());
         int minX = (int) Math.ceil(this.cell.getX()-this.range*this.upgradeTree.getRangeMultiplier());
         int minY = (int) Math.ceil(this.cell.getY()-this.range*this.upgradeTree.getRangeMultiplier());
-        for(Path p : paths){
+    
+
+        int i = 0;
+        for(Path p : this.paths){
             List<CellPath> cellpaths= p.getPath();
             for(CellPath cp : cellpaths){
                 Cell c = cp.getCell();
+                System.out.println(i);
+                i++;
                 if( c.getX()<=maxX && c.getX()>=minX && c.getY()>=minY && c.getY()<=maxY){
                     cellInRange.add(c);
                 }
@@ -176,7 +181,6 @@ public class Tower extends GameObject{
         double distanceMin = Double.MAX_VALUE;
         List<Cell> cellInRange= this.getCellInRange();
         for(Balloon b : balloons){
-
             Cell bCell = b.getCell().getCell();
             if(cellInRange.contains(bCell)){
 
@@ -251,7 +255,7 @@ public class Tower extends GameObject{
     
     @Override
     public String toString(){
-        return "Tower: " +this.getName()+ ", range : " + this.getRange() + " reload time :"  + this.getReloadTime();
+        return "Tower: " +this.getName()+ ", range : " + this.getRange() + ", reload time :"  + this.getReloadTime() + ", cost : " + this.cost + ", id : " + this.getId();
     }
 
 
@@ -267,7 +271,7 @@ public class Tower extends GameObject{
      * @return a new tower with the same attributes as this tower
      */
     public Tower copy(){
-        return new Tower(this.range, this.cost, this.bullet, this.reloadTime, this.cell, this.paths, this.upgradeTree, this.name);
+        return new Tower(this.range, this.cost, this.bullet, this.reloadTime, this.cell, this.paths, this.upgradeTree.copy(), this.name);
     }
     
 

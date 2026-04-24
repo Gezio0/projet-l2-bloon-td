@@ -1,6 +1,7 @@
 package game.player;
 import game.tower.*;
 import game.tower.upgrade.*;
+import game.listchooser.util.*;
 
 /**A class for a bloonstd game player */
 public class Player{
@@ -44,6 +45,14 @@ public class Player{
         return this.shop;
     }
 
+    /**
+     * give money to this player
+     * @param value the value of value to give
+     */
+    public void addMoney(int value){
+        this.money += value;
+    }
+
 
     /**
      * Buy a tower to a (x,y) position.
@@ -65,6 +74,9 @@ public class Player{
         }
         else{
             System.out.println("You don't have enough money");
+
+            Input input = new Input();
+            String chosenAction = input.readString();
             return null;
         }
     }
@@ -78,7 +90,7 @@ public class Player{
         int cost = tower.getCost();
         this.money = this.money + (int)(Math.floor(0.8*cost));
         System.out.println("You sold "+ tower.getName()+" for "+0.8*cost);
-        tower.toDestroy();
+        tower.destroy();
         return true;
     }
 

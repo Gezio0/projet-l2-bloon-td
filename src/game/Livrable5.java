@@ -153,10 +153,10 @@ public class Livrable5 {
         Random rng = new Random();
         int x = rng.nextInt(width);
         int y = rng.nextInt(height);
-        while (!(board.getCell(x, y).isEmpty())){
+        /*while (!(board.getCell(x, y).isEmpty())){
             x = rng.nextInt(width);
             y = rng.nextInt(height);
-        }
+        }*/
         board.getCell(x, y).setEmpty(false);
         return board.getCell(x, y);
     }

@@ -115,4 +115,11 @@ public class UpgradeTree {
         return multiplier;
     }
 
+    public UpgradeTree copy(){
+        List<Upgrade> inactiveUpgrades = new ArrayList<Upgrade>();
+        for(Upgrade upgrade : this.inactiveUpgrades){
+            inactiveUpgrades.add(upgrade);
+        }
+        return new UpgradeTree(inactiveUpgrades);
+    }
 }

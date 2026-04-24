@@ -16,7 +16,8 @@ docs:
 
 jar: classes
 	jar cfe towerdefense_b_random.jar game.Towerdefense_b_random -C classes .
-	
+	jar cfe towerdefense_a_interactive.jar game.Towerdefense_a_interactive -C classes .
+	jar cfe towerdefense_b_interactive.jar game.Towerdefense_b_interactive -C classes .
 
 tests: classes
 	@mkdir -p classes/tests
@@ -37,6 +38,13 @@ execjar5: jar
 
 towerdefense_b_random: jar
 	java -jar towerdefense_b_random.jar 10 10 5 
+
+towerdefense_a_interactive: jar
+	java -jar towerdefense_a_interactive.jar 10 10 20
+
+towerdefense_b_interactive: jar
+	java -jar towerdefense_b_interactive.jar 10 10 4 20
+	java -jar towerdefense_b_interactive.jar 10 10 4 10
 
 clean:
 	rm -rf classes

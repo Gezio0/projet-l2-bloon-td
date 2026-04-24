@@ -109,6 +109,8 @@ public class Game {
                 if (balloon.getResistance() > 0) {
                     player.decreaseLife();
                     System.out.println("Your lives have decreased, you have now : " + player.getLives());
+                } else {
+                    player.addMoney(10);
                 }
                 gameObjectToDestroy.add(balloon);
             }
@@ -117,6 +119,7 @@ public class Game {
             if(t.onClock(this.clock)){
                 Bullet bullet = t.shoot(this.balloons);
                 if (bullet != null){
+                    System.out.println("piou piou");
                     gameObjectsToAdd.add(bullet);
                 }
             }
@@ -133,6 +136,20 @@ public class Game {
         }
 
         this.clock++;
+    }
+
+    public void UpdateDestroyedTowers(){
+        List<GameObject> gameObjectToDestroy = new LinkedList<GameObject>();
+
+        for(GameObject tower : this.towers){
+            if(tower.toDestroy()){
+                gameObjectToDestroy.add(tower);
+            }
+        }
+
+        for(GameObject gameObject : gameObjectToDestroy){
+            this.DeleteGameObject(gameObject);
+        }
     }
 
     /**
@@ -191,9 +208,14 @@ public class Game {
      * @param gameObject the GameObject to delete
     */
     public void DeleteGameObject(GameObject gameObject){
-        this.gameObjects.remove(gameObject);
         if(gameObject instanceof Balloon){
             this.balloons.remove((Balloon) gameObject);
+
+        } else if(gameObject instanceof Tower){
+            this.towers.remove((Tower) gameObject);
+        }
+        if(this.gameObjects.contains(gameObject)){
+            this.gameObjects.remove(gameObject);
         }
     }
 
