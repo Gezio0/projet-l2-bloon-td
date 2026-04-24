@@ -48,7 +48,7 @@ Un lien vers une image de l'UML doit être fourni (une photo d'un diagramme UML 
     make towerdefense_b_random
 
 ```
-
+![alt text](images/Livrable_final.png)
 
 ## Livrable 1
 #### Voici les commandes de compilations :
@@ -91,7 +91,7 @@ L’implémentation a avancé progressivement. Après avoir défini l’UML, nou
 
 Nous avons aussi reussi a nous adapter a la programmation en groupe et notre repartition du travail etait tres efficace et cohérente. 
 
-![alt text](umlSeance3.png)
+![alt text](images/Livrable1.png)
 
 ne pas prendre en compte la classe balloon !!
 
@@ -103,7 +103,8 @@ Pour ce qui est de ce livrable il parait plutot complet des modifications future
 ### Atteinte des objectifs
 Cette semaine, nous avons commencé faire l'UML de la classe Balloon,Game et l'interface Clockable.Nous nous sommes vite mis d'accord sur les classes et l'implémentation de l'interface Clockable qui permet de gérer tout les elements du jeu qui utilisent la clock du game.
 
-![alt text](images/UMLs4.png)
+![alt text](images/Livrable1.png)
+![alt text](images/Livrable2.png)
 
 ### Difficultés restant à résoudre
 
@@ -126,11 +127,11 @@ Nous avons aussi rencontré des problèmes de référencement d’objets. Il est
 
 Enfin, la gestion d’un grand nombre d’objets reste complexe. Il faut constamment vérifier les responsabilités de chacun, leurs interactions et les informations qu’ils doivent partager. Si l’on souhaite garder un code propre et extensible, cette complexité augmente rapidement et nécessite une architecture claire ainsi qu’une bonne organisation du projet.
 
-![alt text](images/UMLS7p2.png)
-![alt text](images/UMLS7p1.png)
+![alt text](images/Livrable3_partie1.png)
+![alt text](images/Livrable3_partie2.png)
 
 ## Livrable 4
-![alt text](images/UMLlivrable4.png)
+![alt text](images/Livrable4.png)
 ### Atteinte des objectifs
 Au cours de ce livrable, nous avons implémenté un système d’upgrades permettant de faire évoluer dynamiquement les tours. Une première approche consistait à modifier directement les attributs des tours (portée, dégâts, cadence), mais celle-ci s’est révélée limitée, notamment pour gérer la revente des améliorations. Nous avons donc repensé ce système en adoptant une modélisation basée sur des multiplicateurs.
 
@@ -237,7 +238,7 @@ Finir le diagramme pour les plateaux différents. Pour cette semaine, aucune ré
 
 ### Ce qui a été réalisé
 Pour commencer nous avons modifier l'UML afin d'obtenir notre version potentiellement finale de la partie Board(les chemins,les cellules et le board en lui même ainsi que ces exceptions). Nous avons notamment terminer les sous classes de Board, 2 sous classes différente en fonction du type de plateau. Ensuite nous avons commencer a coder en se repartissant les classes.
-![alt text](UML2seance2final.png)
+![alt text](images/UML2seance2final.png)
 
 ### Difficultés rencontrées
 La création des chemins notamment la méthode initPath de la classe classicalBoard (nous n'avons pas encore commencé MultipleBoard), pour l'instant on a une idée de comment faire que l'on essayera de finir dans la semaine.
@@ -252,7 +253,7 @@ Pour ce qui est de MultipleBoard on essayera de refléchir ensemble en essayant 
 
 ## Semaine 3
 
-![alt text](umlSeance3.png)
+![alt text](images/umlSeance3.png)
 
 ne pas prendre en compte la classe balloon !!
 
@@ -272,7 +273,7 @@ Nous avons rencontré d'autres problemes sur la compilation commune car chacun a
 ## Semaine 4
 
 ### Ce qui a été réalisé
-![alt text](images/UMLs4.png)
+![alt text](images/Livrable2.png)
 
 Nous avons d'abord pris une heure de notre temps pour réaliser l'UML sur tout ce qui concernait le livrable 2.
 Nous avons par la suite codé toutes les classes et interfaces ci-dessus avec cette répartition.
@@ -354,7 +355,7 @@ Noé : modification de Bullet et ajout de la classe abstraite Upgrade.
 ## Semaine 9
 
 ### Ce qui a été réalisé
-![alt text](images/UMLlivrable4.png)
+![alt text](images/Livrable4.png)
 Grosses modifications au niveau des upgrades avec un changement du systeme, nous partons sur un systeme de multiplier pour gérer l'évolution de nos tours. Des modifications doivent donc être apporté a la classe Tower, une methode pour acheter et une methode pour vendre les evolutions ainsi qu'une methode pour appliquer le multiplier.
 Des modifications ont donc aussi été ajouté au code de la semaine precedente sur la partie Upgrade avec de nouvelles methodes pour obtenir les multipliers de chaque evolution.
 Ces multiplier seront ensuite additionnés pour permettre d'appliquer plusieurs evolutions a la meme tour.

@@ -1,6 +1,6 @@
 JFLAGS = -d classes -sourcepath src
 
-.PHONY: all classes docs jar tests runtests clean
+.PHONY: all tests runtests clean towerdefense_a_random towerdefense_b_random towerdefense_a_interactive towerdefense_b_interactive
 
 all: docs classes jar runtests 
 
@@ -15,10 +15,11 @@ docs:
 
 
 jar: classes
-	jar cfe towerdefense_b_random.jar game.Towerdefense_b_random -C classes .
-	jar cfe towerdefense_a_interactive.jar game.Towerdefense_a_interactive -C classes .
-	jar cfe towerdefense_b_interactive.jar game.Towerdefense_b_interactive -C classes .
-	jar cfe towerdefense_a_random.jar game.Towerdefense_a_random -C classes .
+	@mkdir -p jar
+	jar cfe jar/towerdefense_b_random.jar game.Towerdefense_b_random -C classes .
+	jar cfe jar/towerdefense_a_interactive.jar game.Towerdefense_a_interactive -C classes .
+	jar cfe jar/towerdefense_b_interactive.jar game.Towerdefense_b_interactive -C classes .
+	jar cfe jar/towerdefense_a_random.jar game.Towerdefense_a_random -C classes .
 
 tests: classes
 	@mkdir -p classes/tests
@@ -28,29 +29,20 @@ runtests: tests
 	java -jar junit-console.jar -classpath classes/tests:classes -scan-classpath
 
 
-execjar4aEx: 
-	java -jar livrable4a.jar 10 10 5 
-
-execjar4bEx: 
-	java -jar livrable4b.jar 10 10 5 10
-
-execjar5: jar
-	java -jar livrable5.jar 10 10 5 
-
 towerdefense_a_random: jar
-	java -jar towerdefense_a_random.jar 10 10 5 
+	java -jar jar/towerdefense_a_random.jar 10 10 5 
 
 towerdefense_b_random: jar
-	java -jar towerdefense_b_random.jar 10 10 5 
+	java -jar jar/towerdefense_b_random.jar 10 10 5 
 
 towerdefense_a_interactive: jar
-	java -jar towerdefense_a_interactive.jar 10 10 20
+	java -jar jar/towerdefense_a_interactive.jar 10 10 20
 
 towerdefense_b_interactive: jar
-	java -jar towerdefense_b_interactive.jar 10 10 4 20
+	java -jar jar/towerdefense_b_interactive.jar 10 10 4 20
 
 clean:
 	rm -rf classes
 	rm -rf docs
-	rm -f livrable4a.jar livrable4b.jar livrable5.jar towerdefense_b_random
+	rm -rf jar
 
