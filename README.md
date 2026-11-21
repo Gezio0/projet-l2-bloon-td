@@ -30,12 +30,12 @@ Un lien vers une image de l'UML doit être fourni (une photo d'un diagramme UML 
 *Commandes pour exécuter les jar:*
 
 ```bash
-    make make towerdefense_a_interactive
+    make towerdefense_a_interactive
     
 ```
 
 ```bash
-    make make towerdefense_b_interactive
+    make towerdefense_b_interactive
     
 ```
 
